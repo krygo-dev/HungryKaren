@@ -8,17 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		0C896286297B1D9D0033D01D /* HungryKarenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C896285297B1D9D0033D01D /* HungryKarenApp.swift */; };
-		0C896288297B1D9D0033D01D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C896287297B1D9D0033D01D /* ContentView.swift */; };
+		0C896288297B1D9D0033D01D /* StartupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C896287297B1D9D0033D01D /* StartupView.swift */; };
 		0C89628A297B1D9F0033D01D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C896289297B1D9F0033D01D /* Assets.xcassets */; };
 		0C89628D297B1D9F0033D01D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C89628C297B1D9F0033D01D /* Preview Assets.xcassets */; };
+		0CE2B51F297B276400194236 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B51E297B276400194236 /* Colors.swift */; };
+		0CE2B521297B38FD00194236 /* BackgroundCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B520297B38FD00194236 /* BackgroundCanvasView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C896282297B1D9D0033D01D /* HungryKaren.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HungryKaren.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C896285297B1D9D0033D01D /* HungryKarenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HungryKarenApp.swift; sourceTree = "<group>"; };
-		0C896287297B1D9D0033D01D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0C896287297B1D9D0033D01D /* StartupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupView.swift; sourceTree = "<group>"; };
 		0C896289297B1D9F0033D01D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C89628C297B1D9F0033D01D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0CE2B51E297B276400194236 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		0CE2B520297B38FD00194236 /* BackgroundCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCanvasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +55,11 @@
 		0C896284297B1D9D0033D01D /* HungryKaren */ = {
 			isa = PBXGroup;
 			children = (
+				0CE2B51B297B240200194236 /* Features */,
+				0CE2B51A297B239E00194236 /* Model */,
+				0CE2B519297B238100194236 /* Utils */,
 				0C896285297B1D9D0033D01D /* HungryKarenApp.swift */,
-				0C896287297B1D9D0033D01D /* ContentView.swift */,
+				0C896287297B1D9D0033D01D /* StartupView.swift */,
 				0C896289297B1D9F0033D01D /* Assets.xcassets */,
 				0C89628B297B1D9F0033D01D /* Preview Content */,
 			);
@@ -65,6 +72,45 @@
 				0C89628C297B1D9F0033D01D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0CE2B519297B238100194236 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0CE2B51E297B276400194236 /* Colors.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0CE2B51A297B239E00194236 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0CE2B51B297B240200194236 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				0CE2B51D297B253000194236 /* Authentication */,
+				0CE2B51C297B243600194236 /* Components */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		0CE2B51C297B243600194236 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0CE2B520297B38FD00194236 /* BackgroundCanvasView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		0CE2B51D297B253000194236 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +183,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C896288297B1D9D0033D01D /* ContentView.swift in Sources */,
+				0CE2B521297B38FD00194236 /* BackgroundCanvasView.swift in Sources */,
+				0C896288297B1D9D0033D01D /* StartupView.swift in Sources */,
+				0CE2B51F297B276400194236 /* Colors.swift in Sources */,
 				0C896286297B1D9D0033D01D /* HungryKarenApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
