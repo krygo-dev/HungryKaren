@@ -2,7 +2,7 @@
 //  BackgroundCanvasView.swift
 //  HungryKaren
 //
-//  Created by Ewelina Klekot on 20/01/2023.
+//  Created by Adam Chylaszek on 20/01/2023.
 //
 
 import SwiftUI

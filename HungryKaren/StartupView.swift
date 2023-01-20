@@ -16,6 +16,14 @@ struct StartupView: View {
                 smallCircleRadius: 119,
                 bigCircleRadius: 228,
                 arcRadius: 135)
+            
+            VStack {
+                Image("hungry_karen_logo")
+                    .resizable()
+                    .scaledToFill()
+                .frame(width: 273, height: 248)
+                Spacer().frame(height: 34)
+            }
         }
     }
 }
