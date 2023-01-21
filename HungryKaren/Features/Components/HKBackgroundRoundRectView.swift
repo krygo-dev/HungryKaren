@@ -17,7 +17,7 @@ struct HKBackgroundRoundRectView: View {
                 .resizable()
                 .scaledToFill()
                 .frame(width: 97, height: 114)
-                .position(x: 343, y: 121)
+                .position(x: 345, y: 135)
             Image("lettuce_img")
                 .resizable()
                 .scaledToFill()
