@@ -2,7 +2,7 @@
 //  HungryKarenApp.swift
 //  HungryKaren
 //
-//  Created by Ewelina Klekot on 20/01/2023.
+//  Created by Adam Chylaszek on 20/01/2023.
 //
 
 import SwiftUI
@@ -11,6 +11,8 @@ import Firebase
 @main
 struct HungryKarenApp: App {
     
+    @StateObject var authViewModel = AuthenticationViewModel()
+    
     init() {
         FirebaseApp.configure()
     }
@@ -18,6 +20,8 @@ struct HungryKarenApp: App {
     var body: some Scene {
         WindowGroup {
             SplashView()
+                .environmentObject(authViewModel)
+//            StartView()
         }
     }
 }

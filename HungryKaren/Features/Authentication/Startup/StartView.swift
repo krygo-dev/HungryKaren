@@ -41,6 +41,7 @@ struct StartView: View {
             .frame(width: 390, height: 466)
         }
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
     }
 }
 

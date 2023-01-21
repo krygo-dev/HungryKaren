@@ -10,7 +10,7 @@ import SwiftUI
 struct SignUpView: View {
     
     @State var email: String = ""
-    @State var login: String = ""
+    @State var name: String = ""
     @State var password: String = ""
     @State var confirmPassword: String = ""
     
@@ -43,8 +43,8 @@ struct SignUpView: View {
                     )
                     Spacer().frame(height: 17)
                     HKTextFieldView(
-                        text: $login,
-                        placeholder: "login",
+                        text: $name,
+                        placeholder: "name",
                         fontSize: fontSize,
                         fieldHeight: fieldHeight
                     )

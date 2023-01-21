@@ -23,6 +23,9 @@
 		0CCAF50F297C5D8500F74951 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0CCAF50E297C5D8500F74951 /* FirebaseFirestoreSwift */; };
 		0CCAF511297C5D8500F74951 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0CCAF510297C5D8500F74951 /* FirebaseStorage */; };
 		0CCAF514297C5F0200F74951 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CCAF513297C5F0200F74951 /* GoogleService-Info.plist */; };
+		0CCAF517297C662B00F74951 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCAF516297C662B00F74951 /* AuthenticationRepository.swift */; };
+		0CCAF519297C66FF00F74951 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCAF518297C66FF00F74951 /* AuthenticationViewModel.swift */; };
+		0CCAF51D297C6EBA00F74951 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCAF51C297C6EBA00F74951 /* HomeView.swift */; };
 		0CE2B51F297B276400194236 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B51E297B276400194236 /* Colors.swift */; };
 		0CE2B521297B38FD00194236 /* HKBackgroundCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B520297B38FD00194236 /* HKBackgroundCanvasView.swift */; };
 /* End PBXBuildFile section */
@@ -41,6 +44,9 @@
 		0CCAF503297C3DF800F74951 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		0CCAF505297C451500F74951 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		0CCAF513297C5F0200F74951 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0CCAF516297C662B00F74951 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
+		0CCAF518297C66FF00F74951 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		0CCAF51C297C6EBA00F74951 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0CE2B51E297B276400194236 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0CE2B520297B38FD00194236 /* HKBackgroundCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKBackgroundCanvasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +85,7 @@
 		0C896284297B1D9D0033D01D /* HungryKaren */ = {
 			isa = PBXGroup;
 			children = (
+				0CCAF515297C660400F74951 /* Repositories */,
 				0CE2B51B297B240200194236 /* Features */,
 				0CE2B51A297B239E00194236 /* Model */,
 				0CE2B519297B238100194236 /* Utils */,
@@ -131,6 +138,30 @@
 			path = ForgotPassword;
 			sourceTree = "<group>";
 		};
+		0CCAF515297C660400F74951 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				0CCAF516297C662B00F74951 /* AuthenticationRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		0CCAF51A297C6E9F00F74951 /* Recipes */ = {
+			isa = PBXGroup;
+			children = (
+				0CCAF51B297C6EA900F74951 /* Home */,
+			);
+			path = Recipes;
+			sourceTree = "<group>";
+		};
+		0CCAF51B297C6EA900F74951 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0CCAF51C297C6EBA00F74951 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		0CE2B519297B238100194236 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +180,7 @@
 		0CE2B51B297B240200194236 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				0CCAF51A297C6E9F00F74951 /* Recipes */,
 				0CE2B51D297B253000194236 /* Authentication */,
 				0CE2B51C297B243600194236 /* Components */,
 			);
@@ -173,6 +205,7 @@
 				0CCAF4F5297C0CDD00F74951 /* SignIn */,
 				0CCAF4F6297C0CE800F74951 /* SignUp */,
 				0CCAF4F8297C0D2D00F74951 /* ForgotPassword */,
+				0CCAF518297C66FF00F74951 /* AuthenticationViewModel.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -257,6 +290,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CCAF519297C66FF00F74951 /* AuthenticationViewModel.swift in Sources */,
+				0CCAF51D297C6EBA00F74951 /* HomeView.swift in Sources */,
 				0CE2B521297B38FD00194236 /* HKBackgroundCanvasView.swift in Sources */,
 				0CCAF506297C451500F74951 /* ForgotPasswordView.swift in Sources */,
 				0CCAF500297C24BF00F74951 /* HKBackgroundRoundRectView.swift in Sources */,
@@ -266,6 +301,7 @@
 				0CE2B51F297B276400194236 /* Colors.swift in Sources */,
 				0CCAF504297C3DF800F74951 /* SignUpView.swift in Sources */,
 				0CCAF502297C2AED00F74951 /* HKTextFieldView.swift in Sources */,
+				0CCAF517297C662B00F74951 /* AuthenticationRepository.swift in Sources */,
 				0CCAF4FC297C1D1400F74951 /* HKButtonFrameView.swift in Sources */,
 				0C896286297B1D9D0033D01D /* HungryKarenApp.swift in Sources */,
 			);

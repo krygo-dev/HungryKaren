@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignInVIew: View {
     
-    @State var login: String = ""
+    @State var email: String = ""
     @State var password: String = ""
     
     var body: some View {
@@ -31,8 +31,8 @@ struct SignInVIew: View {
                 Spacer().frame(height: 98)
                 Group {
                     HKTextFieldView(
-                        text: $login,
-                        placeholder: "login",
+                        text: $email,
+                        placeholder: "e-mail",
                         fieldHeight: 58
                     )
                     Spacer().frame(height: 32)
