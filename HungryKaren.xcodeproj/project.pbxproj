@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0C896286297B1D9D0033D01D /* HungryKarenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C896285297B1D9D0033D01D /* HungryKarenApp.swift */; };
-		0C896288297B1D9D0033D01D /* StartupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C896287297B1D9D0033D01D /* StartupView.swift */; };
+		0C896288297B1D9D0033D01D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C896287297B1D9D0033D01D /* SplashView.swift */; };
 		0C89628A297B1D9F0033D01D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C896289297B1D9F0033D01D /* Assets.xcassets */; };
 		0C89628D297B1D9F0033D01D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C89628C297B1D9F0033D01D /* Preview Assets.xcassets */; };
+		0CCAF4FA297C0E3A00F74951 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCAF4F9297C0E3A00F74951 /* StartView.swift */; };
+		0CCAF4FC297C1D1400F74951 /* ButtonFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCAF4FB297C1D1400F74951 /* ButtonFrameView.swift */; };
 		0CE2B51F297B276400194236 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B51E297B276400194236 /* Colors.swift */; };
 		0CE2B521297B38FD00194236 /* BackgroundCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B520297B38FD00194236 /* BackgroundCanvasView.swift */; };
 /* End PBXBuildFile section */
@@ -18,9 +20,11 @@
 /* Begin PBXFileReference section */
 		0C896282297B1D9D0033D01D /* HungryKaren.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HungryKaren.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C896285297B1D9D0033D01D /* HungryKarenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HungryKarenApp.swift; sourceTree = "<group>"; };
-		0C896287297B1D9D0033D01D /* StartupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupView.swift; sourceTree = "<group>"; };
+		0C896287297B1D9D0033D01D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		0C896289297B1D9F0033D01D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C89628C297B1D9F0033D01D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0CCAF4F9297C0E3A00F74951 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		0CCAF4FB297C1D1400F74951 /* ButtonFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFrameView.swift; sourceTree = "<group>"; };
 		0CE2B51E297B276400194236 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0CE2B520297B38FD00194236 /* BackgroundCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCanvasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,7 +63,6 @@
 				0CE2B51A297B239E00194236 /* Model */,
 				0CE2B519297B238100194236 /* Utils */,
 				0C896285297B1D9D0033D01D /* HungryKarenApp.swift */,
-				0C896287297B1D9D0033D01D /* StartupView.swift */,
 				0C896289297B1D9F0033D01D /* Assets.xcassets */,
 				0C89628B297B1D9F0033D01D /* Preview Content */,
 			);
@@ -72,6 +75,36 @@
 				0C89628C297B1D9F0033D01D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0CCAF4F5297C0CDD00F74951 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		0CCAF4F6297C0CE800F74951 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		0CCAF4F7297C0D1400F74951 /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				0C896287297B1D9D0033D01D /* SplashView.swift */,
+				0CCAF4F9297C0E3A00F74951 /* StartView.swift */,
+			);
+			path = Startup;
+			sourceTree = "<group>";
+		};
+		0CCAF4F8297C0D2D00F74951 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ForgotPassword;
 			sourceTree = "<group>";
 		};
 		0CE2B519297B238100194236 /* Utils */ = {
@@ -102,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				0CE2B520297B38FD00194236 /* BackgroundCanvasView.swift */,
+				0CCAF4FB297C1D1400F74951 /* ButtonFrameView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -109,6 +143,10 @@
 		0CE2B51D297B253000194236 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				0CCAF4F7297C0D1400F74951 /* Startup */,
+				0CCAF4F5297C0CDD00F74951 /* SignIn */,
+				0CCAF4F6297C0CE800F74951 /* SignUp */,
+				0CCAF4F8297C0D2D00F74951 /* ForgotPassword */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -184,8 +222,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CE2B521297B38FD00194236 /* BackgroundCanvasView.swift in Sources */,
-				0C896288297B1D9D0033D01D /* StartupView.swift in Sources */,
+				0CCAF4FA297C0E3A00F74951 /* StartView.swift in Sources */,
+				0C896288297B1D9D0033D01D /* SplashView.swift in Sources */,
 				0CE2B51F297B276400194236 /* Colors.swift in Sources */,
+				0CCAF4FC297C1D1400F74951 /* ButtonFrameView.swift in Sources */,
 				0C896286297B1D9D0033D01D /* HungryKarenApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

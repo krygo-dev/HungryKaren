@@ -1,5 +1,5 @@
 //
-//  StartupView.swift
+//  SplashView.swift
 //  HungryKaren
 //
 //  Created by Adam Chylaszek on 20/01/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StartupView: View {
+struct SplashView: View {
     var body: some View {
         ZStack {
             BackgroundCanvasView(
@@ -28,8 +28,8 @@ struct StartupView: View {
     }
 }
 
-struct StartupView_Previews: PreviewProvider {
+struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
-        StartupView()
+        SplashView()
     }
 }
