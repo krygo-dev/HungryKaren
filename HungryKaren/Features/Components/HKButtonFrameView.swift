@@ -1,5 +1,5 @@
 //
-//  ButtonFrameView.swift
+//  HKButtonFrameView.swift
 //  HungryKaren
 //
 //  Created by Adam Chylaszek on 21/01/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ButtonFrameView: View {
+struct HKButtonFrameView: View {
     
     let text: String
     
@@ -22,8 +22,8 @@ struct ButtonFrameView: View {
     }
 }
 
-struct ButtonFrameView_Previews: PreviewProvider {
+struct HKButtonFrameView_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonFrameView(text: "Register")
+        HKButtonFrameView(text: "Register")
     }
 }

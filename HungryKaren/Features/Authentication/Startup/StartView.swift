@@ -26,13 +26,13 @@ struct StartView: View {
                     Button {
                         print("sign in")
                     } label: {
-                        ButtonFrameView(text: "Sign In")
+                        HKButtonFrameView(text: "Sign In")
                     }
                     Spacer().frame(height: 30)
                     Button {
                         print("sign un")
                     } label: {
-                        ButtonFrameView(text: "Register")
+                        HKButtonFrameView(text: "Register")
                     }
                     Spacer()
                 }

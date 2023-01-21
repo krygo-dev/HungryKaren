@@ -1,5 +1,5 @@
 //
-//  BackgroundCanvasView.swift
+//  HKBackgroundCanvasView.swift
 //  HungryKaren
 //
 //  Created by Adam Chylaszek on 20/01/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BackgroundCanvasView: View {
+struct HKBackgroundCanvasView: View {
     
     let color: Color
     let strokeWidth: CGFloat
@@ -56,9 +56,9 @@ struct BackgroundCanvasView: View {
     }
 }
 
-struct BackgroundCanvasView_Previews: PreviewProvider {
+struct HKBackgroundCanvasView_Previews: PreviewProvider {
     static var previews: some View {
-        BackgroundCanvasView(
+        HKBackgroundCanvasView(
             color: secondaryColor,
             strokeWidth: 5,
             smallCircleRadius: 119,

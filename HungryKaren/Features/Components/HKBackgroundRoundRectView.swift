@@ -1,5 +1,5 @@
 //
-//  BackgroundRoundRectView.swift
+//  HKBackgroundRoundRectView.swift
 //  HungryKaren
 //
 //  Created by Adam Chylaszek on 21/01/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BackgroundRoundRectView: View {
+struct HKBackgroundRoundRectView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25)
@@ -32,8 +32,8 @@ struct BackgroundRoundRectView: View {
     }
 }
 
-struct BackgroundRoundRectView_Previews: PreviewProvider {
+struct HKBackgroundRoundRectView_Previews: PreviewProvider {
     static var previews: some View {
-        BackgroundRoundRectView()
+        HKBackgroundRoundRectView()
     }
 }

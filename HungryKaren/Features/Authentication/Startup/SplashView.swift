@@ -10,7 +10,7 @@ import SwiftUI
 struct SplashView: View {
     var body: some View {
         ZStack {
-            BackgroundCanvasView(
+            HKBackgroundCanvasView(
                 color: secondaryColor,
                 strokeWidth: 5,
                 smallCircleRadius: 119,
