@@ -1,5 +1,5 @@
 //
-//  SignInVIew.swift
+//  SignUpView.swift
 //  HungryKaren
 //
 //  Created by Adam Chylaszek on 21/01/2023.
@@ -7,10 +7,15 @@
 
 import SwiftUI
 
-struct SignInVIew: View {
+struct SignUpView: View {
     
+    @State var email: String = ""
     @State var login: String = ""
     @State var password: String = ""
+    @State var confirmPassword: String = ""
+    
+    private let fieldHeight: CGFloat = 41
+    private let fontSize: CGFloat = 19
     
     var body: some View {
         ZStack {
@@ -24,53 +29,61 @@ struct SignInVIew: View {
             HKBackgroundRoundRectView()
             VStack {
                 Spacer().frame(height: 47)
-                Text("Sign In")
+                Text("Register")
                     .foregroundColor(titleColor)
                     .fontWeight(.medium)
                     .font(.system(size: 30))
-                Spacer().frame(height: 98)
+                Spacer().frame(height: 42)
                 Group {
+                    HKTextFieldView(
+                        text: $email,
+                        placeholder: "e-mail",
+                        fontSize: fontSize,
+                        fieldHeight: fieldHeight
+                    )
+                    Spacer().frame(height: 17)
                     HKTextFieldView(
                         text: $login,
                         placeholder: "login",
-                        fieldHeight: 58
+                        fontSize: fontSize,
+                        fieldHeight: fieldHeight
                     )
-                    Spacer().frame(height: 32)
+                    Spacer().frame(height: 17)
                     HKTextFieldView(
                         text: $password,
                         placeholder: "password",
-                        fieldHeight: 58,
+                        fontSize: fontSize,
+                        fieldHeight: fieldHeight,
+                        isSecureField: true
+                    )
+                    Spacer().frame(height: 17)
+                    HKTextFieldView(
+                        text: $confirmPassword,
+                        placeholder: "confirm password",
+                        fontSize: fontSize,
+                        fieldHeight: fieldHeight,
                         isSecureField: true
                     )
 
                 }
-                Spacer().frame(height: 6)
+                Spacer().frame(height: 35)
                 Button {
-                    print("Forgot pass")
-                } label: {
-                    Text("forgot password")
-                        .fontWeight(.medium)
-                        .font(.system(size: 12))
-                        .foregroundColor(mainTextColor)
-                }
-                Spacer().frame(height: 29)
-                Button {
-                    print("Submit sign in")
+                    print("Submit sign un")
                 } label: {
                     Text("okay")
                         .fontWeight(.medium)
                         .font(.system(size: 16))
                         .foregroundColor(mainTextColor)
                 }
-                Spacer().frame(height: 111)
+                Spacer().frame(height: 116)
             }
             .frame(width: 316, height: 510)
         }
     }
 }
 
-struct SignInVIew_Previews: PreviewProvider {
+struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignInVIew()
+        SignUpView()
     }
 }

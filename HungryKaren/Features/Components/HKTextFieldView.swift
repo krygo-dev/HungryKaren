@@ -16,16 +16,29 @@ struct HKTextFieldView: View {
     var textColor: Color = thirdTitleColor
     var fieldWidth: CGFloat = 201
     var fieldHeight: CGFloat = 41
+    var isSecureField: Bool? = false
     
     var body: some View {
-        TextField("", text: $text, prompt: Text(placeholder).foregroundColor(placeholderColor))
-            .fontWeight(.medium)
-            .font(.system(size: fontSize))
-            .lineLimit(1)
-            .multilineTextAlignment(.center)
-            .foregroundColor(textColor)
-            .frame(width: fieldWidth, height: fieldHeight)
-            .background(secondaryColor)
-            .cornerRadius(25)
+        if isSecureField ?? false {
+            SecureField("", text: $text, prompt: Text(placeholder).foregroundColor(placeholderColor))
+                .fontWeight(.medium)
+                .font(.system(size: fontSize))
+                .lineLimit(1)
+                .multilineTextAlignment(.center)
+                .foregroundColor(textColor)
+                .frame(width: fieldWidth, height: fieldHeight)
+                .background(secondaryColor)
+                .cornerRadius(25)
+        } else {
+            TextField("", text: $text, prompt: Text(placeholder).foregroundColor(placeholderColor))
+                .fontWeight(.medium)
+                .font(.system(size: fontSize))
+                .lineLimit(1)
+                .multilineTextAlignment(.center)
+                .foregroundColor(textColor)
+                .frame(width: fieldWidth, height: fieldHeight)
+                .background(secondaryColor)
+                .cornerRadius(25)
+        }
     }
 }

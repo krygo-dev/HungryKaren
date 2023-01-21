@@ -16,6 +16,7 @@
 		0CCAF4FE297C1FD800F74951 /* SignInVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCAF4FD297C1FD800F74951 /* SignInVIew.swift */; };
 		0CCAF500297C24BF00F74951 /* HKBackgroundRoundRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCAF4FF297C24BF00F74951 /* HKBackgroundRoundRectView.swift */; };
 		0CCAF502297C2AED00F74951 /* HKTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCAF501297C2AED00F74951 /* HKTextFieldView.swift */; };
+		0CCAF504297C3DF800F74951 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCAF503297C3DF800F74951 /* SignUpView.swift */; };
 		0CE2B51F297B276400194236 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B51E297B276400194236 /* Colors.swift */; };
 		0CE2B521297B38FD00194236 /* HKBackgroundCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B520297B38FD00194236 /* HKBackgroundCanvasView.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,7 @@
 		0CCAF4FD297C1FD800F74951 /* SignInVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVIew.swift; sourceTree = "<group>"; };
 		0CCAF4FF297C24BF00F74951 /* HKBackgroundRoundRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKBackgroundRoundRectView.swift; sourceTree = "<group>"; };
 		0CCAF501297C2AED00F74951 /* HKTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKTextFieldView.swift; sourceTree = "<group>"; };
+		0CCAF503297C3DF800F74951 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		0CE2B51E297B276400194236 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0CE2B520297B38FD00194236 /* HKBackgroundCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKBackgroundCanvasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +96,7 @@
 		0CCAF4F6297C0CE800F74951 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				0CCAF503297C3DF800F74951 /* SignUpView.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				0CCAF4FE297C1FD800F74951 /* SignInVIew.swift in Sources */,
 				0C896288297B1D9D0033D01D /* SplashView.swift in Sources */,
 				0CE2B51F297B276400194236 /* Colors.swift in Sources */,
+				0CCAF504297C3DF800F74951 /* SignUpView.swift in Sources */,
 				0CCAF502297C2AED00F74951 /* HKTextFieldView.swift in Sources */,
 				0CCAF4FC297C1D1400F74951 /* HKButtonFrameView.swift in Sources */,
 				0C896286297B1D9D0033D01D /* HungryKarenApp.swift in Sources */,
