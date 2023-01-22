@@ -33,7 +33,6 @@ struct SplashView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 if authViewModel.currentUser != nil {
                     path.append(.homeView)
-                
                 } else {
                     path.append(.startView)
                 }

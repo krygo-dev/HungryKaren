@@ -22,24 +22,19 @@ struct HungryKarenApp: App {
         WindowGroup {
             NavigationStack(path: $path) {
                 SplashView(path: $path)
-                    .environmentObject(authViewModel)
                     .navigationDestination(for: Routes.self) { route in
                         switch route {
-                            case .splashView:
-                                SplashView(path: $path)
-                            case .startView:
-                                StartView()
-                            case .signInView:
-                                SignInVIew()
-                            case .signUpView:
-                                SignUpView()
-                            case .forgotPasswordView:
-                                ForgotPasswordView()
-                            case .homeView:
-                                HomeView()
+                            case .splashView: SplashView(path: $path)
+                            case .startView: StartView()
+                            case .signInView: SignInVIew(path: $path)
+                            case .signUpView: SignUpView(path: $path)
+                            case .forgotPasswordView: ForgotPasswordView()
+                            case .homeView: HomeView()
                         }
                     }
             }
+            .environmentObject(authViewModel)
+            .navigationBarBackButtonHidden(true)
         }
     }
 }

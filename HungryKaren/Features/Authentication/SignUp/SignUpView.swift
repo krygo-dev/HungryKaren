@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SignUpView: View {
     
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
+    @Binding var path: [Routes]
     @State var email: String = ""
     @State var name: String = ""
     @State var password: String = ""
@@ -68,7 +70,16 @@ struct SignUpView: View {
                 }
                 Spacer().frame(height: 35)
                 Button {
-                    print("Submit sign un")
+                    authViewModel.signUpWithEmailAndPassword(
+                        email: email,
+                        name: name,
+                        password: password,
+                        confirmPassword: confirmPassword)
+                    
+                    if authViewModel.currentUser != nil {
+                        path.append(.homeView)
+                    }
+                    
                 } label: {
                     Text("okay")
                         .fontWeight(.medium)
@@ -82,8 +93,8 @@ struct SignUpView: View {
     }
 }
 
-struct SignUpView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignUpView()
-    }
-}
+//struct SignUpView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SignUpView()
+//    }
+//}

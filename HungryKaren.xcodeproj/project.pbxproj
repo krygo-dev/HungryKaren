@@ -87,11 +87,11 @@
 		0C896284297B1D9D0033D01D /* HungryKaren */ = {
 			isa = PBXGroup;
 			children = (
+				0C896285297B1D9D0033D01D /* HungryKarenApp.swift */,
 				0CCAF515297C660400F74951 /* Repositories */,
 				0CE2B51B297B240200194236 /* Features */,
 				0CE2B51A297B239E00194236 /* Model */,
 				0CE2B519297B238100194236 /* Utils */,
-				0C896285297B1D9D0033D01D /* HungryKarenApp.swift */,
 				0C896289297B1D9F0033D01D /* Assets.xcassets */,
 				0CCAF513297C5F0200F74951 /* GoogleService-Info.plist */,
 				0C89628B297B1D9F0033D01D /* Preview Content */,
@@ -183,8 +183,8 @@
 		0CE2B51B297B240200194236 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				0CCAF51A297C6E9F00F74951 /* Recipes */,
 				0CE2B51D297B253000194236 /* Authentication */,
+				0CCAF51A297C6E9F00F74951 /* Recipes */,
 				0CE2B51C297B243600194236 /* Components */,
 			);
 			path = Features;
@@ -204,11 +204,11 @@
 		0CE2B51D297B253000194236 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				0CCAF518297C66FF00F74951 /* AuthenticationViewModel.swift */,
 				0CCAF4F7297C0D1400F74951 /* Startup */,
 				0CCAF4F5297C0CDD00F74951 /* SignIn */,
 				0CCAF4F6297C0CE800F74951 /* SignUp */,
 				0CCAF4F8297C0D2D00F74951 /* ForgotPassword */,
-				0CCAF518297C66FF00F74951 /* AuthenticationViewModel.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -448,7 +448,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "krygo-dev.HungryKaren";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.krygo-dev.HungryKaren";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -476,7 +476,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "krygo-dev.HungryKaren";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.krygo-dev.HungryKaren";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

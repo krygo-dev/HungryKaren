@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SignInVIew: View {
     
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
+    @Binding var path: [Routes]
     @State var email: String = ""
     @State var password: String = ""
     
@@ -45,9 +47,7 @@ struct SignInVIew: View {
 
                 }
                 Spacer().frame(height: 6)
-                Button {
-                    print("Forgot pass")
-                } label: {
+                NavigationLink(value: Routes.forgotPasswordView) {
                     Text("forgot password")
                         .fontWeight(.medium)
                         .font(.system(size: 12))
@@ -55,7 +55,7 @@ struct SignInVIew: View {
                 }
                 Spacer().frame(height: 29)
                 Button {
-                    print("Submit sign in")
+                    authViewModel.signInWithEmailAndPassword(email: email, password: password)
                 } label: {
                     Text("okay")
                         .fontWeight(.medium)
@@ -69,8 +69,8 @@ struct SignInVIew: View {
     }
 }
 
-struct SignInVIew_Previews: PreviewProvider {
-    static var previews: some View {
-        SignInVIew()
-    }
-}
+//struct SignInVIew_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SignInVIew()
+//    }
+//}
