@@ -12,6 +12,7 @@ import Firebase
 struct HungryKarenApp: App {
     
     @StateObject var authViewModel = AuthenticationViewModel()
+    @State public var path: [Routes] = []
     
     init() {
         FirebaseApp.configure()
@@ -19,9 +20,26 @@ struct HungryKarenApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SplashView()
-                .environmentObject(authViewModel)
-//            StartView()
+            NavigationStack(path: $path) {
+                SplashView(path: $path)
+                    .environmentObject(authViewModel)
+                    .navigationDestination(for: Routes.self) { route in
+                        switch route {
+                            case .splashView:
+                                SplashView(path: $path)
+                            case .startView:
+                                StartView()
+                            case .signInView:
+                                SignInVIew()
+                            case .signUpView:
+                                SignUpView()
+                            case .forgotPasswordView:
+                                ForgotPasswordView()
+                            case .homeView:
+                                HomeView()
+                        }
+                    }
+            }
         }
     }
 }

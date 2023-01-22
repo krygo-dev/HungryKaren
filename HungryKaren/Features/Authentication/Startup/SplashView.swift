@@ -9,41 +9,34 @@ import SwiftUI
 
 struct SplashView: View {
     
-    @State private var show = false
+    @Binding var path: [Routes]
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                HKBackgroundCanvasView(
-                    color: secondaryColor,
-                    strokeWidth: 5,
-                    smallCircleRadius: 119,
-                    bigCircleRadius: 228,
-                    arcRadius: 135)
-                
-                VStack {
-                    Image("hungry_karen_logo")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 273, height: 248)
-                    Spacer().frame(height: 34)
-                }
-                
-                if authViewModel.currentUser != nil {
-                    NavigationLink(destination: HomeView(), isActive: self.$show) {
-                        EmptyView()
-                    }
-                } else {
-                    NavigationLink(destination: StartView(), isActive: self.$show) {
-                        EmptyView()
-                    }
-                }
+        ZStack {
+            HKBackgroundCanvasView(
+                color: secondaryColor,
+                strokeWidth: 5,
+                smallCircleRadius: 119,
+                bigCircleRadius: 228,
+                arcRadius: 135)
+            
+            VStack {
+                Image("hungry_karen_logo")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 273, height: 248)
+                Spacer().frame(height: 34)
             }
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                self.show.toggle()
+                if authViewModel.currentUser != nil {
+                    path.append(.homeView)
+                
+                } else {
+                    path.append(.startView)
+                }
             }
         }
     }
