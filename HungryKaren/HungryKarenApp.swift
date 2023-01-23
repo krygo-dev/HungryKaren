@@ -28,8 +28,8 @@ struct HungryKarenApp: App {
                             case .startView: StartView()
                             case .signInView: SignInVIew(path: $path)
                             case .signUpView: SignUpView(path: $path)
-                            case .forgotPasswordView: ForgotPasswordView()
-                            case .homeView: HomeView()
+                            case .forgotPasswordView: ForgotPasswordView(path:$path)
+                            case .homeView: HomeView(path: $path)
                         }
                     }
             }

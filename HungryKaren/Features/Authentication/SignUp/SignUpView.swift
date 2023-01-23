@@ -74,11 +74,11 @@ struct SignUpView: View {
                         email: email,
                         name: name,
                         password: password,
-                        confirmPassword: confirmPassword)
-                    
-                    if authViewModel.currentUser != nil {
-                        path.append(.homeView)
-                    }
+                        confirmPassword: confirmPassword) { success in
+                            if authViewModel.currentUser != nil && success {
+                                path.append(.homeView)
+                            }
+                        }
                     
                 } label: {
                     Text("okay")
@@ -90,6 +90,7 @@ struct SignUpView: View {
             }
             .frame(width: 316, height: 510)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

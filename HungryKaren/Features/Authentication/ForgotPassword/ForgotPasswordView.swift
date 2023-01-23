@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ForgotPasswordView: View {
     
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
+    @Binding var path: [Routes]
     @State var email: String = ""
     
     var body: some View {
@@ -36,7 +38,9 @@ struct ForgotPasswordView: View {
                 )
                 Spacer().frame(height: 29)
                 Button {
-                    print("Submit sign un")
+                    authViewModel.forgotPassword(email: email) { success in
+                        if success { path.append(.signInView) }
+                    }
                 } label: {
                     Text("send")
                         .fontWeight(.medium)
@@ -47,11 +51,12 @@ struct ForgotPasswordView: View {
             }
             .frame(width: 316, height: 510)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
-struct ForgotPasswordView_Previews: PreviewProvider {
-    static var previews: some View {
-        ForgotPasswordView()
-    }
-}
+//struct ForgotPasswordView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ForgotPasswordView()
+//    }
+//}

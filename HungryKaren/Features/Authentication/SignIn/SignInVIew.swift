@@ -44,7 +44,6 @@ struct SignInVIew: View {
                         fieldHeight: 58,
                         isSecureField: true
                     )
-
                 }
                 Spacer().frame(height: 6)
                 NavigationLink(value: Routes.forgotPasswordView) {
@@ -55,7 +54,11 @@ struct SignInVIew: View {
                 }
                 Spacer().frame(height: 29)
                 Button {
-                    authViewModel.signInWithEmailAndPassword(email: email, password: password)
+                    authViewModel.signInWithEmailAndPassword(email: email, password: password) { success in
+                        if authViewModel.currentUser != nil && success {
+                            path.append(.homeView)
+                        }
+                    }
                 } label: {
                     Text("okay")
                         .fontWeight(.medium)
@@ -66,6 +69,7 @@ struct SignInVIew: View {
             }
             .frame(width: 316, height: 510)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
