@@ -10,7 +10,8 @@ import SwiftUI
 struct SignUpView: View {
     
     @EnvironmentObject var authViewModel: AuthenticationViewModel
-    @Binding var path: [Routes]
+    @EnvironmentObject var navigationRouter: NavigationRouter
+
     @State var email: String = ""
     @State var name: String = ""
     @State var password: String = ""
@@ -76,7 +77,7 @@ struct SignUpView: View {
                         password: password,
                         confirmPassword: confirmPassword) { success in
                             if authViewModel.currentUser != nil && success {
-                                path.append(.homeView)
+                                navigationRouter.path.append(.homeView)
                             }
                         }
                     

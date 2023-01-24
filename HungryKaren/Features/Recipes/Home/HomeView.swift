@@ -10,14 +10,14 @@ import SwiftUI
 struct HomeView: View {
     
     @EnvironmentObject var authViewModel: AuthenticationViewModel
-    @Binding var path: [Routes]
+    @EnvironmentObject var navigationRouter: NavigationRouter
     
     var body: some View {
         VStack {
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
             Button {
                 authViewModel.signOut() { success in
-                    path.append(.startView)
+                    navigationRouter.path.append(.startView)
                 }
             } label: {
                 Text("Sign out")

@@ -10,7 +10,8 @@ import SwiftUI
 struct SignInVIew: View {
     
     @EnvironmentObject var authViewModel: AuthenticationViewModel
-    @Binding var path: [Routes]
+    @EnvironmentObject var navigationRouter: NavigationRouter
+
     @State var email: String = ""
     @State var password: String = ""
     
@@ -46,7 +47,7 @@ struct SignInVIew: View {
                     )
                 }
                 Spacer().frame(height: 6)
-                NavigationLink(value: Routes.forgotPasswordView) {
+                NavigationLink(value: Route.forgotPasswordView) {
                     Text("forgot password")
                         .fontWeight(.medium)
                         .font(.system(size: 12))
@@ -56,7 +57,7 @@ struct SignInVIew: View {
                 Button {
                     authViewModel.signInWithEmailAndPassword(email: email, password: password) { success in
                         if authViewModel.currentUser != nil && success {
-                            path.append(.homeView)
+                            navigationRouter.path.append(.homeView)
                         }
                     }
                 } label: {

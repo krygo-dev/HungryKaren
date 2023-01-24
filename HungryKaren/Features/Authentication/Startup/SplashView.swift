@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SplashView: View {
     
-    @Binding var path: [Routes]
     @EnvironmentObject var authViewModel: AuthenticationViewModel
+    @EnvironmentObject var navigationRouter: NavigationRouter
     
     var body: some View {
         ZStack {
@@ -32,9 +32,9 @@ struct SplashView: View {
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 if authViewModel.currentUser != nil {
-                    path.append(.homeView)
+                    navigationRouter.path.append(.homeView)
                 } else {
-                    path.append(.startView)
+                    navigationRouter.path.append(.startView)
                 }
             }
         }

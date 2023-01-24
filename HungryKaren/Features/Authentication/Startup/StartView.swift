@@ -23,11 +23,11 @@ struct StartView: View {
                     .fill(primaryColor)
                 VStack {
                     Spacer().frame(height: 66)
-                    NavigationLink(value: Routes.signInView) {
+                    NavigationLink(value: Route.signInView) {
                         HKButtonFrameView(text: "Sign In")
                     }
                     Spacer().frame(height: 30)
-                    NavigationLink(value: Routes.signUpView) {
+                    NavigationLink(value: Route.signUpView) {
                         HKButtonFrameView(text: "Sign Up")
                     }
                     Spacer()

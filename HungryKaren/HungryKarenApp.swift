@@ -12,7 +12,7 @@ import Firebase
 struct HungryKarenApp: App {
     
     @StateObject var authViewModel = AuthenticationViewModel()
-    @State public var path: [Routes] = []
+    @StateObject var navigationRouter = NavigationRouter()
     
     init() {
         FirebaseApp.configure()
@@ -20,20 +20,21 @@ struct HungryKarenApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack(path: $path) {
-                SplashView(path: $path)
-                    .navigationDestination(for: Routes.self) { route in
+            NavigationStack(path: $navigationRouter.path) {
+                SplashView()
+                    .navigationDestination(for: Route.self) { route in
                         switch route {
-                            case .splashView: SplashView(path: $path)
+                            case .splashView: SplashView()
                             case .startView: StartView()
-                            case .signInView: SignInVIew(path: $path)
-                            case .signUpView: SignUpView(path: $path)
-                            case .forgotPasswordView: ForgotPasswordView(path:$path)
-                            case .homeView: HomeView(path: $path)
+                            case .signInView: SignInVIew()
+                            case .signUpView: SignUpView()
+                            case .forgotPasswordView: ForgotPasswordView()
+                            case .homeView: HomeView()
                         }
                     }
             }
             .environmentObject(authViewModel)
+            .environmentObject(navigationRouter)
             .navigationBarBackButtonHidden(true)
         }
     }

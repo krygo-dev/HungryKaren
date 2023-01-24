@@ -1,13 +1,11 @@
 //
-//  Routes.swift
+//  Route.swift
 //  HungryKaren
 //
 //  Created by Adam Chylaszek on 22/01/2023.
 //
 
-import SwiftUI
-
-enum Routes: Hashable {
+enum Route: Hashable {
     case splashView
     case startView
     case signInView

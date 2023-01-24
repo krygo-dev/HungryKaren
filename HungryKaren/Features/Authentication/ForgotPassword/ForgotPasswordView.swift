@@ -10,7 +10,8 @@ import SwiftUI
 struct ForgotPasswordView: View {
     
     @EnvironmentObject var authViewModel: AuthenticationViewModel
-    @Binding var path: [Routes]
+    @EnvironmentObject var navigationRouter: NavigationRouter
+
     @State var email: String = ""
     
     var body: some View {
@@ -39,7 +40,7 @@ struct ForgotPasswordView: View {
                 Spacer().frame(height: 29)
                 Button {
                     authViewModel.forgotPassword(email: email) { success in
-                        if success { path.append(.signInView) }
+                        if success { navigationRouter.path.append(.signInView) }
                     }
                 } label: {
                     Text("send")
