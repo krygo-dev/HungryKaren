@@ -57,7 +57,7 @@ struct SignInVIew: View {
                 Button {
                     authViewModel.signInWithEmailAndPassword(email: email, password: password) { success in
                         if authViewModel.currentUser != nil && success {
-                            navigationRouter.path.append(.homeView)
+                            navigationRouter.navigate(route: .homeView)
                         }
                     }
                 } label: {
@@ -71,7 +71,7 @@ struct SignInVIew: View {
             .frame(width: 316, height: 510)
         }
         .navigationBarBackButtonHidden(true)
-        .gesture(NavigateBackDragGesture())
+        .gesture(NavigateBackDragGesture(completion: { navigationRouter.navigateBack() }))
     }
 }
 

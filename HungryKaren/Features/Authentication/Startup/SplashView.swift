@@ -29,12 +29,13 @@ struct SplashView: View {
                 Spacer().frame(height: 34)
             }
         }
+        .navigationBarBackButtonHidden(true)
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 if authViewModel.currentUser != nil {
-                    navigationRouter.path.append(.homeView)
+                    navigationRouter.navigate(route: .homeView)
                 } else {
-                    navigationRouter.path.append(.startView)
+                    navigationRouter.navigate(route: .startView)
                 }
             }
         }

@@ -40,7 +40,7 @@ struct ForgotPasswordView: View {
                 Spacer().frame(height: 29)
                 Button {
                     authViewModel.forgotPassword(email: email) { success in
-                        if success { navigationRouter.path.append(.signInView) }
+                        if success { navigationRouter.navigateBack() }
                     }
                 } label: {
                     Text("send")
@@ -53,7 +53,7 @@ struct ForgotPasswordView: View {
             .frame(width: 316, height: 510)
         }
         .navigationBarBackButtonHidden(true)
-        .gesture(NavigateBackDragGesture())
+        .gesture(NavigateBackDragGesture(completion: { navigationRouter.navigateBack() }))
     }
 }
 

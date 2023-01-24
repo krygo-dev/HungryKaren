@@ -17,7 +17,7 @@ struct HomeView: View {
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
             Button {
                 authViewModel.signOut() { success in
-                    navigationRouter.path.append(.startView)
+                    navigationRouter.navigateBackToStart()
                 }
             } label: {
                 Text("Sign out")

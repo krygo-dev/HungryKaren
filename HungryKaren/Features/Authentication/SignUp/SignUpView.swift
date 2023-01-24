@@ -77,7 +77,7 @@ struct SignUpView: View {
                         password: password,
                         confirmPassword: confirmPassword) { success in
                             if authViewModel.currentUser != nil && success {
-                                navigationRouter.path.append(.homeView)
+                                navigationRouter.navigate(route: .homeView)
                             }
                         }
                     
@@ -92,7 +92,7 @@ struct SignUpView: View {
             .frame(width: 316, height: 510)
         }
         .navigationBarBackButtonHidden(true)
-        .gesture(NavigateBackDragGesture())
+        .gesture(NavigateBackDragGesture(completion: { navigationRouter.navigateBack() }))
     }
 }
 

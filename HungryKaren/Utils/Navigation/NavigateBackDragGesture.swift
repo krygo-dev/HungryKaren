@@ -10,12 +10,12 @@ import SwiftUI
 struct NavigateBackDragGesture: Gesture {
     
     @GestureState private var dragOffset = CGSize.zero
-    @EnvironmentObject var navigationRouter: NavigationRouter
+    let completion: () -> Void
     
     var body: some Gesture {
         DragGesture().updating($dragOffset, body: { (value, state, transaction) in
             if value.startLocation.x < 20 && value.translation.width > 100 {
-                navigationRouter.path.removeLast()
+                completion()
             }
         })
     }

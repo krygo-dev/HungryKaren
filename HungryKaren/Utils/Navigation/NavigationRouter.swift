@@ -9,4 +9,16 @@ import SwiftUI
 
 class NavigationRouter: ObservableObject {
     @Published var path = [Route]()
+    
+    func navigate(route: Route) {
+        path.append(route)
+    }
+    
+    func navigateBack() {
+        path.removeLast()
+    }
+    
+    func navigateBackToStart() {
+        path = [.splashView]
+    }
 }
