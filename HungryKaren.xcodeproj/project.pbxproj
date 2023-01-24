@@ -13,6 +13,7 @@
 		0C89628D297B1D9F0033D01D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C89628C297B1D9F0033D01D /* Preview Assets.xcassets */; };
 		0CBDDBD8297D508100961BB6 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBDDBD7297D508100961BB6 /* Route.swift */; };
 		0CC39B1B297FD9920099F733 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC39B1A297FD9920099F733 /* NavigationRouter.swift */; };
+		0CC39B1E297FEAFC0099F733 /* NavigateBackDragGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC39B1D297FEAFC0099F733 /* NavigateBackDragGesture.swift */; };
 		0CCAF4FA297C0E3A00F74951 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCAF4F9297C0E3A00F74951 /* StartView.swift */; };
 		0CCAF4FC297C1D1400F74951 /* HKButtonFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCAF4FB297C1D1400F74951 /* HKButtonFrameView.swift */; };
 		0CCAF4FE297C1FD800F74951 /* SignInVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCAF4FD297C1FD800F74951 /* SignInVIew.swift */; };
@@ -40,6 +41,7 @@
 		0C89628C297B1D9F0033D01D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0CBDDBD7297D508100961BB6 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		0CC39B1A297FD9920099F733 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
+		0CC39B1D297FEAFC0099F733 /* NavigateBackDragGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateBackDragGesture.swift; sourceTree = "<group>"; };
 		0CCAF4F9297C0E3A00F74951 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		0CCAF4FB297C1D1400F74951 /* HKButtonFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKButtonFrameView.swift; sourceTree = "<group>"; };
 		0CCAF4FD297C1FD800F74951 /* SignInVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVIew.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			children = (
 				0CC39B1A297FD9920099F733 /* NavigationRouter.swift */,
 				0CBDDBD7297D508100961BB6 /* Route.swift */,
+				0CC39B1D297FEAFC0099F733 /* NavigateBackDragGesture.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				0CCAF500297C24BF00F74951 /* HKBackgroundRoundRectView.swift in Sources */,
 				0CCAF4FA297C0E3A00F74951 /* StartView.swift in Sources */,
 				0CCAF4FE297C1FD800F74951 /* SignInVIew.swift in Sources */,
+				0CC39B1E297FEAFC0099F733 /* NavigateBackDragGesture.swift in Sources */,
 				0C896288297B1D9D0033D01D /* SplashView.swift in Sources */,
 				0CE2B51F297B276400194236 /* Colors.swift in Sources */,
 				0CCAF504297C3DF800F74951 /* SignUpView.swift in Sources */,

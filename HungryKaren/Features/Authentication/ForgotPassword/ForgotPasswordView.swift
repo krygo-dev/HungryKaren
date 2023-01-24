@@ -53,6 +53,7 @@ struct ForgotPasswordView: View {
             .frame(width: 316, height: 510)
         }
         .navigationBarBackButtonHidden(true)
+        .gesture(NavigateBackDragGesture())
     }
 }
 

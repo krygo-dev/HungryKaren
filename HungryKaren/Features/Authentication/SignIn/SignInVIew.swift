@@ -11,7 +11,7 @@ struct SignInVIew: View {
     
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @EnvironmentObject var navigationRouter: NavigationRouter
-
+    
     @State var email: String = ""
     @State var password: String = ""
     
@@ -71,6 +71,7 @@ struct SignInVIew: View {
             .frame(width: 316, height: 510)
         }
         .navigationBarBackButtonHidden(true)
+        .gesture(NavigateBackDragGesture())
     }
 }
 
