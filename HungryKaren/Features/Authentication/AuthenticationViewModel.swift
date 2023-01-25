@@ -14,8 +14,6 @@ class AuthenticationViewModel: ObservableObject {
     
     init() {
         self.currentUser = Auth.auth().currentUser
-        
-        print("DEBUG: \(String(describing: self.currentUser))")
     }
     
     func signInWithEmailAndPassword(
