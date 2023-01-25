@@ -19,23 +19,25 @@ class AuthenticationViewModel: ObservableObject {
     func signInWithEmailAndPassword(
         email: String,
         password: String,
-        completion: @escaping (Bool) -> Void
+        completion: @escaping (String?) -> Void
     ) {
         if email.isEmpty || password.isEmpty {
             print("DEBUG: Fill all fields")
+            completion("Fill all fields")
             return
         }
         
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("DEBUG: Login failed: \(error.localizedDescription)")
+                completion(error.localizedDescription)
                 return
             }
             
             guard let user = result?.user else { return }
             self.currentUser = user
             print("DEBUG: Login success")
-            completion(true)
+            completion(nil)
         }
     }
     

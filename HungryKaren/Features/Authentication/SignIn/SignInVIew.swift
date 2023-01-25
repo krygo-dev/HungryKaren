@@ -12,6 +12,7 @@ struct SignInVIew: View {
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @EnvironmentObject var navigationRouter: NavigationRouter
     
+    @State var showAlert = false
     @State var email: String = ""
     @State var password: String = ""
     
@@ -55,8 +56,15 @@ struct SignInVIew: View {
                 }
                 Spacer().frame(height: 29)
                 Button {
-                    authViewModel.signInWithEmailAndPassword(email: email, password: password) { success in
-                        if authViewModel.currentUser != nil && success {
+                    authViewModel.signInWithEmailAndPassword(email: email, password: password) { result in
+                        
+                        if result != nil {
+                            withAnimation {
+                                showAlert.toggle()
+                            }
+                        }
+                        
+                        if authViewModel.currentUser != nil && result == nil {
                             navigationRouter.navigate(route: .homeView)
                         }
                     }
@@ -69,6 +77,14 @@ struct SignInVIew: View {
                 Spacer().frame(height: 111)
             }
             .frame(width: 316, height: 510)
+            
+            if showAlert {
+                HKAlertView(showAlert: $showAlert, alertType: .success(message: "All went good")) {
+                    withAnimation {
+                        showAlert.toggle()
+                    }
+                }
+            }
         }
         .navigationBarBackButtonHidden(true)
         .gesture(NavigateBackDragGesture(completion: { navigationRouter.navigateBack() }))
