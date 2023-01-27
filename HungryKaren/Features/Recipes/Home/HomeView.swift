@@ -16,14 +16,26 @@ struct HomeView: View {
         ZStack {
             HKMainBackgroundCanvasView(color: tertiaryColor)
             VStack {
-                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-                Button {
-                    authViewModel.signOut() { success in
-                        navigationRouter.navigateBackToStart()
+                HStack() {
+                    Spacer()
+                    Text("Home")
+                        .foregroundColor(thirdTitleColor)
+                        .fontWeight(.medium)
+                        .font(.system(size: 24))
+                        .padding(.trailing, 104)
+                    Button {
+                        print("Show menu")
+                    } label: {
+                        Image(systemName: "line.horizontal.3")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 27, height: 27)
+                            .fontWeight(.bold)
                     }
-                } label: {
-                    Text("Sign out")
                 }
+                .foregroundColor(thirdTitleColor)
+                .padding(.horizontal, 20)
+                Spacer()
             }
         }
         .navigationBarBackButtonHidden(true)
