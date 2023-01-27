@@ -10,6 +10,10 @@
 		0C2578BA2981658A00F5F0CA /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2578B92981658A00F5F0CA /* AlertType.swift */; };
 		0C2578BC29816DD700F5F0CA /* HKAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2578BB29816DD600F5F0CA /* HKAlertView.swift */; };
 		0C3F1E682984055D00287314 /* HKMainBackgroundCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F1E672984055D00287314 /* HKMainBackgroundCanvasView.swift */; };
+		0C3F1E6C2984163D00287314 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F1E6B2984163D00287314 /* CartView.swift */; };
+		0C3F1E6E298416AA00287314 /* FridgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F1E6D298416AA00287314 /* FridgeView.swift */; };
+		0C3F1E702984191C00287314 /* HKBottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F1E6F2984191C00287314 /* HKBottomBarView.swift */; };
+		0C3F1E7229842BF500287314 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F1E7129842BF500287314 /* MainView.swift */; };
 		0C896286297B1D9D0033D01D /* HungryKarenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C896285297B1D9D0033D01D /* HungryKarenApp.swift */; };
 		0C896288297B1D9D0033D01D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C896287297B1D9D0033D01D /* SplashView.swift */; };
 		0C89628A297B1D9F0033D01D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C896289297B1D9F0033D01D /* Assets.xcassets */; };
@@ -40,6 +44,10 @@
 		0C2578B92981658A00F5F0CA /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		0C2578BB29816DD600F5F0CA /* HKAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKAlertView.swift; sourceTree = "<group>"; };
 		0C3F1E672984055D00287314 /* HKMainBackgroundCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKMainBackgroundCanvasView.swift; sourceTree = "<group>"; };
+		0C3F1E6B2984163D00287314 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		0C3F1E6D298416AA00287314 /* FridgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeView.swift; sourceTree = "<group>"; };
+		0C3F1E6F2984191C00287314 /* HKBottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKBottomBarView.swift; sourceTree = "<group>"; };
+		0C3F1E7129842BF500287314 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0C896282297B1D9D0033D01D /* HungryKaren.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HungryKaren.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C896285297B1D9D0033D01D /* HungryKarenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HungryKarenApp.swift; sourceTree = "<group>"; };
 		0C896287297B1D9D0033D01D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -78,6 +86,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C3F1E692984161100287314 /* Fridge */ = {
+			isa = PBXGroup;
+			children = (
+				0C3F1E6D298416AA00287314 /* FridgeView.swift */,
+			);
+			path = Fridge;
+			sourceTree = "<group>";
+		};
+		0C3F1E6A2984162900287314 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				0C3F1E6B2984163D00287314 /* CartView.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
 		0C896279297B1D9D0033D01D = {
 			isa = PBXGroup;
 			children = (
@@ -171,7 +195,10 @@
 		0CCAF51A297C6E9F00F74951 /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
+				0C3F1E6A2984162900287314 /* Cart */,
+				0C3F1E692984161100287314 /* Fridge */,
 				0CCAF51B297C6EA900F74951 /* Home */,
+				0C3F1E7129842BF500287314 /* MainView.swift */,
 			);
 			path = Recipes;
 			sourceTree = "<group>";
@@ -214,6 +241,7 @@
 		0CE2B51C297B243600194236 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0C3F1E6F2984191C00287314 /* HKBottomBarView.swift */,
 				0CE2B520297B38FD00194236 /* HKAuthBackgroundCanvasView.swift */,
 				0CCAF4FB297C1D1400F74951 /* HKButtonFrameView.swift */,
 				0CCAF4FF297C24BF00F74951 /* HKBackgroundRoundRectView.swift */,
@@ -317,6 +345,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CCAF519297C66FF00F74951 /* AuthenticationViewModel.swift in Sources */,
+				0C3F1E7229842BF500287314 /* MainView.swift in Sources */,
+				0C3F1E702984191C00287314 /* HKBottomBarView.swift in Sources */,
 				0CCAF51D297C6EBA00F74951 /* HomeView.swift in Sources */,
 				0CC39B1B297FD9920099F733 /* NavigationRouter.swift in Sources */,
 				0CE2B521297B38FD00194236 /* HKAuthBackgroundCanvasView.swift in Sources */,
@@ -331,6 +361,8 @@
 				0C896288297B1D9D0033D01D /* SplashView.swift in Sources */,
 				0CE2B51F297B276400194236 /* Colors.swift in Sources */,
 				0CCAF504297C3DF800F74951 /* SignUpView.swift in Sources */,
+				0C3F1E6E298416AA00287314 /* FridgeView.swift in Sources */,
+				0C3F1E6C2984163D00287314 /* CartView.swift in Sources */,
 				0CCAF502297C2AED00F74951 /* HKTextFieldView.swift in Sources */,
 				0C2578BA2981658A00F5F0CA /* AlertType.swift in Sources */,
 				0CCAF517297C662B00F74951 /* AuthenticationRepository.swift in Sources */,

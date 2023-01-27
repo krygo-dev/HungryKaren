@@ -30,7 +30,7 @@ struct HomeView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 27, height: 27)
-                            .fontWeight(.bold)
+                            .fontWeight(.medium)
                     }
                 }
                 .foregroundColor(thirdTitleColor)
