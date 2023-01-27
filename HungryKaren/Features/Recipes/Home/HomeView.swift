@@ -13,22 +13,25 @@ struct HomeView: View {
     @EnvironmentObject var navigationRouter: NavigationRouter
     
     var body: some View {
-        VStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-            Button {
-                authViewModel.signOut() { success in
-                    navigationRouter.navigateBackToStart()
+        ZStack {
+            HKMainBackgroundCanvasView(color: tertiaryColor)
+            VStack {
+                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                Button {
+                    authViewModel.signOut() { success in
+                        navigationRouter.navigateBackToStart()
+                    }
+                } label: {
+                    Text("Sign out")
                 }
-            } label: {
-                Text("Sign out")
             }
         }
         .navigationBarBackButtonHidden(true)
     }
 }
 
-//struct HomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView()
-//    }
-//}
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
+    }
+}

@@ -14,7 +14,7 @@ struct SplashView: View {
     
     var body: some View {
         ZStack {
-            HKBackgroundCanvasView(
+            HKAuthBackgroundCanvasView(
                 color: secondaryColor,
                 strokeWidth: 5,
                 smallCircleRadius: 119,

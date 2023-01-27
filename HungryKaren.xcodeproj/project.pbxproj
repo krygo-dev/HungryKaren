@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C2578BA2981658A00F5F0CA /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2578B92981658A00F5F0CA /* AlertType.swift */; };
 		0C2578BC29816DD700F5F0CA /* HKAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2578BB29816DD600F5F0CA /* HKAlertView.swift */; };
+		0C3F1E682984055D00287314 /* HKMainBackgroundCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F1E672984055D00287314 /* HKMainBackgroundCanvasView.swift */; };
 		0C896286297B1D9D0033D01D /* HungryKarenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C896285297B1D9D0033D01D /* HungryKarenApp.swift */; };
 		0C896288297B1D9D0033D01D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C896287297B1D9D0033D01D /* SplashView.swift */; };
 		0C89628A297B1D9F0033D01D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C896289297B1D9F0033D01D /* Assets.xcassets */; };
@@ -32,12 +33,13 @@
 		0CCAF519297C66FF00F74951 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCAF518297C66FF00F74951 /* AuthenticationViewModel.swift */; };
 		0CCAF51D297C6EBA00F74951 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCAF51C297C6EBA00F74951 /* HomeView.swift */; };
 		0CE2B51F297B276400194236 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B51E297B276400194236 /* Colors.swift */; };
-		0CE2B521297B38FD00194236 /* HKBackgroundCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B520297B38FD00194236 /* HKBackgroundCanvasView.swift */; };
+		0CE2B521297B38FD00194236 /* HKAuthBackgroundCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B520297B38FD00194236 /* HKAuthBackgroundCanvasView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C2578B92981658A00F5F0CA /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		0C2578BB29816DD600F5F0CA /* HKAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKAlertView.swift; sourceTree = "<group>"; };
+		0C3F1E672984055D00287314 /* HKMainBackgroundCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKMainBackgroundCanvasView.swift; sourceTree = "<group>"; };
 		0C896282297B1D9D0033D01D /* HungryKaren.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HungryKaren.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C896285297B1D9D0033D01D /* HungryKarenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HungryKarenApp.swift; sourceTree = "<group>"; };
 		0C896287297B1D9D0033D01D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -58,7 +60,7 @@
 		0CCAF518297C66FF00F74951 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		0CCAF51C297C6EBA00F74951 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0CE2B51E297B276400194236 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		0CE2B520297B38FD00194236 /* HKBackgroundCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKBackgroundCanvasView.swift; sourceTree = "<group>"; };
+		0CE2B520297B38FD00194236 /* HKAuthBackgroundCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKAuthBackgroundCanvasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,11 +214,12 @@
 		0CE2B51C297B243600194236 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				0CE2B520297B38FD00194236 /* HKBackgroundCanvasView.swift */,
+				0CE2B520297B38FD00194236 /* HKAuthBackgroundCanvasView.swift */,
 				0CCAF4FB297C1D1400F74951 /* HKButtonFrameView.swift */,
 				0CCAF4FF297C24BF00F74951 /* HKBackgroundRoundRectView.swift */,
 				0CCAF501297C2AED00F74951 /* HKTextFieldView.swift */,
 				0C2578BB29816DD600F5F0CA /* HKAlertView.swift */,
+				0C3F1E672984055D00287314 /* HKMainBackgroundCanvasView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -316,10 +319,11 @@
 				0CCAF519297C66FF00F74951 /* AuthenticationViewModel.swift in Sources */,
 				0CCAF51D297C6EBA00F74951 /* HomeView.swift in Sources */,
 				0CC39B1B297FD9920099F733 /* NavigationRouter.swift in Sources */,
-				0CE2B521297B38FD00194236 /* HKBackgroundCanvasView.swift in Sources */,
+				0CE2B521297B38FD00194236 /* HKAuthBackgroundCanvasView.swift in Sources */,
 				0CCAF506297C451500F74951 /* ForgotPasswordView.swift in Sources */,
 				0CBDDBD8297D508100961BB6 /* Route.swift in Sources */,
 				0CCAF500297C24BF00F74951 /* HKBackgroundRoundRectView.swift in Sources */,
+				0C3F1E682984055D00287314 /* HKMainBackgroundCanvasView.swift in Sources */,
 				0C2578BC29816DD700F5F0CA /* HKAlertView.swift in Sources */,
 				0CCAF4FA297C0E3A00F74951 /* StartView.swift in Sources */,
 				0CCAF4FE297C1FD800F74951 /* SignInVIew.swift in Sources */,

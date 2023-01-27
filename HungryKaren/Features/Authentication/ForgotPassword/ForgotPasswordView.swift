@@ -16,7 +16,7 @@ struct ForgotPasswordView: View {
     
     var body: some View {
         ZStack {
-            HKBackgroundCanvasView(
+            HKAuthBackgroundCanvasView(
                 color: tertiaryColor,
                 strokeWidth: 3,
                 smallCircleRadius: 96,
