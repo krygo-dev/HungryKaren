@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     @State var selectedScreen: Screen = .home
+    @State var searchText: String = ""
     
     var body: some View {
         ZStack {
@@ -21,12 +22,14 @@ struct MainView: View {
                 if selectedScreen != .fridge {
                     HKBottomBarView(
                         selectedScreen: $selectedScreen,
+                        searchText: $searchText,
                         selectedColor: secondaryColor,
                         deselectedColor: primaryColor,
                         searchBarColor: searchBarBgColor)
                 } else {
                     HKBottomBarView(
                         selectedScreen: $selectedScreen,
+                        searchText: $searchText,
                         selectedColor: alternateSecondaryColor,
                         deselectedColor: alternatePrimaryColor,
                         searchBarColor: alternatePrimaryColor)

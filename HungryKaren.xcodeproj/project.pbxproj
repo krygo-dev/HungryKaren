@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C0E35832986A62400AD7E43 /* HKTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0E35822986A62400AD7E43 /* HKTopBarView.swift */; };
+		0C0E35852986C15300AD7E43 /* HKSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0E35842986C15300AD7E43 /* HKSearchBarView.swift */; };
 		0C2578BA2981658A00F5F0CA /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2578B92981658A00F5F0CA /* AlertType.swift */; };
 		0C2578BC29816DD700F5F0CA /* HKAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2578BB29816DD600F5F0CA /* HKAlertView.swift */; };
 		0C3F1E682984055D00287314 /* HKMainBackgroundCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F1E672984055D00287314 /* HKMainBackgroundCanvasView.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		0C0E35822986A62400AD7E43 /* HKTopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKTopBarView.swift; sourceTree = "<group>"; };
+		0C0E35842986C15300AD7E43 /* HKSearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKSearchBarView.swift; sourceTree = "<group>"; };
 		0C2578B92981658A00F5F0CA /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		0C2578BB29816DD600F5F0CA /* HKAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKAlertView.swift; sourceTree = "<group>"; };
 		0C3F1E672984055D00287314 /* HKMainBackgroundCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKMainBackgroundCanvasView.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				0C2578BB29816DD600F5F0CA /* HKAlertView.swift */,
 				0C3F1E672984055D00287314 /* HKMainBackgroundCanvasView.swift */,
 				0C0E35822986A62400AD7E43 /* HKTopBarView.swift */,
+				0C0E35842986C15300AD7E43 /* HKSearchBarView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				0CCAF517297C662B00F74951 /* AuthenticationRepository.swift in Sources */,
 				0CCAF4FC297C1D1400F74951 /* HKButtonFrameView.swift in Sources */,
 				0C896286297B1D9D0033D01D /* HungryKarenApp.swift in Sources */,
+				0C0E35852986C15300AD7E43 /* HKSearchBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

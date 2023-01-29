@@ -16,39 +16,22 @@ enum Screen: Int {
 struct HKBottomBarView: View {
     
     @Binding var selectedScreen: Screen
+    @Binding var searchText: String
     let selectedColor: Color
     let deselectedColor: Color
     let searchBarColor: Color
     
-    @State private var search: String = ""
-    
     var body: some View {
         VStack(spacing: 14) {
-            HStack {
-                TextField(
-                    "",
-                    text: $search,
-                    prompt: Text("Search").foregroundColor(mainTextColor)
-                )
-                .multilineTextAlignment(.leading)
-                .lineLimit(1)
-                
-                Image(systemName: "line.horizontal.3.decrease")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 19, height: 19)
-                    .foregroundColor(mainTextColor)
-            }
-            .frame(height: 53)
-            .padding(.horizontal, 17)
-            .background(searchBarColor)
-            .cornerRadius(15)
-            .foregroundColor(secondTitleColor)
-            .fontWeight(.medium)
+            HKSearchBarView(
+                searchText: $searchText,
+                backgroundColor: searchBarColor
+            )
             
             HStack(spacing: 19) {
                 Button {
                     selectedScreen = .home
+                    searchText = ""
                 } label: {
                     VStack {
                         Image(systemName: "house")
@@ -62,6 +45,7 @@ struct HKBottomBarView: View {
                 }
                 Button {
                     selectedScreen = .fridge
+                    searchText = ""
                 } label: {
                     VStack {
                         Image("fridge_icon")
@@ -75,6 +59,7 @@ struct HKBottomBarView: View {
                 }
                 Button {
                     selectedScreen = .cart
+                    searchText = ""
                 } label: {
                     VStack {
                         Image(systemName: "cart")
@@ -99,8 +84,11 @@ struct HKTabView_Previews: PreviewProvider {
     static var previews: some View {
         HKBottomBarView(
             selectedScreen: .constant(.home),
+            searchText: .constant(""),
             selectedColor: secondaryColor,
             deselectedColor: primaryColor,
             searchBarColor: searchBarBgColor)
     }
 }
+
+
