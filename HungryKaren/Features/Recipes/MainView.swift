@@ -18,7 +18,19 @@ struct MainView: View {
             if selectedScreen == .cart { CartView() }
             VStack {
                 Spacer()
-                HKBottomBarView(selectedScreen: $selectedScreen)
+                if selectedScreen != .fridge {
+                    HKBottomBarView(
+                        selectedScreen: $selectedScreen,
+                        selectedColor: secondaryColor,
+                        deselectedColor: primaryColor,
+                        searchBarColor: searchBarBgColor)
+                } else {
+                    HKBottomBarView(
+                        selectedScreen: $selectedScreen,
+                        selectedColor: alternateSecondaryColor,
+                        deselectedColor: alternatePrimaryColor,
+                        searchBarColor: alternatePrimaryColor)
+                }
             }
         }
         .navigationBarBackButtonHidden(true)

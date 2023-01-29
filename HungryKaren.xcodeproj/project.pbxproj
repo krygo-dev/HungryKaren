@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C0E35832986A62400AD7E43 /* HKTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0E35822986A62400AD7E43 /* HKTopBarView.swift */; };
 		0C2578BA2981658A00F5F0CA /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2578B92981658A00F5F0CA /* AlertType.swift */; };
 		0C2578BC29816DD700F5F0CA /* HKAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2578BB29816DD600F5F0CA /* HKAlertView.swift */; };
 		0C3F1E682984055D00287314 /* HKMainBackgroundCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F1E672984055D00287314 /* HKMainBackgroundCanvasView.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C0E35822986A62400AD7E43 /* HKTopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKTopBarView.swift; sourceTree = "<group>"; };
 		0C2578B92981658A00F5F0CA /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		0C2578BB29816DD600F5F0CA /* HKAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKAlertView.swift; sourceTree = "<group>"; };
 		0C3F1E672984055D00287314 /* HKMainBackgroundCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKMainBackgroundCanvasView.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				0CCAF501297C2AED00F74951 /* HKTextFieldView.swift */,
 				0C2578BB29816DD600F5F0CA /* HKAlertView.swift */,
 				0C3F1E672984055D00287314 /* HKMainBackgroundCanvasView.swift */,
+				0C0E35822986A62400AD7E43 /* HKTopBarView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				0CCAF51D297C6EBA00F74951 /* HomeView.swift in Sources */,
 				0CC39B1B297FD9920099F733 /* NavigationRouter.swift in Sources */,
 				0CE2B521297B38FD00194236 /* HKAuthBackgroundCanvasView.swift in Sources */,
+				0C0E35832986A62400AD7E43 /* HKTopBarView.swift in Sources */,
 				0CCAF506297C451500F74951 /* ForgotPasswordView.swift in Sources */,
 				0CBDDBD8297D508100961BB6 /* Route.swift in Sources */,
 				0CCAF500297C24BF00F74951 /* HKBackgroundRoundRectView.swift in Sources */,

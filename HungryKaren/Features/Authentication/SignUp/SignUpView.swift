@@ -77,7 +77,7 @@ struct SignUpView: View {
                         password: password,
                         confirmPassword: confirmPassword) { success in
                             if authViewModel.currentUser != nil && success {
-                                navigationRouter.navigate(route: .homeView)
+                                navigationRouter.navigate(route: .mainView)
                             }
                         }
                     

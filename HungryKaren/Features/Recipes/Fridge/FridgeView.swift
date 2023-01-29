@@ -8,12 +8,21 @@
 import SwiftUI
 
 struct FridgeView: View {
+    
+    @State var showMenu: Bool = false
+    
     var body: some View {
         ZStack {
-            Color.green
-            Text("Fridge")
+            HKMainBackgroundCanvasView(color: alternateTertiaryColor)
+            VStack {
+                VStack {
+                    HKTopBarView(title: "Fridge", showMenu: $showMenu)
+                    
+                    Spacer()
+                }
+            }
         }
-        .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
     }
 }
 

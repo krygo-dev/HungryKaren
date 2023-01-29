@@ -33,7 +33,7 @@ struct SplashView: View {
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 if authViewModel.currentUser != nil {
-                    navigationRouter.navigate(route: .homeView)
+                    navigationRouter.navigate(route: .mainView)
                 } else {
                     navigationRouter.navigate(route: .startView)
                 }

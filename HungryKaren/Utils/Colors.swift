@@ -15,3 +15,9 @@ var titleColor: Color = Color(red: 51 / 255, green: 51 / 255, blue: 51 / 255) //
 var secondTitleColor: Color = Color(red: 70 / 255, green: 70 / 255, blue: 70 / 255) // 464646
 var thirdTitleColor: Color = Color(red: 82 / 255, green: 82 / 255, blue: 82 / 255) // 525252
 var mainTextColor: Color = Color(red: 135 / 255, green: 133 / 255, blue: 133 / 255) // 878585
+
+
+// Second color set
+var alternatePrimaryColor: Color = Color(red: 241 / 255, green: 236 / 255, blue: 236 / 255) // e1ecec
+var alternateSecondaryColor: Color = Color(red: 234 / 255, green: 212 / 255, blue: 212 / 255) // ead4d4
+var alternateTertiaryColor: Color = Color(red: 245 / 255, green: 182 / 255, blue: 194 / 255) // f5b6c2

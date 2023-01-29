@@ -12,29 +12,14 @@ struct HomeView: View {
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @EnvironmentObject var navigationRouter: NavigationRouter
     
+    @State var showMenu: Bool = false
+    
     var body: some View {
         ZStack {
             HKMainBackgroundCanvasView(color: tertiaryColor)
             VStack {
-                HStack() {
-                    Spacer()
-                    Text("Home")
-                        .foregroundColor(thirdTitleColor)
-                        .fontWeight(.medium)
-                        .font(.system(size: 24))
-                        .padding(.trailing, 104)
-                    Button {
-                        print("Show menu")
-                    } label: {
-                        Image(systemName: "line.horizontal.3")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 27, height: 27)
-                            .fontWeight(.medium)
-                    }
-                }
-                .foregroundColor(thirdTitleColor)
-                .padding(.horizontal, 20)
+                HKTopBarView(title: "Home", showMenu: $showMenu)
+                
                 Spacer()
             }
         }

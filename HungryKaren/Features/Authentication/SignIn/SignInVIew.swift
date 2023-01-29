@@ -65,7 +65,7 @@ struct SignInVIew: View {
                         }
                         
                         if authViewModel.currentUser != nil && result == nil {
-                            navigationRouter.navigate(route: .homeView)
+                            navigationRouter.navigate(route: .mainView)
                         }
                     }
                 } label: {
