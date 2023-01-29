@@ -2,7 +2,7 @@
 //  MainView.swift
 //  HungryKaren
 //
-//  Created by Ewelina Klekot on 27/01/2023.
+//  Created by Adam Chylaszek on 27/01/2023.
 //
 
 import SwiftUI
@@ -12,11 +12,16 @@ struct MainView: View {
     @State var selectedScreen: Screen = .home
     
     var body: some View {
-        VStack {
-            Text("Main")
-            Spacer()
-            HKBottomBarView(selectedScreen: $selectedScreen)
+        ZStack {
+            if selectedScreen == .home { HomeView() }
+            if selectedScreen == .fridge { FridgeView() }
+            if selectedScreen == .cart { CartView() }
+            VStack {
+                Spacer()
+                HKBottomBarView(selectedScreen: $selectedScreen)
+            }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
