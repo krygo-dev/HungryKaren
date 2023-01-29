@@ -8,16 +8,11 @@
 import SwiftUI
 
 struct CartView: View {
-    
-    @State var showMenu: Bool = false
-    
-    var body: some View {
+        var body: some View {
         ZStack {
             HKMainBackgroundCanvasView(color: tertiaryColor)
             VStack {
-                HKTopBarView(title: "Cart", showMenu: $showMenu)
-                
-                Spacer()
+                Text("Cart")
             }
         }
         .navigationBarBackButtonHidden(true)

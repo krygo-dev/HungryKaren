@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     @State var selectedScreen: Screen = .home
+    @State var showMenu: Bool = false
     @State var searchText: String = ""
     
     var body: some View {
@@ -18,7 +19,12 @@ struct MainView: View {
             if selectedScreen == .fridge { FridgeView() }
             if selectedScreen == .cart { CartView() }
             VStack {
+                if selectedScreen == .home { HKTopBarView(title: "Home", showMenu: $showMenu) }
+                if selectedScreen == .fridge { HKTopBarView(title: "Fridge", showMenu: $showMenu) }
+                if selectedScreen == .cart { HKTopBarView(title: "Cart", showMenu: $showMenu) }
+                
                 Spacer()
+                
                 if selectedScreen != .fridge {
                     HKBottomBarView(
                         selectedScreen: $selectedScreen,
@@ -34,6 +40,11 @@ struct MainView: View {
                         deselectedColor: alternatePrimaryColor,
                         searchBarColor: alternatePrimaryColor)
                 }
+            }
+            
+            if showMenu {
+                MenuView(showMenu: $showMenu)
+                    .transition(AnyTransition.opacity.animation(.linear(duration: 0.5)))
             }
         }
         .navigationBarBackButtonHidden(true)

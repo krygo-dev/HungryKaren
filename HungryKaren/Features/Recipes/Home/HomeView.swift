@@ -11,16 +11,12 @@ struct HomeView: View {
     
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @EnvironmentObject var navigationRouter: NavigationRouter
-    
-    @State var showMenu: Bool = false
-    
+        
     var body: some View {
         ZStack {
             HKMainBackgroundCanvasView(color: tertiaryColor)
             VStack {
-                HKTopBarView(title: "Home", showMenu: $showMenu)
-                
-                Spacer()
+                Text("Home")
             }
         }
         .navigationBarBackButtonHidden(true)

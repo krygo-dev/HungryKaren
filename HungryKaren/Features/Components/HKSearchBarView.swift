@@ -22,11 +22,16 @@ struct HKSearchBarView: View {
             .multilineTextAlignment(.leading)
             .lineLimit(1)
             
-            Image(systemName: "line.horizontal.3.decrease")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 19, height: 19)
-                .foregroundColor(mainTextColor)
+            Button {
+                print("Open search filters")
+            } label: {
+                Image(systemName: "line.horizontal.3.decrease")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 19, height: 19)
+                    .foregroundColor(mainTextColor)
+            }
+
         }
         .frame(height: 53)
         .padding(.horizontal, 17)

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C0E35832986A62400AD7E43 /* HKTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0E35822986A62400AD7E43 /* HKTopBarView.swift */; };
 		0C0E35852986C15300AD7E43 /* HKSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0E35842986C15300AD7E43 /* HKSearchBarView.swift */; };
+		0C0E35882986C32E00AD7E43 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0E35872986C32E00AD7E43 /* MenuView.swift */; };
 		0C2578BA2981658A00F5F0CA /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2578B92981658A00F5F0CA /* AlertType.swift */; };
 		0C2578BC29816DD700F5F0CA /* HKAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2578BB29816DD600F5F0CA /* HKAlertView.swift */; };
 		0C3F1E682984055D00287314 /* HKMainBackgroundCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F1E672984055D00287314 /* HKMainBackgroundCanvasView.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		0C0E35822986A62400AD7E43 /* HKTopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKTopBarView.swift; sourceTree = "<group>"; };
 		0C0E35842986C15300AD7E43 /* HKSearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKSearchBarView.swift; sourceTree = "<group>"; };
+		0C0E35872986C32E00AD7E43 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		0C2578B92981658A00F5F0CA /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		0C2578BB29816DD600F5F0CA /* HKAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKAlertView.swift; sourceTree = "<group>"; };
 		0C3F1E672984055D00287314 /* HKMainBackgroundCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKMainBackgroundCanvasView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C0E35862986C30600AD7E43 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				0C0E35872986C32E00AD7E43 /* MenuView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		0C3F1E692984161100287314 /* Fridge */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,10 +209,11 @@
 		0CCAF51A297C6E9F00F74951 /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
-				0C3F1E6A2984162900287314 /* Cart */,
-				0C3F1E692984161100287314 /* Fridge */,
-				0CCAF51B297C6EA900F74951 /* Home */,
 				0C3F1E7129842BF500287314 /* MainView.swift */,
+				0CCAF51B297C6EA900F74951 /* Home */,
+				0C3F1E692984161100287314 /* Fridge */,
+				0C3F1E6A2984162900287314 /* Cart */,
+				0C0E35862986C30600AD7E43 /* Menu */,
 			);
 			path = Recipes;
 			sourceTree = "<group>";
@@ -372,6 +383,7 @@
 				0C3F1E6C2984163D00287314 /* CartView.swift in Sources */,
 				0CCAF502297C2AED00F74951 /* HKTextFieldView.swift in Sources */,
 				0C2578BA2981658A00F5F0CA /* AlertType.swift in Sources */,
+				0C0E35882986C32E00AD7E43 /* MenuView.swift in Sources */,
 				0CCAF517297C662B00F74951 /* AuthenticationRepository.swift in Sources */,
 				0CCAF4FC297C1D1400F74951 /* HKButtonFrameView.swift in Sources */,
 				0C896286297B1D9D0033D01D /* HungryKarenApp.swift in Sources */,
