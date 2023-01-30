@@ -46,8 +46,11 @@ struct MainView: View {
             }
             
             if showMenu {
-                MenuView(showMenu: $showMenu)
-                    .transition(AnyTransition.opacity.animation(.easeOut(duration: 0.5)))
+                MenuView(
+                    showMenu: $showMenu,
+                    selectedScreen: $selectedScreen
+                )
+                .transition(AnyTransition.opacity.animation(.easeOut(duration: 0.5)))
             }
         }
         .navigationBarBackButtonHidden(true)

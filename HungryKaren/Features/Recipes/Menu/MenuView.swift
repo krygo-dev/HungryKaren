@@ -10,6 +10,7 @@ import SwiftUI
 struct MenuView: View {
     
     @Binding var showMenu: Bool
+    @Binding var selectedScreen: Screen
     @State private var animate: Bool = false
     
     private let animationDelay = 0.5
@@ -38,32 +39,71 @@ struct MenuView: View {
             }
             VStack(spacing: 15) {
                 Button {
+                    if selectedScreen != .home {
+                        selectedScreen = .home
+                        showMenu.toggle()
+                    }
                     print("Menu item")
                 } label: {
-                    Text("My profile")
-                        .opacity(animate ? 1 : 0)
-                        .animation(.easeOut(duration: animationDuration).delay(animationDelay), value: animate)
+                    if selectedScreen == .home {
+                        Text("My profile")
+                            .opacity(animate ? 1 : 0)
+                            .animation(.easeOut(duration: animationDuration).delay(animationDelay), value: animate)
+                    } else {
+                        Text("Home")
+                            .opacity(animate ? 1 : 0)
+                            .animation(.easeOut(duration: animationDuration).delay(animationDelay), value: animate)
+                    }
                 }
                 Button {
                     print("Menu item")
                 } label: {
-                    Text("Favourites")
-                        .opacity(animate ? 1 : 0)
-                        .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.1), value: animate)
+                    if selectedScreen == .home {
+                        Text("Favourites")
+                            .opacity(animate ? 1 : 0)
+                            .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.1), value: animate)
+                    } else {
+                        Text("My profile")
+                            .opacity(animate ? 1 : 0)
+                            .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.1), value: animate)
+                    }
                 }
                 Button {
+                    if selectedScreen == .home {
+                        selectedScreen = .fridge
+                        showMenu.toggle()
+                    }
                     print("Menu item")
                 } label: {
-                    Text("My fridge")
-                        .opacity(animate ? 1 : 0)
-                        .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.2), value: animate)
+                    if selectedScreen == .home {
+                        Text("My fridge")
+                            .opacity(animate ? 1 : 0)
+                            .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.2), value: animate)
+                    } else {
+                        Text("Favourites")
+                            .opacity(animate ? 1 : 0)
+                            .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.2), value: animate)
+                    }
                 }
                 Button {
+                    if selectedScreen != .cart {
+                        selectedScreen = .cart
+                        showMenu.toggle()
+                    } else {
+                        selectedScreen = .fridge
+                        showMenu.toggle()
+                    }
                     print("Menu item")
                 } label: {
-                    Text("Shopping list")
-                        .opacity(animate ? 1 : 0)
-                        .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.3), value: animate)
+                    if selectedScreen != .cart {
+                        Text("Shopping list")
+                            .opacity(animate ? 1 : 0)
+                            .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.3), value: animate)
+                    } else {
+                        Text("My fridge")
+                            .opacity(animate ? 1 : 0)
+                            .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.3), value: animate)
+                    }
                 }
                 Button {
                     print("Menu item")
