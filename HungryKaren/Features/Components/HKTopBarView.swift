@@ -25,7 +25,7 @@ struct HKTopBarView: View {
                     Image(systemName: "line.horizontal.3")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 27, height: 27)
+                        .frame(width: 20, height: 20)
                 }
             }
         }

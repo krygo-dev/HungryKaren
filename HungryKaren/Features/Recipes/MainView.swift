@@ -11,22 +11,37 @@ struct MainView: View {
     
     @State var selectedScreen: Screen = .home
     @State var showMenu: Bool = false
+    @State var showTopBar: Bool = true
     @State var searchText: String = ""
     
     var body: some View {
         ZStack {
-            if selectedScreen == .home { HomeView() }
-            if selectedScreen == .fridge { FridgeView() }
-            if selectedScreen == .cart { CartView() }
+//            if selectedScreen == .home { HomeView() }
+//            if selectedScreen == .fridge { FridgeView() }
+//            if selectedScreen == .cart { CartView() }
+            if selectedScreen == .fridge {
+                HKMainBackgroundCanvasView(color: alternateTertiaryColor)
+            } else {
+                HKMainBackgroundCanvasView(color: tertiaryColor)
+            }
+            
             VStack {
-                if selectedScreen == .home {
-                    HKTopBarView(title: "Home", showMenu: $showMenu) }
-                if selectedScreen == .fridge {
-                    HKTopBarView(title: "Fridge", showMenu: $showMenu) }
-                if selectedScreen == .cart {
-                    HKTopBarView(title: "Cart", showMenu: $showMenu) }
+                if showTopBar {
+                    if selectedScreen == .home {
+                        HKTopBarView(title: "Home", showMenu: $showMenu)
+                    }
+                    if selectedScreen == .fridge {
+                        HKTopBarView(title: "Fridge", showMenu: $showMenu)
+                    }
+                    if selectedScreen == .cart {
+                        HKTopBarView(title: "Cart", showMenu: $showMenu)
+                    }
+                }
                 
-                Spacer()
+//                Spacer()
+                if selectedScreen == .home { HomeView(show: $showTopBar) }
+                if selectedScreen == .fridge { FridgeView() }
+                if selectedScreen == .cart { CartView() }
                 
                 if selectedScreen != .fridge {
                     HKBottomBarView(
