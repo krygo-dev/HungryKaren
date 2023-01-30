@@ -10,6 +10,10 @@ import SwiftUI
 struct MenuView: View {
     
     @Binding var showMenu: Bool
+    @State private var animate: Bool = false
+    
+    private let animationDelay = 0.5
+    private let animationDuration = 0.5
     
     var body: some View {
         ZStack {
@@ -17,9 +21,7 @@ struct MenuView: View {
                 HStack {
                     Spacer()
                     Button {
-                        withAnimation {
-                            showMenu.toggle()
-                        }
+                        showMenu.toggle()
                     } label: {
                         Image(systemName: "xmark")
                             .resizable()
@@ -39,36 +41,50 @@ struct MenuView: View {
                     print("Menu item")
                 } label: {
                     Text("My profile")
+                        .opacity(animate ? 1 : 0)
+                        .animation(.easeOut(duration: animationDuration).delay(animationDelay), value: animate)
                 }
                 Button {
                     print("Menu item")
                 } label: {
                     Text("Favourites")
+                        .opacity(animate ? 1 : 0)
+                        .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.1), value: animate)
                 }
                 Button {
                     print("Menu item")
                 } label: {
                     Text("My fridge")
+                        .opacity(animate ? 1 : 0)
+                        .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.2), value: animate)
                 }
                 Button {
                     print("Menu item")
                 } label: {
                     Text("Shopping list")
+                        .opacity(animate ? 1 : 0)
+                        .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.3), value: animate)
                 }
                 Button {
                     print("Menu item")
                 } label: {
                     Text("Preferences")
+                        .opacity(animate ? 1 : 0)
+                        .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.4), value: animate)
                 }
                 Button {
                     print("Menu item")
                 } label: {
                     Text("Settings")
+                        .opacity(animate ? 1 : 0)
+                        .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.5), value: animate)
                 }
                 Button {
                     print("Menu item")
                 } label: {
                     Text("Sign out")
+                        .opacity(animate ? 1 : 0)
+                        .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.6), value: animate)
                 }
             }
             .foregroundColor(thirdTitleColor)
@@ -76,11 +92,14 @@ struct MenuView: View {
             .fontWeight(.medium)
         }
         .background(.ultraThinMaterial)
+        .onAppear {
+            animate.toggle()
+        }
     }
 }
 
-struct MenuView_Previews: PreviewProvider {
-    static var previews: some View {
-        MenuView(showMenu: .constant(true))
-    }
-}
+//struct MenuView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MenuView(showMenu: .constant(true))
+//    }
+//}

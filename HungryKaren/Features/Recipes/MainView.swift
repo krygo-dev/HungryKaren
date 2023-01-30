@@ -19,9 +19,12 @@ struct MainView: View {
             if selectedScreen == .fridge { FridgeView() }
             if selectedScreen == .cart { CartView() }
             VStack {
-                if selectedScreen == .home { HKTopBarView(title: "Home", showMenu: $showMenu) }
-                if selectedScreen == .fridge { HKTopBarView(title: "Fridge", showMenu: $showMenu) }
-                if selectedScreen == .cart { HKTopBarView(title: "Cart", showMenu: $showMenu) }
+                if selectedScreen == .home {
+                    HKTopBarView(title: "Home", showMenu: $showMenu) }
+                if selectedScreen == .fridge {
+                    HKTopBarView(title: "Fridge", showMenu: $showMenu) }
+                if selectedScreen == .cart {
+                    HKTopBarView(title: "Cart", showMenu: $showMenu) }
                 
                 Spacer()
                 
@@ -44,7 +47,7 @@ struct MainView: View {
             
             if showMenu {
                 MenuView(showMenu: $showMenu)
-                    .transition(AnyTransition.opacity.animation(.linear(duration: 0.5)))
+                    .transition(AnyTransition.opacity.animation(.easeOut(duration: 0.5)))
             }
         }
         .navigationBarBackButtonHidden(true)
