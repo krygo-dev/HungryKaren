@@ -29,7 +29,6 @@ struct HungryKarenApp: App {
                             case .signInView: SignInVIew()
                             case .signUpView: SignUpView()
                             case .forgotPasswordView: ForgotPasswordView()
-                            case .homeView: HomeView()
                             case .mainView: MainView()
                         }
                     }

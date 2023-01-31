@@ -9,11 +9,8 @@ import SwiftUI
 
 struct FridgeView: View {
     var body: some View {
-        ZStack {
-//            HKMainBackgroundCanvasView(color: alternateTertiaryColor)
-            VStack {
-                Text("Fridge")
-            }
+        VStack {
+            Text("Fridge")
         }
         .navigationBarBackButtonHidden(true)
     }

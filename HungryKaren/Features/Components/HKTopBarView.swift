@@ -11,6 +11,7 @@ struct HKTopBarView: View {
     
     let title: String
     @Binding var showMenu: Bool
+    @Binding var showTopBar: Bool
     
     var body: some View {
         ZStack {
@@ -34,11 +35,6 @@ struct HKTopBarView: View {
         .fontWeight(.medium)
         .padding(.horizontal, 20)
         .padding(.top, 20)
+        .offset(y: showTopBar ? 0 : -30)
     }
 }
-
-//struct HKTopBarView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HKTopBarView()
-//    }
-//}

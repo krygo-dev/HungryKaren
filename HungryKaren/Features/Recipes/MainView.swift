@@ -9,54 +9,60 @@ import SwiftUI
 
 struct MainView: View {
     
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
+    @EnvironmentObject var navigationRouter: NavigationRouter
+    
     @State var selectedScreen: Screen = .home
     @State var showMenu: Bool = false
-    @State var showTopBar: Bool = true
+    @State var showBars: Bool = true
     @State var searchText: String = ""
     
     var body: some View {
         ZStack {
-//            if selectedScreen == .home { HomeView() }
-//            if selectedScreen == .fridge { FridgeView() }
-//            if selectedScreen == .cart { CartView() }
-            if selectedScreen == .fridge {
-                HKMainBackgroundCanvasView(color: alternateTertiaryColor)
-            } else {
-                HKMainBackgroundCanvasView(color: tertiaryColor)
+
+            if showBars {
+                if selectedScreen == .fridge {
+                    HKMainBackgroundCanvasView(color: alternateTertiaryColor)
+                } else {
+                    HKMainBackgroundCanvasView(color: tertiaryColor)
+                }
             }
             
             VStack {
-                if showTopBar {
+                if showBars {
                     if selectedScreen == .home {
-                        HKTopBarView(title: "Home", showMenu: $showMenu)
+                        HKTopBarView(title: "Home", showMenu: $showMenu, showTopBar: $showBars)
                     }
                     if selectedScreen == .fridge {
-                        HKTopBarView(title: "Fridge", showMenu: $showMenu)
+                        HKTopBarView(title: "Fridge", showMenu: $showMenu, showTopBar: $showBars)
                     }
                     if selectedScreen == .cart {
-                        HKTopBarView(title: "Cart", showMenu: $showMenu)
+                        HKTopBarView(title: "Cart", showMenu: $showMenu, showTopBar: $showBars)
                     }
                 }
-                
-//                Spacer()
-                if selectedScreen == .home { HomeView(show: $showTopBar) }
+
+                if selectedScreen == .home { HomeView(showTopBar: $showBars) }
                 if selectedScreen == .fridge { FridgeView() }
                 if selectedScreen == .cart { CartView() }
                 
-                if selectedScreen != .fridge {
-                    HKBottomBarView(
-                        selectedScreen: $selectedScreen,
-                        searchText: $searchText,
-                        selectedColor: secondaryColor,
-                        deselectedColor: primaryColor,
-                        searchBarColor: searchBarBgColor)
-                } else {
-                    HKBottomBarView(
-                        selectedScreen: $selectedScreen,
-                        searchText: $searchText,
-                        selectedColor: alternateSecondaryColor,
-                        deselectedColor: alternatePrimaryColor,
-                        searchBarColor: alternatePrimaryColor)
+                if showBars {
+                    if selectedScreen != .fridge {
+                        HKBottomBarView(
+                            selectedScreen: $selectedScreen,
+                            searchText: $searchText,
+                            showBottomBar: $showBars,
+                            selectedColor: secondaryColor,
+                            deselectedColor: primaryColor,
+                            searchBarColor: searchBarBgColor)
+                    } else {
+                        HKBottomBarView(
+                            selectedScreen: $selectedScreen,
+                            searchText: $searchText,
+                            showBottomBar: $showBars,
+                            selectedColor: alternateSecondaryColor,
+                            deselectedColor: alternatePrimaryColor,
+                            searchBarColor: alternatePrimaryColor)
+                    }
                 }
             }
             

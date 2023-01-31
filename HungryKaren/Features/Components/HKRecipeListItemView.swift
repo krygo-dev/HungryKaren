@@ -47,7 +47,7 @@ struct HKRecipeListItemView: View {
                 Circle()
                     .frame(width: 122, height: 122)
             }
-            .frame(width: 350, height: 167)
+            .frame(width: 350)
             .padding(.bottom, 60)
         }
     }

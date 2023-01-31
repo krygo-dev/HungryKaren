@@ -17,6 +17,7 @@ struct HKBottomBarView: View {
     
     @Binding var selectedScreen: Screen
     @Binding var searchText: String
+    @Binding var showBottomBar: Bool
     let selectedColor: Color
     let deselectedColor: Color
     let searchBarColor: Color
@@ -77,6 +78,7 @@ struct HKBottomBarView: View {
         .tint(thirdTitleColor)
         .background(.clear)
         .padding(.horizontal, 20)
+        .offset(y: showBottomBar ? 0 : 150)
     }
 }
 
@@ -85,10 +87,9 @@ struct HKTabView_Previews: PreviewProvider {
         HKBottomBarView(
             selectedScreen: .constant(.home),
             searchText: .constant(""),
+            showBottomBar: .constant(true),
             selectedColor: secondaryColor,
             deselectedColor: primaryColor,
             searchBarColor: searchBarBgColor)
     }
 }
-
-
