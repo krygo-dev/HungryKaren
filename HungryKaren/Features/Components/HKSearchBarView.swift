@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HKSearchBarView: View {
     
+    @Binding var showFilters: Bool
     @Binding var searchText: String
     let backgroundColor: Color
     
@@ -23,7 +24,9 @@ struct HKSearchBarView: View {
             .lineLimit(1)
             
             Button {
-                print("Open search filters")
+                withAnimation(.easeOut.speed(1.5)) {
+                    showFilters.toggle()
+                }
             } label: {
                 Image(systemName: "line.horizontal.3.decrease")
                     .resizable()
@@ -45,6 +48,7 @@ struct HKSearchBarView: View {
 struct HKSearchBarView_Previews: PreviewProvider {
     static var previews: some View {
         HKSearchBarView(
+            showFilters: .constant(false),
             searchText: .constant(""),
             backgroundColor: searchBarBgColor)
     }

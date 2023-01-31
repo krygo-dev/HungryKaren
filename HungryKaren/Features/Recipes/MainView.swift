@@ -15,6 +15,7 @@ struct MainView: View {
     @State var selectedScreen: Screen = .home
     @State var showMenu: Bool = false
     @State var showBars: Bool = true
+    @State var showFilters: Bool = false
     @State var searchText: String = ""
     
     var body: some View {
@@ -51,6 +52,7 @@ struct MainView: View {
                             selectedScreen: $selectedScreen,
                             searchText: $searchText,
                             showBottomBar: $showBars,
+                            showFilters: $showFilters,
                             selectedColor: secondaryColor,
                             deselectedColor: primaryColor,
                             searchBarColor: searchBarBgColor)
@@ -59,6 +61,7 @@ struct MainView: View {
                             selectedScreen: $selectedScreen,
                             searchText: $searchText,
                             showBottomBar: $showBars,
+                            showFilters: $showFilters,
                             selectedColor: alternateSecondaryColor,
                             deselectedColor: alternatePrimaryColor,
                             searchBarColor: alternatePrimaryColor)
@@ -72,6 +75,10 @@ struct MainView: View {
                     selectedScreen: $selectedScreen
                 )
                 .transition(AnyTransition.opacity.animation(.easeOut(duration: 0.5)))
+            }
+            
+            if showFilters {
+                SearchFiltersView(showFilters: $showFilters)
             }
         }
         .navigationBarBackButtonHidden(true)

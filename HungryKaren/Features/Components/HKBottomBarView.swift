@@ -18,6 +18,7 @@ struct HKBottomBarView: View {
     @Binding var selectedScreen: Screen
     @Binding var searchText: String
     @Binding var showBottomBar: Bool
+    @Binding var showFilters: Bool
     let selectedColor: Color
     let deselectedColor: Color
     let searchBarColor: Color
@@ -25,6 +26,7 @@ struct HKBottomBarView: View {
     var body: some View {
         VStack(spacing: 14) {
             HKSearchBarView(
+                showFilters: $showFilters,
                 searchText: $searchText,
                 backgroundColor: searchBarColor
             )
@@ -88,6 +90,7 @@ struct HKTabView_Previews: PreviewProvider {
             selectedScreen: .constant(.home),
             searchText: .constant(""),
             showBottomBar: .constant(true),
+            showFilters: .constant(false),
             selectedColor: secondaryColor,
             deselectedColor: primaryColor,
             searchBarColor: searchBarBgColor)
