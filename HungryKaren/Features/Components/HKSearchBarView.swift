@@ -24,7 +24,7 @@ struct HKSearchBarView: View {
             .lineLimit(1)
             
             Button {
-                withAnimation(.easeOut.speed(1.5)) {
+                withAnimation(.easeOut.speed(0.7)) {
                     showFilters.toggle()
                 }
             } label: {

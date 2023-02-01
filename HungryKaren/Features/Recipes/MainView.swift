@@ -77,9 +77,20 @@ struct MainView: View {
                 .transition(AnyTransition.opacity.animation(.easeOut(duration: 0.5)))
             }
             
-            if showFilters {
+
+            VStack {
+                Spacer()
                 SearchFiltersView(showFilters: $showFilters)
+                    .offset(y: showFilters ? 0 : 800)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+            .background(showFilters ? .black.opacity(0.35) : .clear)
+            .onTapGesture {
+                withAnimation(.easeOut.speed(0.7)) {
+                    showFilters.toggle()
+                }
+            }
+            .ignoresSafeArea()
         }
         .navigationBarBackButtonHidden(true)
     }

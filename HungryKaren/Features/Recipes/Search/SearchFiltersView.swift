@@ -17,19 +17,11 @@ struct SearchFiltersView: View {
                 Text("Col 1")
                 Text("Col 2")
             }
-            .frame(width: 390, height: 756)
-            .background(.white)
-            .cornerRadius(25)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-        .background(showFilters ? .black.opacity(0.35) : .clear)
-        .onTapGesture {
-            withAnimation(.easeOut.speed(1.5)) {
-                showFilters.toggle()
-            }
-        }
+        .frame(width: 390, height: 756)
+        .background(.white)
+        .cornerRadius(25)
         .ignoresSafeArea()
-        .offset(y: showFilters ? 0 : 800)
     }
 }
 
