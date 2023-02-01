@@ -18,6 +18,9 @@
 		0C3F1E6E298416AA00287314 /* FridgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F1E6D298416AA00287314 /* FridgeView.swift */; };
 		0C3F1E702984191C00287314 /* HKBottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F1E6F2984191C00287314 /* HKBottomBarView.swift */; };
 		0C3F1E7229842BF500287314 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F1E7129842BF500287314 /* MainView.swift */; };
+		0C875B7D298AA14100EA926B /* SearchFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C875B7C298AA14100EA926B /* SearchFilters.swift */; };
+		0C875B7F298AAB4600EA926B /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C875B7E298AAB4600EA926B /* FilterModel.swift */; };
+		0C875B81298AB5DC00EA926B /* SearchFilterCheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C875B80298AB5DC00EA926B /* SearchFilterCheckBoxView.swift */; };
 		0C896286297B1D9D0033D01D /* HungryKarenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C896285297B1D9D0033D01D /* HungryKarenApp.swift */; };
 		0C896288297B1D9D0033D01D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C896287297B1D9D0033D01D /* SplashView.swift */; };
 		0C89628A297B1D9F0033D01D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C896289297B1D9F0033D01D /* Assets.xcassets */; };
@@ -57,6 +60,9 @@
 		0C3F1E6D298416AA00287314 /* FridgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeView.swift; sourceTree = "<group>"; };
 		0C3F1E6F2984191C00287314 /* HKBottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKBottomBarView.swift; sourceTree = "<group>"; };
 		0C3F1E7129842BF500287314 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		0C875B7C298AA14100EA926B /* SearchFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilters.swift; sourceTree = "<group>"; };
+		0C875B7E298AAB4600EA926B /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
+		0C875B80298AB5DC00EA926B /* SearchFilterCheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterCheckBoxView.swift; sourceTree = "<group>"; };
 		0C896282297B1D9D0033D01D /* HungryKaren.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HungryKaren.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C896285297B1D9D0033D01D /* HungryKarenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HungryKarenApp.swift; sourceTree = "<group>"; };
 		0C896287297B1D9D0033D01D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -163,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				0CC0DE8F298939E800642F63 /* SearchFiltersView.swift */,
+				0C875B7C298AA14100EA926B /* SearchFilters.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -252,6 +259,7 @@
 		0CE2B51A297B239E00194236 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0C875B7E298AAB4600EA926B /* FilterModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -279,6 +287,7 @@
 				0C0E35822986A62400AD7E43 /* HKTopBarView.swift */,
 				0C0E35842986C15300AD7E43 /* HKSearchBarView.swift */,
 				0C0A76162988116B00B9CF7C /* HKRecipeListItemView.swift */,
+				0C875B80298AB5DC00EA926B /* SearchFilterCheckBoxView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -393,13 +402,16 @@
 				0CC0DE90298939E800642F63 /* SearchFiltersView.swift in Sources */,
 				0CC39B1E297FEAFC0099F733 /* NavigateBackDragGesture.swift in Sources */,
 				0C896288297B1D9D0033D01D /* SplashView.swift in Sources */,
+				0C875B7F298AAB4600EA926B /* FilterModel.swift in Sources */,
 				0CE2B51F297B276400194236 /* Colors.swift in Sources */,
 				0CCAF504297C3DF800F74951 /* SignUpView.swift in Sources */,
 				0C3F1E6E298416AA00287314 /* FridgeView.swift in Sources */,
 				0C3F1E6C2984163D00287314 /* CartView.swift in Sources */,
+				0C875B81298AB5DC00EA926B /* SearchFilterCheckBoxView.swift in Sources */,
 				0CCAF502297C2AED00F74951 /* HKTextFieldView.swift in Sources */,
 				0C2578BA2981658A00F5F0CA /* AlertType.swift in Sources */,
 				0C0E35882986C32E00AD7E43 /* MenuView.swift in Sources */,
+				0C875B7D298AA14100EA926B /* SearchFilters.swift in Sources */,
 				0CCAF517297C662B00F74951 /* AuthenticationRepository.swift in Sources */,
 				0CCAF4FC297C1D1400F74951 /* HKButtonFrameView.swift in Sources */,
 				0C896286297B1D9D0033D01D /* HungryKarenApp.swift in Sources */,

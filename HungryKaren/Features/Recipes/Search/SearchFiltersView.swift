@@ -10,23 +10,105 @@ import SwiftUI
 struct SearchFiltersView: View {
     
     @Binding var showFilters: Bool
+    @ObservedObject var searchFilters: SearchFilters
     
     var body: some View {
-        VStack {
-            HStack {
-                Text("Col 1")
-                Text("Col 2")
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(spacing: 10) {
+                Group {
+                    Text("Diet")
+                    HStack(spacing: 30) {
+                        SearchFilterCheckBoxView(filter: $searchFilters.dietFilters[0])
+                        SearchFilterCheckBoxView(filter: $searchFilters.dietFilters[1])
+                    }
+                    HStack(spacing: 30) {
+                        SearchFilterCheckBoxView(filter: $searchFilters.dietFilters[2])
+                        SearchFilterCheckBoxView(filter: $searchFilters.dietFilters[3])
+                    }
+                    HStack(spacing: 30) {
+                        SearchFilterCheckBoxView(filter: $searchFilters.dietFilters[4])
+                        SearchFilterCheckBoxView(filter: $searchFilters.dietFilters[5])
+                    }
+                }
+                
+                Rectangle()
+                    .frame(width: 316, height: 1)
+                    .foregroundColor(secondaryColor)
+                    .padding(.vertical)
+                
+                Group {
+                    Text("Meal type")
+                    HStack(spacing: 30) {
+                        SearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[0], bgColor: primaryColor)
+                        SearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[1], bgColor: primaryColor)
+                    }
+                    HStack(spacing: 30) {
+                        SearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[2], bgColor: primaryColor)
+                        SearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[3], bgColor: primaryColor)
+                    }
+                    HStack(spacing: 30) {
+                        SearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[4], bgColor: primaryColor)
+                        SearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[5], bgColor: primaryColor)
+                    }
+                }
+                
+                Rectangle()
+                    .frame(width: 316, height: 1)
+                    .foregroundColor(secondaryColor)
+                    .padding(.vertical)
+                
+                Group {
+                    Text("Cuisine")
+                    HStack(spacing: 30) {
+                        SearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[0])
+                        SearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[1])
+                    }
+                    HStack(spacing: 30) {
+                        SearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[2])
+                        SearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[3])
+                    }
+                    HStack(spacing: 30) {
+                        SearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[4])
+                        SearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[5])
+                    }
+                }
+                
+                Rectangle()
+                    .frame(width: 316, height: 1)
+                    .foregroundColor(secondaryColor)
+                    .padding(.vertical)
+                
+                Group {
+                    Text("Intolerance")
+                    HStack(spacing: 30) {
+                        SearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[0], bgColor: primaryColor)
+                        SearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[1], bgColor: primaryColor)
+                    }
+                    HStack(spacing: 30) {
+                        SearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[2], bgColor: primaryColor)
+                        SearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[3], bgColor: primaryColor)
+                    }
+                    HStack(spacing: 30) {
+                        SearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[4], bgColor: primaryColor)
+                        SearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[5], bgColor: primaryColor)
+                    }
+                }
             }
         }
-        .frame(width: 390, height: 756)
+        .padding(.vertical, 33)
+        .frame(width: 390, height: 756, alignment: .bottom)
         .background(.white)
         .cornerRadius(25)
         .ignoresSafeArea()
+        .overlay {
+            RoundedRectangle(cornerRadius: 25)
+                .stroke(tertiaryColor, lineWidth: 5)
+        }
     }
 }
 
 struct SearchFiltersView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchFiltersView(showFilters: .constant(true))
+        SearchFiltersView(showFilters: .constant(true), searchFilters: SearchFilters())
     }
 }

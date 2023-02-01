@@ -12,6 +12,8 @@ struct MainView: View {
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @EnvironmentObject var navigationRouter: NavigationRouter
     
+    @StateObject var searchFilters: SearchFilters = SearchFilters()
+    
     @State var selectedScreen: Screen = .home
     @State var showMenu: Bool = false
     @State var showBars: Bool = true
@@ -80,8 +82,11 @@ struct MainView: View {
 
             VStack {
                 Spacer()
-                SearchFiltersView(showFilters: $showFilters)
-                    .offset(y: showFilters ? 0 : 800)
+                SearchFiltersView(
+                    showFilters: $showFilters,
+                    searchFilters: searchFilters
+                )
+                .offset(y: showFilters ? 0 : 900)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
             .background(showFilters ? .black.opacity(0.35) : .clear)
