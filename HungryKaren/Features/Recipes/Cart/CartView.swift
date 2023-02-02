@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct CartView: View {
-        var body: some View {
-        ZStack {
+    var body: some View {
+        VStack {
+            Spacer()
             VStack {
                 Text("Cart")
             }
+            Spacer()
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 

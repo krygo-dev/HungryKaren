@@ -30,6 +30,10 @@ struct HungryKarenApp: App {
                             case .signUpView: SignUpView()
                             case .forgotPasswordView: ForgotPasswordView()
                             case .mainView: MainView()
+                            case .profileView: ProfileView()
+                            case .favouritesView: FavouritesView()
+                            case .preferencesView: PreferencesView()
+                            case .settingsView: SettingsView()
                         }
                     }
             }

@@ -17,7 +17,7 @@ struct HKMainBackgroundCanvasView: View {
                 Path { path in
                     path.addArc(
                         center: CGPoint(x: 0, y: 0),
-                        radius: 118,
+                        radius: 95,
                         startAngle: .degrees(0),
                         endAngle: .degrees(360),
                         clockwise: true
@@ -30,7 +30,7 @@ struct HKMainBackgroundCanvasView: View {
                 Path { path in
                     path.addArc(
                         center: CGPoint(x: 0, y: 0),
-                        radius: 144,
+                        radius: 113,
                         startAngle: .degrees(0),
                         endAngle: .degrees(360),
                         clockwise: true

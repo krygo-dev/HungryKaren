@@ -98,6 +98,12 @@ struct MainView: View {
             .ignoresSafeArea()
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            showMenu = false
+            showBars = true
+            showFilters = false
+            searchText = ""
+        }
     }
 }
 

@@ -65,6 +65,12 @@ struct HomeView: View {
             }
         }
         .coordinateSpace(name: "SCROLL")
+        .onAppear {
+            UIScrollView.appearance().bounces = false
+        }
+        .onDisappear {
+            UIScrollView.appearance().bounces = true
+        }
     }
 }
 

@@ -9,8 +9,12 @@ import SwiftUI
 
 struct MenuView: View {
     
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
+    @EnvironmentObject var navigationRouter: NavigationRouter
+    
     @Binding var showMenu: Bool
     @Binding var selectedScreen: Screen
+    
     @State private var animate: Bool = false
     
     private let animationDelay = 0.5
@@ -42,8 +46,9 @@ struct MenuView: View {
                     if selectedScreen != .home {
                         selectedScreen = .home
                         showMenu.toggle()
+                    } else {
+                        navigationRouter.navigate(route: .profileView)
                     }
-                    print("Menu item")
                 } label: {
                     if selectedScreen == .home {
                         Text("My profile")
@@ -56,7 +61,11 @@ struct MenuView: View {
                     }
                 }
                 Button {
-                    print("Menu item")
+                    if selectedScreen == .home {
+                        navigationRouter.navigate(route: .favouritesView)
+                    } else {
+                        navigationRouter.navigate(route: .profileView)
+                    }
                 } label: {
                     if selectedScreen == .home {
                         Text("Favourites")
@@ -72,8 +81,9 @@ struct MenuView: View {
                     if selectedScreen == .home {
                         selectedScreen = .fridge
                         showMenu.toggle()
+                    } else {
+                        navigationRouter.navigate(route: .favouritesView)
                     }
-                    print("Menu item")
                 } label: {
                     if selectedScreen == .home {
                         Text("My fridge")
@@ -93,7 +103,6 @@ struct MenuView: View {
                         selectedScreen = .fridge
                         showMenu.toggle()
                     }
-                    print("Menu item")
                 } label: {
                     if selectedScreen != .cart {
                         Text("Shopping list")
@@ -106,21 +115,23 @@ struct MenuView: View {
                     }
                 }
                 Button {
-                    print("Menu item")
+                    navigationRouter.navigate(route: .preferencesView)
                 } label: {
                     Text("Preferences")
                         .opacity(animate ? 1 : 0)
                         .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.4), value: animate)
                 }
                 Button {
-                    print("Menu item")
+                    navigationRouter.navigate(route: .settingsView)
                 } label: {
                     Text("Settings")
                         .opacity(animate ? 1 : 0)
                         .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.5), value: animate)
                 }
                 Button {
-                    print("Menu item")
+                    authViewModel.signOut { result in
+                        navigationRouter.navigateBackToStart()
+                    }
                 } label: {
                     Text("Sign out")
                         .opacity(animate ? 1 : 0)
@@ -133,13 +144,10 @@ struct MenuView: View {
         }
         .background(.ultraThinMaterial)
         .onAppear {
-            animate.toggle()
+            animate = true
+        }
+        .onDisappear {
+            animate = false
         }
     }
 }
-
-//struct MenuView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MenuView(showMenu: .constant(true))
-//    }
-//}

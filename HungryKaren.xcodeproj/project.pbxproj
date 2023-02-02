@@ -25,6 +25,10 @@
 		0C896288297B1D9D0033D01D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C896287297B1D9D0033D01D /* SplashView.swift */; };
 		0C89628A297B1D9F0033D01D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C896289297B1D9F0033D01D /* Assets.xcassets */; };
 		0C89628D297B1D9F0033D01D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C89628C297B1D9F0033D01D /* Preview Assets.xcassets */; };
+		0CADF133298BB5EA0030BE95 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CADF132298BB5EA0030BE95 /* ProfileView.swift */; };
+		0CADF135298BB6180030BE95 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CADF134298BB6180030BE95 /* SettingsView.swift */; };
+		0CADF137298BB65C0030BE95 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CADF136298BB65C0030BE95 /* PreferencesView.swift */; };
+		0CADF13A298BB6EF0030BE95 /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CADF139298BB6EF0030BE95 /* FavouritesView.swift */; };
 		0CBDDBD8297D508100961BB6 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBDDBD7297D508100961BB6 /* Route.swift */; };
 		0CC0DE90298939E800642F63 /* SearchFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC0DE8F298939E800642F63 /* SearchFiltersView.swift */; };
 		0CC39B1B297FD9920099F733 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC39B1A297FD9920099F733 /* NavigationRouter.swift */; };
@@ -68,6 +72,10 @@
 		0C896287297B1D9D0033D01D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		0C896289297B1D9F0033D01D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C89628C297B1D9F0033D01D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0CADF132298BB5EA0030BE95 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		0CADF134298BB6180030BE95 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		0CADF136298BB65C0030BE95 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
+		0CADF139298BB6EF0030BE95 /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		0CBDDBD7297D508100961BB6 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		0CC0DE8F298939E800642F63 /* SearchFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFiltersView.swift; sourceTree = "<group>"; };
 		0CC39B1A297FD9920099F733 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
@@ -163,6 +171,49 @@
 				0C89628C297B1D9F0033D01D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0CADF12E298BB49E0030BE95 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				0CADF130298BB5220030BE95 /* Profile */,
+				0CADF12F298BB4F20030BE95 /* Preferences */,
+				0CADF138298BB6DC0030BE95 /* Favourites */,
+				0CADF131298BB5630030BE95 /* Settings */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		0CADF12F298BB4F20030BE95 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				0CADF136298BB65C0030BE95 /* PreferencesView.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		0CADF130298BB5220030BE95 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				0CADF132298BB5EA0030BE95 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		0CADF131298BB5630030BE95 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0CADF134298BB6180030BE95 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		0CADF138298BB6DC0030BE95 /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				0CADF139298BB6EF0030BE95 /* FavouritesView.swift */,
+			);
+			path = Favourites;
 			sourceTree = "<group>";
 		};
 		0CC0DE8E298939B100642F63 /* Search */ = {
@@ -269,6 +320,7 @@
 			children = (
 				0CE2B51D297B253000194236 /* Authentication */,
 				0CCAF51A297C6E9F00F74951 /* Recipes */,
+				0CADF12E298BB49E0030BE95 /* User */,
 				0CE2B51C297B243600194236 /* Components */,
 			);
 			path = Features;
@@ -389,10 +441,12 @@
 				0C3F1E702984191C00287314 /* HKBottomBarView.swift in Sources */,
 				0CCAF51D297C6EBA00F74951 /* HomeView.swift in Sources */,
 				0CC39B1B297FD9920099F733 /* NavigationRouter.swift in Sources */,
+				0CADF135298BB6180030BE95 /* SettingsView.swift in Sources */,
 				0CE2B521297B38FD00194236 /* HKAuthBackgroundCanvasView.swift in Sources */,
 				0C0A76172988116B00B9CF7C /* HKRecipeListItemView.swift in Sources */,
 				0C0E35832986A62400AD7E43 /* HKTopBarView.swift in Sources */,
 				0CCAF506297C451500F74951 /* ForgotPasswordView.swift in Sources */,
+				0CADF13A298BB6EF0030BE95 /* FavouritesView.swift in Sources */,
 				0CBDDBD8297D508100961BB6 /* Route.swift in Sources */,
 				0CCAF500297C24BF00F74951 /* HKBackgroundRoundRectView.swift in Sources */,
 				0C3F1E682984055D00287314 /* HKMainBackgroundCanvasView.swift in Sources */,
@@ -403,6 +457,7 @@
 				0CC39B1E297FEAFC0099F733 /* NavigateBackDragGesture.swift in Sources */,
 				0C896288297B1D9D0033D01D /* SplashView.swift in Sources */,
 				0C875B7F298AAB4600EA926B /* FilterModel.swift in Sources */,
+				0CADF137298BB65C0030BE95 /* PreferencesView.swift in Sources */,
 				0CE2B51F297B276400194236 /* Colors.swift in Sources */,
 				0CCAF504297C3DF800F74951 /* SignUpView.swift in Sources */,
 				0C3F1E6E298416AA00287314 /* FridgeView.swift in Sources */,
@@ -415,6 +470,7 @@
 				0CCAF517297C662B00F74951 /* AuthenticationRepository.swift in Sources */,
 				0CCAF4FC297C1D1400F74951 /* HKButtonFrameView.swift in Sources */,
 				0C896286297B1D9D0033D01D /* HungryKarenApp.swift in Sources */,
+				0CADF133298BB5EA0030BE95 /* ProfileView.swift in Sources */,
 				0C0E35852986C15300AD7E43 /* HKSearchBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

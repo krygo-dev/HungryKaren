@@ -10,9 +10,18 @@ import SwiftUI
 struct FridgeView: View {
     var body: some View {
         VStack {
-            Text("Fridge")
+            Spacer()
+            VStack {
+                Text("Fridge")
+            }
+            .padding(.vertical, 40)
+            .frame(width: 316, height: 548)
+            .overlay {
+                RoundedRectangle(cornerRadius: 25)
+                    .stroke(.black, lineWidth: 1)
+            }
+            Spacer()
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 

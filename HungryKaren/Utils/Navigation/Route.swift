@@ -12,4 +12,8 @@ enum Route: Hashable {
     case signUpView
     case forgotPasswordView
     case mainView
+    case profileView
+    case favouritesView
+    case preferencesView
+    case settingsView
 }
