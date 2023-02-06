@@ -12,6 +12,7 @@ struct ForgotPasswordView: View {
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @EnvironmentObject var navigationRouter: NavigationRouter
 
+    @State var showAlert: Bool = false
     @State var email: String = ""
     
     var body: some View {
@@ -39,8 +40,15 @@ struct ForgotPasswordView: View {
                 )
                 Spacer().frame(height: 29)
                 Button {
-                    authViewModel.forgotPassword(email: email) { success in
-                        if success { navigationRouter.navigateBack() }
+                    authViewModel.forgotPassword(email: email) {
+                        
+                        if authViewModel.errorMessage != nil {
+                            withAnimation {
+                                showAlert.toggle()
+                            }
+                        } else {
+                            navigationRouter.navigateBack()
+                        }
                     }
                 } label: {
                     Text("send")
@@ -51,6 +59,14 @@ struct ForgotPasswordView: View {
                 Spacer().frame(height: 177)
             }
             .frame(width: 316, height: 510)
+            
+            if showAlert {
+                HKAlertView(showAlert: $showAlert, alertType: .error(message: authViewModel.errorMessage ?? "An unexoected error")) {
+                    withAnimation {
+                        showAlert.toggle()
+                    }
+                }
+            }
         }
         .navigationBarBackButtonHidden(true)
         .gesture(NavigateBackDragGesture(completion: { navigationRouter.navigateBack() }))

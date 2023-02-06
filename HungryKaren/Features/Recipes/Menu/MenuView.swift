@@ -129,7 +129,7 @@ struct MenuView: View {
                         .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.5), value: animate)
                 }
                 Button {
-                    authViewModel.signOut { result in
+                    authViewModel.signOut {
                         navigationRouter.navigateBackToStart()
                     }
                 } label: {

@@ -9,10 +9,10 @@ import Firebase
 
 class AuthenticationRepository {
     
-    private let firebaseAuth = Auth.auth()
+    private let fbAuth = Auth.auth()
     
     func getCurrentUser() -> FirebaseAuth.User? {
-        return firebaseAuth.currentUser
+        return fbAuth.currentUser
     }
     
     func signInWithEmailAndPass(
@@ -20,8 +20,28 @@ class AuthenticationRepository {
         password: String,
         completion: @escaping (FirebaseAuth.User?, Error?) -> Void
     ) {
-        firebaseAuth.signIn(withEmail: email, password: password) { result, error in
+        fbAuth.signIn(withEmail: email, password: password) { result, error in
             completion(result?.user, error)
         }
+    }
+    
+    func signUpWithEmailAndPass(
+        email: String,
+        password: String,
+        completion: @escaping (FirebaseAuth.User?, Error?) -> Void
+    ) {
+        fbAuth.createUser(withEmail: email, password: password) { result, error in
+            completion(result?.user, error)
+        }
+    }
+    
+    func resetPassword(email: String, completion: @escaping (Error?) -> Void) {
+        fbAuth.sendPasswordReset(withEmail: email) { error in
+            completion(error)
+        }
+    }
+    
+    func signOut() {
+        try? fbAuth.signOut()
     }
 }

@@ -10,34 +10,44 @@ import Firebase
 
 class AuthenticationViewModel: ObservableObject {
     
+    private let authenticationRepository = AuthenticationRepository()
+    private let userRepository = UserRepository()
+    
     @Published var currentUser: FirebaseAuth.User?
+    @Published var isLoading: Bool = false
+    @Published var errorMessage: String? = nil
     
     init() {
-        self.currentUser = Auth.auth().currentUser
+        self.currentUser = authenticationRepository.getCurrentUser()
     }
     
     func signInWithEmailAndPassword(
         email: String,
         password: String,
-        completion: @escaping (String?) -> Void
+        completion: @escaping () -> Void
     ) {
+        isLoading = true
+        errorMessage = nil
+        
         if email.isEmpty || password.isEmpty {
-            print("DEBUG: Fill all fields")
-            completion("Fill all fields")
+            errorMessage = "Fill all fields"
+            isLoading = false
+            completion()
             return
         }
         
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+        authenticationRepository.signInWithEmailAndPass(email: email, password: password) { user, error in
             if let error = error {
-                print("DEBUG: Login failed: \(error.localizedDescription)")
-                completion(error.localizedDescription)
+                self.errorMessage = error.localizedDescription
+                self.isLoading = false
+                completion()
                 return
             }
             
-            guard let user = result?.user else { return }
+            guard let user = user else { return }
             self.currentUser = user
-            print("DEBUG: Login success")
-            completion(nil)
+            self.isLoading = false
+            completion()
         }
     }
     
@@ -46,62 +56,78 @@ class AuthenticationViewModel: ObservableObject {
         name: String,
         password: String,
         confirmPassword: String,
-        completion: @escaping (Bool) -> Void
+        completion: @escaping () -> Void
     ) {
+        isLoading = true
+        errorMessage = nil
+        
         if email.isEmpty || name.isEmpty || password.isEmpty || confirmPassword.isEmpty {
-            print("DEBUG: Fill all fields")
+            errorMessage = "Fill all fields"
+            isLoading = false
+            completion()
             return
         }
         
         if password != confirmPassword {
-            print("DEBUG: Passwords are different")
+            errorMessage = "Passwords are different"
+            isLoading = false
+            completion()
             return
         }
         
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+        authenticationRepository.signUpWithEmailAndPass(email: email, password: password) { user, error in
             if let error = error {
-                print("DEBUG: Registration failed: \(error.localizedDescription)")
+                self.errorMessage = error.localizedDescription
+                self.isLoading = false
+                completion()
                 return
             }
             
-            guard let user = result?.user else { return }
+            guard let user = user else { return }
             self.currentUser = user
-            print("DEBUG: Registration success")
             
-            let data = ["email": email,
-                        "name": name,
-                        "uis": user.uid]
+            let userData = User(uid: user.uid, email: email, name: name)
             
-            Firestore.firestore().collection("users")
-                .document(user.uid)
-                .setData(data) { _ in
-                    print("DEBUG: User data saved")
-                    completion(true)
-                }
+            self.userRepository.saveUserData(user: userData) {
+                self.isLoading = false
+                completion()
+            }
         }
     }
     
-    func forgotPassword(email: String, completion: @escaping (Bool) -> Void) {
+    func forgotPassword(email: String, completion: @escaping () -> Void) {
+        
+        isLoading = true
+        errorMessage = nil
+        
         if email.isEmpty {
-            print("DEBUG: Email address is required")
+            errorMessage = "Email address is required"
+            isLoading = false
+            completion()
             return
         }
         
-        Auth.auth().sendPasswordReset(withEmail: email) { error in
+        authenticationRepository.resetPassword(email: email) { error in
             if let error = error {
-                print("DEBUG: Reset password failed: \(error.localizedDescription)")
+                self.errorMessage = error.localizedDescription
+                self.isLoading = false
+                completion()
                 return
             }
             
-            completion(true)
+            self.isLoading = false
+            completion()
         }
     }
     
-    func signOut(completion: @escaping (Bool) -> Void) {
+    func signOut(completion: @escaping () -> Void) {
+        isLoading = true
+        errorMessage = nil
         print("DEBUG: Signed out")
         currentUser = nil
         try? Auth.auth().signOut()
-        completion(true)
+        isLoading = false
+        completion()
     }
 }
 

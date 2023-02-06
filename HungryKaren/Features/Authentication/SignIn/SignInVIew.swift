@@ -56,30 +56,34 @@ struct SignInVIew: View {
                 }
                 Spacer().frame(height: 29)
                 Button {
-                    authViewModel.signInWithEmailAndPassword(email: email, password: password) { result in
+                    authViewModel.signInWithEmailAndPassword(email: email, password: password) {
                         
-                        if result != nil {
+                        if authViewModel.errorMessage != nil {
                             withAnimation {
                                 showAlert.toggle()
                             }
                         }
                         
-                        if authViewModel.currentUser != nil && result == nil {
+                        if authViewModel.currentUser != nil {
                             navigationRouter.navigate(route: .mainView)
                         }
                     }
                 } label: {
-                    Text("okay")
-                        .fontWeight(.medium)
-                        .font(.system(size: 16))
-                        .foregroundColor(mainTextColor)
+                    if authViewModel.isLoading {
+                        ProgressView()
+                    } else {
+                        Text("okay")
+                            .fontWeight(.medium)
+                            .font(.system(size: 16))
+                            .foregroundColor(mainTextColor)
+                    }
                 }
                 Spacer().frame(height: 111)
             }
             .frame(width: 316, height: 510)
             
             if showAlert {
-                HKAlertView(showAlert: $showAlert, alertType: .success(message: "All went good")) {
+                HKAlertView(showAlert: $showAlert, alertType: .error(message: authViewModel.errorMessage ?? "An unexoected error")) {
                     withAnimation {
                         showAlert.toggle()
                     }

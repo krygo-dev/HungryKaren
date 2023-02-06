@@ -12,6 +12,7 @@ struct SignUpView: View {
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @EnvironmentObject var navigationRouter: NavigationRouter
 
+    @State var showAlert: Bool = false
     @State var email: String = ""
     @State var name: String = ""
     @State var password: String = ""
@@ -75,8 +76,15 @@ struct SignUpView: View {
                         email: email,
                         name: name,
                         password: password,
-                        confirmPassword: confirmPassword) { success in
-                            if authViewModel.currentUser != nil && success {
+                        confirmPassword: confirmPassword) {
+                            
+                            if authViewModel.errorMessage != nil {
+                                withAnimation {
+                                    showAlert.toggle()
+                                }
+                            }
+                            
+                            if authViewModel.currentUser != nil {
                                 navigationRouter.navigate(route: .mainView)
                             }
                         }
@@ -90,6 +98,14 @@ struct SignUpView: View {
                 Spacer().frame(height: 116)
             }
             .frame(width: 316, height: 510)
+            
+            if showAlert {
+                HKAlertView(showAlert: $showAlert, alertType: .error(message: authViewModel.errorMessage ?? "An unexoected error")) {
+                    withAnimation {
+                        showAlert.toggle()
+                    }
+                }
+            }
         }
         .navigationBarBackButtonHidden(true)
         .gesture(NavigateBackDragGesture(completion: { navigationRouter.navigateBack() }))
