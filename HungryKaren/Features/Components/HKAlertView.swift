@@ -50,7 +50,7 @@ struct HKAlertView: View {
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                 }
             }
-            .frame(width: 270, height: 200)
+            .frame(width: 270, height: 170)
             .background(Color.white)
             .cornerRadius(10)
         }

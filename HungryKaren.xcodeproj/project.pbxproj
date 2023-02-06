@@ -20,6 +20,7 @@
 		0C3F1E7229842BF500287314 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F1E7129842BF500287314 /* MainView.swift */; };
 		0C5FC8B72991191100AC2EE7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5FC8B62991191100AC2EE7 /* UserModel.swift */; };
 		0C5FC8B929911A7200AC2EE7 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5FC8B829911A7200AC2EE7 /* UserRepository.swift */; };
+		0C5FC8BB29913DA700AC2EE7 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5FC8BA29913DA700AC2EE7 /* Strings.swift */; };
 		0C875B7D298AA14100EA926B /* SearchFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C875B7C298AA14100EA926B /* SearchFilters.swift */; };
 		0C875B7F298AAB4600EA926B /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C875B7E298AAB4600EA926B /* FilterModel.swift */; };
 		0C875B81298AB5DC00EA926B /* SearchFilterCheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C875B80298AB5DC00EA926B /* SearchFilterCheckBoxView.swift */; };
@@ -68,6 +69,7 @@
 		0C3F1E7129842BF500287314 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0C5FC8B62991191100AC2EE7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		0C5FC8B829911A7200AC2EE7 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		0C5FC8BA29913DA700AC2EE7 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		0C875B7C298AA14100EA926B /* SearchFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilters.swift; sourceTree = "<group>"; };
 		0C875B7E298AAB4600EA926B /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
 		0C875B80298AB5DC00EA926B /* SearchFilterCheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterCheckBoxView.swift; sourceTree = "<group>"; };
@@ -306,8 +308,9 @@
 			isa = PBXGroup;
 			children = (
 				0CC39B1C297FDCDB0099F733 /* Navigation */,
-				0CE2B51E297B276400194236 /* Colors.swift */,
 				0C2578B92981658A00F5F0CA /* AlertType.swift */,
+				0CE2B51E297B276400194236 /* Colors.swift */,
+				0C5FC8BA29913DA700AC2EE7 /* Strings.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				0CC39B1B297FD9920099F733 /* NavigationRouter.swift in Sources */,
 				0CADF135298BB6180030BE95 /* SettingsView.swift in Sources */,
 				0CE2B521297B38FD00194236 /* HKAuthBackgroundCanvasView.swift in Sources */,
+				0C5FC8BB29913DA700AC2EE7 /* Strings.swift in Sources */,
 				0C5FC8B72991191100AC2EE7 /* UserModel.swift in Sources */,
 				0C0A76172988116B00B9CF7C /* HKRecipeListItemView.swift in Sources */,
 				0C0E35832986A62400AD7E43 /* HKTopBarView.swift in Sources */,

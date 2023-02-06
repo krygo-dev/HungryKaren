@@ -78,7 +78,7 @@ struct SignUpView: View {
                         password: password,
                         confirmPassword: confirmPassword) {
                             
-                            if authViewModel.errorMessage != nil {
+                            if authViewModel.alert != nil {
                                 withAnimation {
                                     showAlert.toggle()
                                 }
@@ -90,19 +90,25 @@ struct SignUpView: View {
                         }
                     
                 } label: {
-                    Text("okay")
-                        .fontWeight(.medium)
-                        .font(.system(size: 16))
-                        .foregroundColor(mainTextColor)
+                    if authViewModel.isLoading {
+                        ProgressView()
+                    } else {
+                        Text("okay")
+                            .fontWeight(.medium)
+                            .font(.system(size: 16))
+                            .foregroundColor(mainTextColor)
+                    }
                 }
                 Spacer().frame(height: 116)
             }
             .frame(width: 316, height: 510)
             
             if showAlert {
-                HKAlertView(showAlert: $showAlert, alertType: .error(message: authViewModel.errorMessage ?? "An unexoected error")) {
-                    withAnimation {
-                        showAlert.toggle()
+                if showAlert {
+                    HKAlertView(showAlert: $showAlert, alertType: (authViewModel.alert ?? .error(message: unexpectedError))) {
+                        withAnimation {
+                            showAlert.toggle()
+                        }
                     }
                 }
             }

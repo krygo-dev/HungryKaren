@@ -42,7 +42,7 @@ struct ForgotPasswordView: View {
                 Button {
                     authViewModel.forgotPassword(email: email) {
                         
-                        if authViewModel.errorMessage != nil {
+                        if authViewModel.alert != nil {
                             withAnimation {
                                 showAlert.toggle()
                             }
@@ -51,17 +51,21 @@ struct ForgotPasswordView: View {
                         }
                     }
                 } label: {
-                    Text("send")
-                        .fontWeight(.medium)
-                        .font(.system(size: 16))
-                        .foregroundColor(mainTextColor)
+                    if authViewModel.isLoading {
+                        ProgressView()
+                    } else {
+                        Text("send")
+                            .fontWeight(.medium)
+                            .font(.system(size: 16))
+                            .foregroundColor(mainTextColor)
+                    }
                 }
                 Spacer().frame(height: 177)
             }
             .frame(width: 316, height: 510)
             
             if showAlert {
-                HKAlertView(showAlert: $showAlert, alertType: .error(message: authViewModel.errorMessage ?? "An unexoected error")) {
+                HKAlertView(showAlert: $showAlert, alertType: (authViewModel.alert ?? .error(message: unexpectedError))) {
                     withAnimation {
                         showAlert.toggle()
                     }

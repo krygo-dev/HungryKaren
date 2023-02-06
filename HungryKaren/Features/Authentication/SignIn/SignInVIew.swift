@@ -57,8 +57,8 @@ struct SignInVIew: View {
                 Spacer().frame(height: 29)
                 Button {
                     authViewModel.signInWithEmailAndPassword(email: email, password: password) {
-                        
-                        if authViewModel.errorMessage != nil {
+
+                        if authViewModel.alert != nil {
                             withAnimation {
                                 showAlert.toggle()
                             }
@@ -83,7 +83,7 @@ struct SignInVIew: View {
             .frame(width: 316, height: 510)
             
             if showAlert {
-                HKAlertView(showAlert: $showAlert, alertType: .error(message: authViewModel.errorMessage ?? "An unexoected error")) {
+                HKAlertView(showAlert: $showAlert, alertType: (authViewModel.alert ?? .error(message: unexpectedError))) {
                     withAnimation {
                         showAlert.toggle()
                     }

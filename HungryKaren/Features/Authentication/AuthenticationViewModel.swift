@@ -13,9 +13,9 @@ class AuthenticationViewModel: ObservableObject {
     private let authenticationRepository = AuthenticationRepository()
     private let userRepository = UserRepository()
     
-    @Published var currentUser: FirebaseAuth.User?
-    @Published var isLoading: Bool = false
-    @Published var errorMessage: String? = nil
+    @Published private(set) var currentUser: FirebaseAuth.User?
+    @Published private(set) var isLoading: Bool = false
+    @Published private(set) var alert: AlertType? = nil
     
     init() {
         self.currentUser = authenticationRepository.getCurrentUser()
@@ -27,10 +27,10 @@ class AuthenticationViewModel: ObservableObject {
         completion: @escaping () -> Void
     ) {
         isLoading = true
-        errorMessage = nil
+        alert = nil
         
         if email.isEmpty || password.isEmpty {
-            errorMessage = "Fill all fields"
+            alert = .error(message: fillAllFieldsError)
             isLoading = false
             completion()
             return
@@ -38,7 +38,7 @@ class AuthenticationViewModel: ObservableObject {
         
         authenticationRepository.signInWithEmailAndPass(email: email, password: password) { user, error in
             if let error = error {
-                self.errorMessage = error.localizedDescription
+                self.alert = .error(message: error.localizedDescription)
                 self.isLoading = false
                 completion()
                 return
@@ -59,17 +59,17 @@ class AuthenticationViewModel: ObservableObject {
         completion: @escaping () -> Void
     ) {
         isLoading = true
-        errorMessage = nil
+        alert = nil
         
         if email.isEmpty || name.isEmpty || password.isEmpty || confirmPassword.isEmpty {
-            errorMessage = "Fill all fields"
+            alert = .error(message: fillAllFieldsError)
             isLoading = false
             completion()
             return
         }
         
         if password != confirmPassword {
-            errorMessage = "Passwords are different"
+            alert = .error(message: differentPasswordsError)
             isLoading = false
             completion()
             return
@@ -77,7 +77,7 @@ class AuthenticationViewModel: ObservableObject {
         
         authenticationRepository.signUpWithEmailAndPass(email: email, password: password) { user, error in
             if let error = error {
-                self.errorMessage = error.localizedDescription
+                self.alert = .error(message: error.localizedDescription)
                 self.isLoading = false
                 completion()
                 return
@@ -98,10 +98,10 @@ class AuthenticationViewModel: ObservableObject {
     func forgotPassword(email: String, completion: @escaping () -> Void) {
         
         isLoading = true
-        errorMessage = nil
+        alert = nil
         
         if email.isEmpty {
-            errorMessage = "Email address is required"
+            alert = .error(message: emailAddresRequiredError)
             isLoading = false
             completion()
             return
@@ -109,7 +109,7 @@ class AuthenticationViewModel: ObservableObject {
         
         authenticationRepository.resetPassword(email: email) { error in
             if let error = error {
-                self.errorMessage = error.localizedDescription
+                self.alert = .error(message: error.localizedDescription)
                 self.isLoading = false
                 completion()
                 return
@@ -121,12 +121,9 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func signOut(completion: @escaping () -> Void) {
-        isLoading = true
-        errorMessage = nil
-        print("DEBUG: Signed out")
+        alert = nil
         currentUser = nil
         try? Auth.auth().signOut()
-        isLoading = false
         completion()
     }
 }
