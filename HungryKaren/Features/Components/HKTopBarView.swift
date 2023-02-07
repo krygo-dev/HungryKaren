@@ -30,7 +30,7 @@ struct HKTopBarView: View {
                 }
             }
         }
-        .frame(width: .infinity, height: 30)
+        .frame(height: 30)
         .foregroundColor(thirdTitleColor)
         .fontWeight(.medium)
         .padding(.horizontal, 20)

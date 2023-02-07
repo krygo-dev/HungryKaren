@@ -16,7 +16,7 @@ class HomeViewModel: ObservableObject {
     @Published private(set) var alert: AlertType? = nil
     
     init() {
-        getRecipes {
+        getRecipesByIngredients {
             print("Data fetched")
         }
     }
@@ -25,7 +25,7 @@ class HomeViewModel: ObservableObject {
         isLoading = true
         alert = nil
         
-        recipesRepository.recipesComplexSearch(searchQuery: queryExample) { result, error in
+        recipesRepository.fetchRecipesByComplexSearch(searchQuery: queryExample) { result, error in
             
             DispatchQueue.main.async {
                 if let error = error {
@@ -37,6 +37,29 @@ class HomeViewModel: ObservableObject {
                 
                 guard let result = result else { return }
                 self.recipesList = result.results
+                self.isLoading = false
+                print(self.recipesList)
+                completion()
+            }
+        }
+    }
+    
+    func getRecipesByIngredients(completion: @escaping () -> Void) {
+        isLoading = true
+        alert = nil
+        
+        recipesRepository.fetchRecipesByIngredients(ingredients: ["apple", "flour", "sugar", "butter", "pear"]) { result, error in
+            
+            DispatchQueue.main.async {
+                if let error = error {
+                    self.alert = .error(message: error)
+                    self.isLoading = false
+                    completion()
+                    return
+                }
+                
+                guard let result = result else { return }
+                self.recipesList = result
                 self.isLoading = false
                 print(self.recipesList)
                 completion()

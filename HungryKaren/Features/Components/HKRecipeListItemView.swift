@@ -69,9 +69,3 @@ struct HKRecipeListItemView: View {
         }
     }
 }
-
-//struct HKRecipeListItemView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HKRecipeListItemView()
-//    }
-//}

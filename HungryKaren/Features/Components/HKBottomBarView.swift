@@ -76,7 +76,7 @@ struct HKBottomBarView: View {
                 }
             }
         }
-        .frame(width: .infinity, height: 120)
+        .frame(height: 120)
         .tint(thirdTitleColor)
         .background(.clear)
         .padding(.horizontal, 20)
