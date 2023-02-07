@@ -9,8 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-//    @EnvironmentObject var authViewModel: AuthenticationViewModel
-//    @EnvironmentObject var navigationRouter: NavigationRouter
+    @EnvironmentObject var homeViewModel: HomeViewModel
     
     @State var offset: CGFloat = 0
     @State var previousOffset: CGFloat = 0
@@ -25,8 +24,8 @@ struct HomeView: View {
                     .fontWeight(.medium)
                     .foregroundColor(secondTitleColor)
                     .padding(.leading, 17)
-                ForEach(0..<10) { _ in
-                    HKRecipeListItemView()
+                ForEach(homeViewModel.recipesList) { recipe in
+                    HKRecipeListItemView(recipe: recipe)
                 }
             }
             .padding(.vertical, 40)
@@ -70,6 +69,13 @@ struct HomeView: View {
         }
         .onDisappear {
             UIScrollView.appearance().bounces = true
+        }
+        
+        if homeViewModel.isLoading {
+            ZStack {
+                Color.white
+                ProgressView()
+            }
         }
     }
 }

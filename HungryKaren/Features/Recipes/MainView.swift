@@ -13,6 +13,7 @@ struct MainView: View {
     @EnvironmentObject var navigationRouter: NavigationRouter
     
     @StateObject var searchFilters: SearchFilters = SearchFilters()
+    @StateObject var homeViewModel = HomeViewModel()
     
     @State var selectedScreen: Screen = .home
     @State var showMenu: Bool = false
@@ -44,7 +45,7 @@ struct MainView: View {
                     }
                 }
 
-                if selectedScreen == .home { HomeView(showTopBar: $showBars) }
+                if selectedScreen == .home { HomeView(showTopBar: $showBars).environmentObject(homeViewModel) }
                 if selectedScreen == .fridge { FridgeView() }
                 if selectedScreen == .cart { CartView() }
                 

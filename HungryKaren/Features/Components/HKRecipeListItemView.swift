@@ -8,25 +8,33 @@
 import SwiftUI
 
 struct HKRecipeListItemView: View {
+    
+    let recipe: Recipe
+    
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
                 HStack {
-                    Text("Porridge")
+                    Text(recipe.title)
                         .font(.system(size: 18))
                     Image(systemName: "heart")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 15, height: 15)
+                    Spacer()
                 }
+                .frame(minWidth: 150, maxWidth: 190)
                 .padding(.top, 17)
+                
                 VStack(alignment: .leading) {
                     Text("Prep time: 5 mins")
                     Text("Cook time: 3 mins")
                     Text("Servings: 1")
                 }
                 .foregroundColor(mainTextColor)
+                
                 Spacer().frame(height: 25)
+                
                 HStack {
                     Rectangle()
                         .frame(width: 217, height: 1)
@@ -44,8 +52,17 @@ struct HKRecipeListItemView: View {
             
             HStack(alignment: .top) {
                 Spacer()
-                Circle()
-                    .frame(width: 122, height: 122)
+                AsyncImage(url: URL(string: recipe.image)) { res in
+                    if let image = res.image {
+                        image.resizable()
+                            .scaledToFill()
+                            .frame(width: 122, height: 122)
+                            .clipShape(Circle())
+                    } else {
+                        ProgressView()
+                            .frame(width: 122, height: 122)
+                    }
+                }
             }
             .frame(width: 350)
             .padding(.bottom, 60)

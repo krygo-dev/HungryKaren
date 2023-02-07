@@ -18,16 +18,16 @@ struct SearchFiltersView: View {
                 Group {
                     Text("Diet")
                     HStack(spacing: 30) {
-                        SearchFilterCheckBoxView(filter: $searchFilters.dietFilters[0])
-                        SearchFilterCheckBoxView(filter: $searchFilters.dietFilters[1])
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.dietFilters[0])
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.dietFilters[1])
                     }
                     HStack(spacing: 30) {
-                        SearchFilterCheckBoxView(filter: $searchFilters.dietFilters[2])
-                        SearchFilterCheckBoxView(filter: $searchFilters.dietFilters[3])
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.dietFilters[2])
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.dietFilters[3])
                     }
                     HStack(spacing: 30) {
-                        SearchFilterCheckBoxView(filter: $searchFilters.dietFilters[4])
-                        SearchFilterCheckBoxView(filter: $searchFilters.dietFilters[5])
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.dietFilters[4])
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.dietFilters[5])
                     }
                 }
                 
@@ -39,16 +39,16 @@ struct SearchFiltersView: View {
                 Group {
                     Text("Meal type")
                     HStack(spacing: 30) {
-                        SearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[0], bgColor: primaryColor)
-                        SearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[1], bgColor: primaryColor)
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[0], bgColor: primaryColor)
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[1], bgColor: primaryColor)
                     }
                     HStack(spacing: 30) {
-                        SearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[2], bgColor: primaryColor)
-                        SearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[3], bgColor: primaryColor)
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[2], bgColor: primaryColor)
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[3], bgColor: primaryColor)
                     }
                     HStack(spacing: 30) {
-                        SearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[4], bgColor: primaryColor)
-                        SearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[5], bgColor: primaryColor)
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[4], bgColor: primaryColor)
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[5], bgColor: primaryColor)
                     }
                 }
                 
@@ -60,16 +60,16 @@ struct SearchFiltersView: View {
                 Group {
                     Text("Cuisine")
                     HStack(spacing: 30) {
-                        SearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[0])
-                        SearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[1])
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[0])
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[1])
                     }
                     HStack(spacing: 30) {
-                        SearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[2])
-                        SearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[3])
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[2])
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[3])
                     }
                     HStack(spacing: 30) {
-                        SearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[4])
-                        SearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[5])
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[4])
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[5])
                     }
                 }
                 
@@ -81,16 +81,16 @@ struct SearchFiltersView: View {
                 Group {
                     Text("Intolerance")
                     HStack(spacing: 30) {
-                        SearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[0], bgColor: primaryColor)
-                        SearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[1], bgColor: primaryColor)
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[0], bgColor: primaryColor)
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[1], bgColor: primaryColor)
                     }
                     HStack(spacing: 30) {
-                        SearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[2], bgColor: primaryColor)
-                        SearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[3], bgColor: primaryColor)
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[2], bgColor: primaryColor)
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[3], bgColor: primaryColor)
                     }
                     HStack(spacing: 30) {
-                        SearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[4], bgColor: primaryColor)
-                        SearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[5], bgColor: primaryColor)
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[4], bgColor: primaryColor)
+                        HKSearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[5], bgColor: primaryColor)
                     }
                 }
             }

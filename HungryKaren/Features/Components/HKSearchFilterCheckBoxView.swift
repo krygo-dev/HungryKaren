@@ -1,5 +1,5 @@
 //
-//  SearchFilterCheckBoxView.swift
+//  HKSearchFilterCheckBoxView.swift
 //  HungryKaren
 //
 //  Created by Adam Chylaszek on 01/02/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SearchFilterCheckBoxView: View {
+struct HKSearchFilterCheckBoxView: View {
     
     @Binding var filter: Filter
     var bgColor: Color = searchBarBgColor
