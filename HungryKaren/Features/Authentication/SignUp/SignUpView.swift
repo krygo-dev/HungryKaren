@@ -12,7 +12,6 @@ struct SignUpView: View {
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @EnvironmentObject var navigationRouter: NavigationRouter
 
-    @State var showAlert: Bool = false
     @State var email: String = ""
     @State var name: String = ""
     @State var password: String = ""
@@ -68,6 +67,12 @@ struct SignUpView: View {
                         fieldHeight: fieldHeight,
                         isSecureField: true
                     )
+                    Text(authViewModel.alert?.message() ?? "")
+                        .truncationMode(.tail)
+                        .foregroundColor(errorTextColor)
+                        .fontWeight(.medium)
+                        .font(.system(size: 10))
+                        .frame(width: 200, height: 28, alignment: .center)
 
                 }
                 Spacer().frame(height: 35)
@@ -77,13 +82,6 @@ struct SignUpView: View {
                         name: name,
                         password: password,
                         confirmPassword: confirmPassword) {
-                            
-                            if authViewModel.alert != nil {
-                                withAnimation {
-                                    showAlert.toggle()
-                                }
-                            }
-                            
                             if authViewModel.currentUser != nil {
                                 navigationRouter.navigate(route: .mainView)
                             }
@@ -102,19 +100,12 @@ struct SignUpView: View {
                 Spacer().frame(height: 116)
             }
             .frame(width: 316, height: 510)
-            
-            if showAlert {
-                if showAlert {
-                    HKAlertView(showAlert: $showAlert, alertType: (authViewModel.alert ?? .error(message: unexpectedError))) {
-                        withAnimation {
-                            showAlert.toggle()
-                        }
-                    }
-                }
-            }
         }
         .navigationBarBackButtonHidden(true)
         .gesture(NavigateBackDragGesture(completion: { navigationRouter.navigateBack() }))
+        .onAppear {
+            authViewModel.removeAlert()
+        }
     }
 }
 

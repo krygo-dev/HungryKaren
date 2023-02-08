@@ -126,5 +126,8 @@ class AuthenticationViewModel: ObservableObject {
         try? Auth.auth().signOut()
         completion()
     }
+    
+    func removeAlert() {
+        self.alert = nil
+    }
 }
-

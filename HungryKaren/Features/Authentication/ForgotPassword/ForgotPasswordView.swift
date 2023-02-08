@@ -12,7 +12,6 @@ struct ForgotPasswordView: View {
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @EnvironmentObject var navigationRouter: NavigationRouter
 
-    @State var showAlert: Bool = false
     @State var email: String = ""
     
     var body: some View {
@@ -38,15 +37,16 @@ struct ForgotPasswordView: View {
                     fieldWidth: 254,
                     fieldHeight: 58
                 )
+                Text(authViewModel.alert?.message() ?? "")
+                    .truncationMode(.tail)
+                    .foregroundColor(errorTextColor)
+                    .fontWeight(.medium)
+                    .font(.system(size: 10))
+                    .frame(width: 200, height: 28, alignment: .center)
                 Spacer().frame(height: 29)
                 Button {
                     authViewModel.forgotPassword(email: email) {
-                        
-                        if authViewModel.alert != nil {
-                            withAnimation {
-                                showAlert.toggle()
-                            }
-                        } else {
+                        if authViewModel.alert == nil {
                             navigationRouter.navigateBack()
                         }
                     }
@@ -63,17 +63,12 @@ struct ForgotPasswordView: View {
                 Spacer().frame(height: 177)
             }
             .frame(width: 316, height: 510)
-            
-            if showAlert {
-                HKAlertView(showAlert: $showAlert, alertType: (authViewModel.alert ?? .error(message: unexpectedError))) {
-                    withAnimation {
-                        showAlert.toggle()
-                    }
-                }
-            }
         }
         .navigationBarBackButtonHidden(true)
         .gesture(NavigateBackDragGesture(completion: { navigationRouter.navigateBack() }))
+        .onAppear {
+            authViewModel.removeAlert()
+        }
     }
 }
 
