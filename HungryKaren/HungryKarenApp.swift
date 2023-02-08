@@ -21,10 +21,9 @@ struct HungryKarenApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $navigationRouter.path) {
-                SplashView()
+                StartView()
                     .navigationDestination(for: Route.self) { route in
                         switch route {
-                            case .splashView: SplashView()
                             case .startView: StartView()
                             case .signInView: SignInVIew()
                             case .signUpView: SignUpView()

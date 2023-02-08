@@ -19,6 +19,6 @@ class NavigationRouter: ObservableObject {
     }
     
     func navigateBackToStart() {
-        path = [.splashView]
+        path = [.startView]
     }
 }

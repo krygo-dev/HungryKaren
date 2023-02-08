@@ -9,13 +9,13 @@ import Foundation
 
 class RecipesRespository {
     
-    private let recipesComplexSearchUrl = "https://api.spoonacular.com/recipes/complexSearch?"
-    private let searchRecipeByIngredientsUrl = "https://api.spoonacular.com/recipes/findByIngredients?ingredients="
+    private let searchRecipesComplexSearchUrl = "https://api.spoonacular.com/recipes/complexSearch?"
+    private let searchRecipesByIngredientsUrl = "https://api.spoonacular.com/recipes/findByIngredients?ingredients="
     
     func fetchRecipesByComplexSearch(searchQuery: Query, completion: @escaping (RecipesResults?, String?) -> Void) {
         
-        guard let url = URL(string: recipesComplexSearchUrl +
-            "query=\(searchQuery.query)&diet=\(searchQuery.diet)&cuisine=\(searchQuery.cuisine)&intolerance=\(searchQuery.intolerance)&mealType=\(searchQuery.mealType)&number=5&apiKey=\(spoonacularApiKey)") else {
+        guard let url = URL(string: searchRecipesComplexSearchUrl +
+                            "query=\(searchQuery.query)&diet=\(searchQuery.diet)&cuisine=\(searchQuery.cuisine)&intolerance=\(searchQuery.intolerance)&mealType=\(searchQuery.mealType)&number=5&apiKey=\(spoonacularApiKey)") else {
             completion(nil, unexpectedError)
             return
         }
@@ -49,7 +49,7 @@ class RecipesRespository {
         
         ingredientsString.removeLast(2)
         
-        guard let url = URL(string: searchRecipeByIngredientsUrl + "\(ingredientsString)&number=10&apiKey=\(spoonacularApiKey)") else {
+        guard let url = URL(string: searchRecipesByIngredientsUrl + "\(ingredientsString)&number=10&apiKey=\(spoonacularApiKey)") else {
             completion(nil, unexpectedError)
             return
         }

@@ -6,7 +6,6 @@
 //
 
 enum Route: Hashable {
-    case splashView
     case startView
     case signInView
     case signUpView
