@@ -19,6 +19,6 @@ var errorTextColor: Color = Color(red: 182 / 255, green: 17 / 255, blue: 17 / 25
 
 
 // Second color set
-var alternatePrimaryColor: Color = Color(red: 241 / 255, green: 236 / 255, blue: 236 / 255) // e1ecec
+var alternatePrimaryColor: Color = Color(red: 241 / 255, green: 236 / 255, blue: 236 / 255) // f1ecec
 var alternateSecondaryColor: Color = Color(red: 234 / 255, green: 212 / 255, blue: 212 / 255) // ead4d4
 var alternateTertiaryColor: Color = Color(red: 245 / 255, green: 182 / 255, blue: 194 / 255) // f5b6c2

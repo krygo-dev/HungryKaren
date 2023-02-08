@@ -8,13 +8,41 @@
 import SwiftUI
 
 struct FridgeView: View {
+    
+    @State var showProducts: Bool = false
+    @State var showSpices: Bool = false
+    
     var body: some View {
         VStack {
             Spacer()
             VStack {
-                Text("Fridge")
+                ScrollView(.vertical, showsIndicators: false) {
+                    HKFridgeCategoryRowView(showList: $showProducts, title: "products")
+                    
+                    if showProducts {
+                        
+                        HKFridgeProductRowView(bgColor: alternatePrimaryColor)
+                        
+                        
+                        ForEach(Array(sampleProducts.enumerated()), id: \.element) { index, product in
+                            HKFridgeProductRowView(product: product, bgColor: index % 2 == 0 ? alternateSecondaryColor : alternatePrimaryColor)
+                        }
+                    }
+                    
+                    HKFridgeCategoryRowView(showList: $showSpices, title: "spices")
+                    
+                    if showSpices {
+                        
+                        HKFridgeProductRowView(bgColor: alternatePrimaryColor)
+                        
+                        ForEach(Array(sampleProducts.enumerated()), id: \.element) { index, product in
+                            HKFridgeProductRowView(product: product, bgColor: index % 2 == 0 ? alternateSecondaryColor : alternatePrimaryColor)
+                        }
+                    }
+                }
+                .padding(.horizontal, 17)
             }
-            .padding(.vertical, 40)
+            .padding(.vertical, 20)
             .frame(width: 316, height: 548)
             .overlay {
                 RoundedRectangle(cornerRadius: 25)
