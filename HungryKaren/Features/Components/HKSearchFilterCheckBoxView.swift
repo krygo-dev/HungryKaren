@@ -10,7 +10,7 @@ import SwiftUI
 struct HKSearchFilterCheckBoxView: View {
     
     @Binding var filter: Filter
-    var bgColor: Color = searchBarBgColor
+    var bgColor: Color = quaternaryColor
     
     var body: some View {
         ZStack {

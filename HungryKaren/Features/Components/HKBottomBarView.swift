@@ -93,6 +93,6 @@ struct HKTabView_Previews: PreviewProvider {
             showFilters: .constant(false),
             selectedColor: secondaryColor,
             deselectedColor: primaryColor,
-            searchBarColor: searchBarBgColor)
+            searchBarColor: quaternaryColor)
     }
 }

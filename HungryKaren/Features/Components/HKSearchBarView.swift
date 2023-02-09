@@ -50,6 +50,6 @@ struct HKSearchBarView_Previews: PreviewProvider {
         HKSearchBarView(
             showFilters: .constant(false),
             searchText: .constant(""),
-            backgroundColor: searchBarBgColor)
+            backgroundColor: quaternaryColor)
     }
 }

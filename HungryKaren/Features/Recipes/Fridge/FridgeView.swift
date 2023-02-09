@@ -46,7 +46,7 @@ struct FridgeView: View {
             .frame(width: 316, height: 548)
             .overlay {
                 RoundedRectangle(cornerRadius: 25)
-                    .stroke(.black, lineWidth: 1)
+                    .stroke(mainTextColor, lineWidth: 2)
             }
             Spacer()
         }

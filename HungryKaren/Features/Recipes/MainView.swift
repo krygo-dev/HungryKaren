@@ -58,7 +58,7 @@ struct MainView: View {
                             showFilters: $showFilters,
                             selectedColor: secondaryColor,
                             deselectedColor: primaryColor,
-                            searchBarColor: searchBarBgColor)
+                            searchBarColor: quaternaryColor)
                     } else {
                         HKBottomBarView(
                             selectedScreen: $selectedScreen,
