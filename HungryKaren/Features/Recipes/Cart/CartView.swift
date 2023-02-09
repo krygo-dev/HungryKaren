@@ -9,8 +9,8 @@ import SwiftUI
 
 struct CartView: View {
     
+    @EnvironmentObject var cartViewModel: CartViewModel
     @State var itemName: String = ""
-    @State private var list = sampleCartItems
     
     var body: some View {
         VStack {
@@ -20,13 +20,15 @@ struct CartView: View {
                     
                     HKAddItemToCartRowView(itemName: $itemName) {
                         if !itemName.isEmpty {
-                            list.append(CartItem(name: itemName.lowercased()))
+                            cartViewModel.addItem(item: CartItem(name: itemName.lowercased()))
                             itemName = ""
                         }
                     }
                     
-                    ForEach(Array(list.enumerated()), id: \.element) { index, item in
-                        HKCartItemRowView(cartItem: $list[index], bgColor: index % 2 == 0 ? primaryColor : quaternaryColor)
+                    if !cartViewModel.cartItemList.isEmpty {
+                        ForEach(Array(cartViewModel.cartItemList.enumerated()), id: \.element) { index, item in
+                            HKCartItemRowView(cartItem: $cartViewModel.cartItemList[index], bgColor: index % 2 == 0 ? primaryColor : quaternaryColor)
+                        }
                     }
                 }
                 .padding(.horizontal, 17)
@@ -45,5 +47,6 @@ struct CartView: View {
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
         CartView()
+            .environmentObject(CartViewModel())
     }
 }

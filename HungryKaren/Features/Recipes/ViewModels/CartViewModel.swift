@@ -5,4 +5,13 @@
 //  Created by Adam Chylaszek on 09/02/2023.
 //
 
-import Foundation
+import SwiftUI
+
+final class CartViewModel: ObservableObject {
+    
+    @Published var cartItemList: [CartItem] = []
+    
+    func addItem(item: CartItem) {
+        cartItemList.append(item)
+    }
+}
