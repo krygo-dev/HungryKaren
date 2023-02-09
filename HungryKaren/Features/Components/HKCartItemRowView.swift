@@ -11,6 +11,8 @@ struct HKCartItemRowView: View {
     
     @Binding var cartItem: CartItem
     let bgColor: Color
+    let onLongPress: () -> Void
+    
     
     var body: some View {
         HStack {
@@ -53,5 +55,10 @@ struct HKCartItemRowView: View {
         .foregroundColor(thirdTitleColor)
         .fontWeight(.medium)
         .padding(.bottom, 17)
+        .onLongPressGesture {
+            withAnimation {
+                onLongPress()
+            }
+        }
     }
 }

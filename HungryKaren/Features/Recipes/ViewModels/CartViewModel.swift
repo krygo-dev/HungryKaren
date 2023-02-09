@@ -14,4 +14,8 @@ final class CartViewModel: ObservableObject {
     func addItem(item: CartItem) {
         cartItemList.append(item)
     }
+    
+    func deleteItem(item: CartItem) {
+        cartItemList.removeAll(where: { item == $0 })
+    }
 }

@@ -27,7 +27,11 @@ struct CartView: View {
                     
                     if !cartViewModel.cartItemList.isEmpty {
                         ForEach(Array(cartViewModel.cartItemList.enumerated()), id: \.element) { index, item in
-                            HKCartItemRowView(cartItem: $cartViewModel.cartItemList[index], bgColor: index % 2 == 0 ? primaryColor : quaternaryColor)
+                            HKCartItemRowView(
+                                cartItem: $cartViewModel.cartItemList[index],
+                                bgColor: index % 2 == 0 ? primaryColor : quaternaryColor) {
+                                    cartViewModel.deleteItem(item: item)
+                                }
                         }
                     }
                 }

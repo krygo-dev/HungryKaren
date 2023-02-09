@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CartItem: Identifiable, Hashable {
+struct CartItem: Identifiable, Hashable, Equatable {
     let id = UUID()
     let name: String
     var isChecked: Bool = false
