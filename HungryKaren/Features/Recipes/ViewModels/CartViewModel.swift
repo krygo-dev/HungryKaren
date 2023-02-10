@@ -12,6 +12,8 @@ final class CartViewModel: ObservableObject {
     private let productsRepository = ProductsRepository()
     
     @Published var cartItemList: [CartItem] = []
+    @Published var searchText: String = ""
+    
     
     init() {
         productsRepository.getCartItems { cartItems in
@@ -28,6 +30,7 @@ final class CartViewModel: ObservableObject {
     func deleteItem(item: CartItem) {
         productsRepository.deleteCartItem(item: item)
     }
+    
     
     func updateItem(item: CartItem) {
         productsRepository.updateCartItem(item: item)

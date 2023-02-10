@@ -61,7 +61,6 @@ class HomeViewModel: ObservableObject {
                 guard let result = result else { return }
                 self.recipesList = result
                 self.isLoading = false
-                print(self.recipesList)
                 completion()
             }
         }

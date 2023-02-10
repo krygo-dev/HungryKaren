@@ -84,15 +84,15 @@ struct HKBottomBarView: View {
     }
 }
 
-struct HKTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        HKBottomBarView(
-            selectedScreen: .constant(.home),
-            searchText: .constant(""),
-            showBottomBar: .constant(true),
-            showFilters: .constant(false),
-            selectedColor: secondaryColor,
-            deselectedColor: primaryColor,
-            searchBarColor: quaternaryColor)
-    }
-}
+//struct HKTabView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HKBottomBarView(
+//            selectedScreen: .constant(.home),
+//            searchText: .constant(""),
+//            showBottomBar: .constant(true),
+//            showFilters: .constant(false),
+//            selectedColor: secondaryColor,
+//            deselectedColor: primaryColor,
+//            searchBarColor: quaternaryColor)
+//    }
+//}

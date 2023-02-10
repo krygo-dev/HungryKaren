@@ -32,6 +32,7 @@
 		0C5FC8BB29913DA700AC2EE7 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5FC8BA29913DA700AC2EE7 /* Strings.swift */; };
 		0C5FC8BD29914AAF00AC2EE7 /* RecipesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5FC8BC29914AAF00AC2EE7 /* RecipesRepository.swift */; };
 		0C5FC8C129914B4900AC2EE7 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5FC8C029914B4900AC2EE7 /* HomeViewModel.swift */; };
+		0C61AE1829968F1D00B64684 /* FridgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C61AE1729968F1D00B64684 /* FridgeViewModel.swift */; };
 		0C7E87572993DAEF00F4A150 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E87562993DAEF00F4A150 /* ProductModel.swift */; };
 		0C7E87592993DFFC00F4A150 /* HKFridgeCategoryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E87582993DFFC00F4A150 /* HKFridgeCategoryRowView.swift */; };
 		0C7E875B2993E02900F4A150 /* HKFridgeProductRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E875A2993E02900F4A150 /* HKFridgeProductRowView.swift */; };
@@ -94,6 +95,7 @@
 		0C5FC8BA29913DA700AC2EE7 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		0C5FC8BC29914AAF00AC2EE7 /* RecipesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesRepository.swift; sourceTree = "<group>"; };
 		0C5FC8C029914B4900AC2EE7 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		0C61AE1729968F1D00B64684 /* FridgeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeViewModel.swift; sourceTree = "<group>"; };
 		0C7E87562993DAEF00F4A150 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		0C7E87582993DFFC00F4A150 /* HKFridgeCategoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKFridgeCategoryRowView.swift; sourceTree = "<group>"; };
 		0C7E875A2993E02900F4A150 /* HKFridgeProductRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKFridgeProductRowView.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			children = (
 				0C5FC8C029914B4900AC2EE7 /* HomeViewModel.swift */,
 				0C27DCDF2995106C0023791D /* CartViewModel.swift */,
+				0C61AE1729968F1D00B64684 /* FridgeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				0CCAF519297C66FF00F74951 /* AuthenticationViewModel.swift in Sources */,
 				0C3F1E7229842BF500287314 /* MainView.swift in Sources */,
 				0C3F1E702984191C00287314 /* HKBottomBarView.swift in Sources */,
+				0C61AE1829968F1D00B64684 /* FridgeViewModel.swift in Sources */,
 				0CCAF51D297C6EBA00F74951 /* HomeView.swift in Sources */,
 				0CC39B1B297FD9920099F733 /* NavigationRouter.swift in Sources */,
 				0CADF135298BB6180030BE95 /* SettingsView.swift in Sources */,

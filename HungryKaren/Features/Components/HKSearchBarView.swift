@@ -45,11 +45,11 @@ struct HKSearchBarView: View {
     }
 }
 
-struct HKSearchBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        HKSearchBarView(
-            showFilters: .constant(false),
-            searchText: .constant(""),
-            backgroundColor: quaternaryColor)
-    }
-}
+//struct HKSearchBarView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HKSearchBarView(
+//            showFilters: .constant(false),
+//            searchText: .constant(""),
+//            backgroundColor: quaternaryColor)
+//    }
+//}

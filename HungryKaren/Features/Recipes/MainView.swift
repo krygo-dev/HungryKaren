@@ -15,6 +15,7 @@ struct MainView: View {
     @StateObject var searchFilters: SearchFilters = SearchFilters()
     @StateObject var homeViewModel = HomeViewModel()
     @StateObject var cartViewModel = CartViewModel()
+    @StateObject var fridgeViewModel = FridgeViewModel()
     
     @State var selectedScreen: Screen = .home
     @State var showMenu: Bool = false
@@ -47,7 +48,7 @@ struct MainView: View {
                 }
 
                 if selectedScreen == .home { HomeView(showTopBar: $showBars).environmentObject(homeViewModel) }
-                if selectedScreen == .fridge { FridgeView() }
+                if selectedScreen == .fridge { FridgeView().environmentObject(fridgeViewModel) }
                 if selectedScreen == .cart { CartView().environmentObject(cartViewModel) }
                 
                 if showBars {
@@ -63,7 +64,7 @@ struct MainView: View {
                     } else {
                         HKBottomBarView(
                             selectedScreen: $selectedScreen,
-                            searchText: $searchText,
+                            searchText: $cartViewModel.searchText,
                             showBottomBar: $showBars,
                             showFilters: $showFilters,
                             selectedColor: alternateSecondaryColor,

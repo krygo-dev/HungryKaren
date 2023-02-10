@@ -13,6 +13,7 @@ final class ProductsRepository {
     private let fbFirestore = Firestore.firestore()
     private let currentUser = Auth.auth().currentUser?.uid
     
+    
     func getCartItems(completion: @escaping ([CartItem]) -> Void) {
         
         fbFirestore
@@ -66,6 +67,38 @@ final class ProductsRepository {
                 .collection(cartPath)
                 .document(item.id!)
                 .setData(from: item)
+        } catch {
+            print("DEBUG: \(error.localizedDescription)")
+        }
+    }
+    
+    func getProductsInFridge(completion: @escaping ([Product]) -> Void) {
+        fbFirestore
+            .collection(usersPath)
+            .document(currentUser!)
+            .collection(fridgePath)
+            .addSnapshotListener { snapshot, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                completion(
+                    snapshot?.documents.compactMap {
+                        try? $0.data(as: Product.self)
+                    } ?? []
+                )
+            }
+    }
+    
+    
+    func addProductToFridge(product: Product) {
+        do {
+            _ = try fbFirestore
+                .collection(usersPath)
+                .document(currentUser!)
+                .collection(fridgePath)
+                .addDocument(from: product)
         } catch {
             print("DEBUG: \(error.localizedDescription)")
         }

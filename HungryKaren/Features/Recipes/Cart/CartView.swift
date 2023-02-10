@@ -28,7 +28,7 @@ struct CartView: View {
                     if !cartViewModel.cartItemList.isEmpty {
                         ForEach(Array(cartViewModel.cartItemList.enumerated()), id: \.element) { index, item in
                             HKCartItemRowView(
-                                cartItem: $cartViewModel.cartItemList[index],
+                                cartItem: $cartViewModel.cartItemList[cartViewModel.cartItemList.firstIndex(of: item)!],
                                 bgColor: index % 2 == 0 ? primaryColor : quaternaryColor) {
                                     cartViewModel.deleteItem(item: item)
                                 } onTap: { cartItem in
@@ -38,7 +38,7 @@ struct CartView: View {
                     }
                 }
                 .padding(.horizontal, 17)
-                .animation(.easeIn(duration: 0.3).delay(0.2), value: cartViewModel.cartItemList)
+                .animation(.easeIn(duration: 0.3), value: cartViewModel.cartItemList)
             }
             .padding(.vertical, 20)
             .frame(width: 316, height: 548)

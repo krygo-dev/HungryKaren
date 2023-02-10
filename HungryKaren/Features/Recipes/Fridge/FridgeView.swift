@@ -9,6 +9,8 @@ import SwiftUI
 
 struct FridgeView: View {
     
+    @EnvironmentObject var fridgeViewModel: FridgeViewModel
+    
     @State var showProducts: Bool = false
     @State var showSpices: Bool = false
     
@@ -24,7 +26,7 @@ struct FridgeView: View {
                         HKFridgeProductRowView(bgColor: alternatePrimaryColor)
                         
                         
-                        ForEach(Array(sampleProducts.enumerated()), id: \.element) { index, product in
+                        ForEach(Array(fridgeViewModel.productsList.enumerated()), id: \.element) { index, product in
                             HKFridgeProductRowView(product: product, bgColor: index % 2 == 0 ? alternateSecondaryColor : alternatePrimaryColor)
                         }
                     }
@@ -35,7 +37,7 @@ struct FridgeView: View {
                         
                         HKFridgeProductRowView(bgColor: alternatePrimaryColor)
                         
-                        ForEach(Array(sampleProducts.enumerated()), id: \.element) { index, product in
+                        ForEach(Array(fridgeViewModel.spicesList.enumerated()), id: \.element) { index, product in
                             HKFridgeProductRowView(product: product, bgColor: index % 2 == 0 ? alternateSecondaryColor : alternatePrimaryColor)
                         }
                     }
@@ -56,5 +58,6 @@ struct FridgeView: View {
 struct FridgeView_Previews: PreviewProvider {
     static var previews: some View {
         FridgeView()
+            .environmentObject(FridgeViewModel())
     }
 }
