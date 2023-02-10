@@ -48,7 +48,9 @@ struct HKCartItemRowView: View {
             .onTapGesture {
                 withAnimation {
                     cartItem.isChecked.toggle()
-                    onTap(cartItem)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        onTap(cartItem)
+                    }
                 }
             }
         }

@@ -38,6 +38,7 @@ struct CartView: View {
                     }
                 }
                 .padding(.horizontal, 17)
+                .animation(.easeIn(duration: 0.3).delay(0.2), value: cartViewModel.cartItemList)
             }
             .padding(.vertical, 20)
             .frame(width: 316, height: 548)

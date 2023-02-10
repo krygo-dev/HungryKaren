@@ -19,6 +19,7 @@ final class ProductsRepository {
             .collection(usersPath)
             .document(currentUser!)
             .collection(cartPath)
+            .order(by: "isChecked", descending: false)
             .addSnapshotListener { snapshot, error in
                 if let error = error {
                     print(error.localizedDescription)
