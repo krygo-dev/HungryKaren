@@ -5,19 +5,10 @@
 //  Created by Adam Chylaszek on 09/02/2023.
 //
 
-import Foundation
+import FirebaseFirestoreSwift
 
-struct CartItem: Identifiable, Hashable, Equatable {
-    let id = UUID()
-    let name: String
-    var isChecked: Bool = false
+struct CartItem: Identifiable, Hashable, Equatable, Codable {
+    @DocumentID var id: String?
+    var name: String
+    var isChecked: Bool
 }
-
-let sampleCartItems = [
-    CartItem(name: "cheese"),
-    CartItem(name: "milk"),
-    CartItem(name: "eggs"),
-    CartItem(name: "flour"),
-    CartItem(name: "sugar"),
-    CartItem(name: "honey")
-]

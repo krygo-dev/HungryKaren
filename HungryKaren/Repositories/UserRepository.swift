@@ -9,7 +9,6 @@ import Firebase
 
 class UserRepository {
     private let fbFirestore = Firestore.firestore()
-    private let collectionPath = "users"
     
     func saveUserData(user: User, completion: @escaping () -> Void) {
         
@@ -17,7 +16,7 @@ class UserRepository {
                         "name": user.name,
                         "uid": user.uid]
         
-        fbFirestore.collection(collectionPath)
+        fbFirestore.collection(usersPath)
             .document(user.uid)
             .setData(userData) { _ in
                 completion()

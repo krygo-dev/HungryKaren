@@ -20,7 +20,7 @@ struct CartView: View {
                     
                     HKAddItemToCartRowView(itemName: $itemName) {
                         if !itemName.isEmpty {
-                            cartViewModel.addItem(item: CartItem(name: itemName.lowercased()))
+                            cartViewModel.addItem(item: CartItem(name: itemName.lowercased(), isChecked: false))
                             itemName = ""
                         }
                     }
@@ -31,6 +31,8 @@ struct CartView: View {
                                 cartItem: $cartViewModel.cartItemList[index],
                                 bgColor: index % 2 == 0 ? primaryColor : quaternaryColor) {
                                     cartViewModel.deleteItem(item: item)
+                                } onTap: { cartItem in
+                                    cartViewModel.updateItem(item: cartItem)
                                 }
                         }
                     }

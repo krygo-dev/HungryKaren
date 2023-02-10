@@ -9,13 +9,27 @@ import SwiftUI
 
 final class CartViewModel: ObservableObject {
     
+    private let productsRepository = ProductsRepository()
+    
     @Published var cartItemList: [CartItem] = []
     
-    func addItem(item: CartItem) {
-        cartItemList.append(item)
+    init() {
+        productsRepository.getCartItems { cartItems in
+            self.cartItemList = cartItems
+        }
     }
     
+    
+    func addItem(item: CartItem) {
+        productsRepository.addItemToCart(item: item)
+    }
+    
+    
     func deleteItem(item: CartItem) {
-        cartItemList.removeAll(where: { item == $0 })
+        productsRepository.deleteCartItem(item: item)
+    }
+    
+    func updateItem(item: CartItem) {
+        productsRepository.updateCartItem(item: item)
     }
 }

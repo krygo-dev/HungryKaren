@@ -12,7 +12,7 @@ struct HKCartItemRowView: View {
     @Binding var cartItem: CartItem
     let bgColor: Color
     let onLongPress: () -> Void
-    
+    let onTap: (CartItem) -> Void
     
     var body: some View {
         HStack {
@@ -48,6 +48,7 @@ struct HKCartItemRowView: View {
             .onTapGesture {
                 withAnimation {
                     cartItem.isChecked.toggle()
+                    onTap(cartItem)
                 }
             }
         }
