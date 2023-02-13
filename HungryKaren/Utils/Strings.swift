@@ -9,6 +9,7 @@ let fillAllFieldsError = "Fill up all fields."
 let unexpectedError = "An unexpected error occured."
 let differentPasswordsError = "Passwords are different."
 let emailAddresRequiredError = "Email address is required"
+let badStatusCodeError = "Bad status code."
 
 
 // Firebase paths

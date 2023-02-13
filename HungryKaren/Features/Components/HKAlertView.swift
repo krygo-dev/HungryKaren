@@ -9,8 +9,9 @@ import SwiftUI
 
 struct HKAlertView: View {
     
-    @Binding var showAlert: Bool
     @State var alertType: AlertType
+    @Binding var quantity: String
+    @Binding var isSpice: Bool
     var buttonAction: (() -> ())
     
     var body: some View {
@@ -39,6 +40,10 @@ struct HKAlertView: View {
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 0.5)
                     .padding(.all, 0)
                 
+                TextField("", text: $quantity, prompt: Text("quantity"))
+                
+                Toggle("Product belongs to spices?", isOn: $isSpice)
+                
                 Button {
                     buttonAction()
                 } label: {
@@ -50,7 +55,7 @@ struct HKAlertView: View {
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                 }
             }
-            .frame(width: 270, height: 170)
+            .frame(width: 270, height: 300)
             .background(Color.white)
             .cornerRadius(10)
         }

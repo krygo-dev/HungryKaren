@@ -22,13 +22,15 @@ struct HKBottomBarView: View {
     let selectedColor: Color
     let deselectedColor: Color
     let searchBarColor: Color
+    @FocusState var searchFieldFocused: Bool
     
     var body: some View {
         VStack(spacing: 14) {
             HKSearchBarView(
                 showFilters: $showFilters,
                 searchText: $searchText,
-                backgroundColor: searchBarColor
+                backgroundColor: searchBarColor,
+                searchFieldFocused: _searchFieldFocused
             )
             
             HStack(spacing: 19) {

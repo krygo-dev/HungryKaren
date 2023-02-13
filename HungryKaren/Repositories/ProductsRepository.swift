@@ -12,6 +12,7 @@ final class ProductsRepository {
     
     private let fbFirestore = Firestore.firestore()
     private let currentUser = Auth.auth().currentUser?.uid
+    private let searchIngredientsUrl = "https://api.spoonacular.com/food/ingredients/search?query="
     
     
     func getCartItems(completion: @escaping ([CartItem]) -> Void) {
@@ -72,7 +73,7 @@ final class ProductsRepository {
         }
     }
     
-    func getProductsInFridge(completion: @escaping ([Product]) -> Void) {
+    func getProductsInFridge(completion: @escaping ([FridgeProduct]) -> Void) {
         fbFirestore
             .collection(usersPath)
             .document(currentUser!)
@@ -85,14 +86,14 @@ final class ProductsRepository {
                 
                 completion(
                     snapshot?.documents.compactMap {
-                        try? $0.data(as: Product.self)
+                        try? $0.data(as: FridgeProduct.self)
                     } ?? []
                 )
             }
     }
     
     
-    func addProductToFridge(product: Product) {
+    func addProductToFridge(product: FridgeProduct) {
         do {
             _ = try fbFirestore
                 .collection(usersPath)
@@ -102,5 +103,33 @@ final class ProductsRepository {
         } catch {
             print("DEBUG: \(error.localizedDescription)")
         }
+    }
+    
+    
+    func searchForIngredients(query: String, completion: @escaping (IngredientsResult?, String?) -> Void) {
+        
+        guard let url = URL(string: searchIngredientsUrl + "\(query)&number=10&apiKey=\(spoonacularApiKey)") else {
+            completion(nil, unexpectedError)
+            return
+        }
+        
+        URLSession
+            .shared
+            .dataTask(with: url) { data, response, error in
+                if let error = error {
+                    completion(nil, error.localizedDescription)
+                } else if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
+                    completion(nil, badStatusCodeError)
+                }else if let data = data {
+                    let decoder = JSONDecoder()
+                    do {
+                        let result = try decoder.decode(IngredientsResult.self, from: data)
+                        completion(result, nil)
+                    } catch {
+                        completion(nil, error.localizedDescription)
+                    }
+                }
+            }
+            .resume()
     }
 }

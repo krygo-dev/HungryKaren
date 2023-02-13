@@ -12,6 +12,7 @@ struct HKSearchBarView: View {
     @Binding var showFilters: Bool
     @Binding var searchText: String
     let backgroundColor: Color
+    @FocusState var searchFieldFocused: Bool
     
     var body: some View {
         HStack {
@@ -22,6 +23,7 @@ struct HKSearchBarView: View {
             )
             .multilineTextAlignment(.leading)
             .lineLimit(1)
+            .focused($searchFieldFocused)
             
             Button {
                 withAnimation(.easeOut.speed(0.7)) {
@@ -44,12 +46,3 @@ struct HKSearchBarView: View {
         .fontWeight(.medium)
     }
 }
-
-//struct HKSearchBarView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HKSearchBarView(
-//            showFilters: .constant(false),
-//            searchText: .constant(""),
-//            backgroundColor: quaternaryColor)
-//    }
-//}

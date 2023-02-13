@@ -11,8 +11,18 @@ final class FridgeViewModel: ObservableObject {
     
     private let productRepository: ProductsRepository = ProductsRepository()
     
-    @Published var productsList: [Product] = []
-    @Published var spicesList: [Product] = []
+    @Published var productsList: [FridgeProduct] = []
+    @Published var spicesList: [FridgeProduct] = []
+    @Published var foundIngredientsList: [Ingredient] = []
+    @Published private(set) var isLoading: Bool = false
+    @Published private(set) var alert: AlertType? = nil
+    @Published var searchText: String = "" {
+        didSet {
+            print(searchText)
+//            searchForIngredient(query: searchText) {}
+        }
+    }
+
     
     init() {
         productRepository.getProductsInFridge { list in
@@ -22,7 +32,31 @@ final class FridgeViewModel: ObservableObject {
     }
     
     
-    func addProduct(product: Product) {
+    func addProduct(product: FridgeProduct) {
         productRepository.addProductToFridge(product: product)
+    }
+    
+    
+    func searchForIngredient(query: String, completion: @escaping () -> Void) {
+        isLoading = true
+        alert = nil
+        
+        productRepository.searchForIngredients(query: query) { result, error in
+            
+            DispatchQueue.main.async {
+                if let error = error {
+                    self.alert = .error(message: error)
+                    self.isLoading = false
+                    completion()
+                    return
+                }
+                
+                guard let result = result else { return }
+                self.foundIngredientsList = result.results
+                self.isLoading = false
+                print(self.foundIngredientsList)
+                completion()
+            }
+        }
     }
 }

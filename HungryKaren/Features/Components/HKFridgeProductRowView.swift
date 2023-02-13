@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HKFridgeProductRowView: View {
     
-    var product: Product? = nil
+    var product: FridgeProduct
     let bgColor: Color
     
     var body: some View {
@@ -21,7 +21,7 @@ struct HKFridgeProductRowView: View {
                     .background(bgColor)
                     .cornerRadius(40)
                 
-                Text(product == nil ? "+ add product" : product!.name)
+                Text(product.name)
                     .padding(.horizontal, 16)
                     .font(.system(size: 18))
             }
@@ -33,13 +33,13 @@ struct HKFridgeProductRowView: View {
                     .background(bgColor)
                     .cornerRadius(10)
                 
-                Text(product == nil ? "qty" : product!.quantity)
+                Text(product.quantity)
                     .padding(.horizontal, 8)
                     .font(.system(size: 15))
             }
         }
         .frame(height: 37)
-        .foregroundColor(product == nil ? mainTextColor : thirdTitleColor)
+        .foregroundColor(thirdTitleColor)
         .fontWeight(.medium)
         .padding(.bottom, 17)
     }

@@ -23,6 +23,8 @@ struct MainView: View {
     @State var showFilters: Bool = false
     @State var searchText: String = ""
     
+    @FocusState var searchFieldFocused: Bool
+    
     var body: some View {
         ZStack {
 
@@ -48,7 +50,7 @@ struct MainView: View {
                 }
 
                 if selectedScreen == .home { HomeView(showTopBar: $showBars).environmentObject(homeViewModel) }
-                if selectedScreen == .fridge { FridgeView().environmentObject(fridgeViewModel) }
+                if selectedScreen == .fridge { FridgeView(searchFieldFocused: _searchFieldFocused).environmentObject(fridgeViewModel) }
                 if selectedScreen == .cart { CartView().environmentObject(cartViewModel) }
                 
                 if showBars {
@@ -64,12 +66,13 @@ struct MainView: View {
                     } else {
                         HKBottomBarView(
                             selectedScreen: $selectedScreen,
-                            searchText: $cartViewModel.searchText,
+                            searchText: $fridgeViewModel.searchText,
                             showBottomBar: $showBars,
                             showFilters: $showFilters,
                             selectedColor: alternateSecondaryColor,
                             deselectedColor: alternatePrimaryColor,
-                            searchBarColor: alternatePrimaryColor)
+                            searchBarColor: alternatePrimaryColor,
+                            searchFieldFocused: _searchFieldFocused)
                     }
                 }
             }
@@ -110,8 +113,10 @@ struct MainView: View {
     }
 }
 
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
-    }
-}
+//struct MainView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainView()
+//            .environmentObject(AuthenticationViewModel())
+//            .environmentObject(NavigationRouter())
+//    }
+//}
