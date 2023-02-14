@@ -12,31 +12,24 @@ struct HKAlertView: View {
     @State var alertType: AlertType
     @Binding var quantity: String
     @Binding var isSpice: Bool
-    var buttonAction: (() -> ())
+    var buttonAction: () -> Void
+    var onCloseAction: () -> Void
     
     var body: some View {
         ZStack {
             Color.black.opacity(0.5)
                 .edgesIgnoringSafeArea(.all)
+                .onTapGesture {
+                    onCloseAction()
+                }
             
             VStack(spacing: 0) {
-                
-                Text(alertType.title())
-                    .font(.system(size: 16))
-                    .fontWeight(.medium)
-                    .multilineTextAlignment(.center)
-                    .frame(height: 25)
-                    .padding(.top, 16)
-                    .padding(.bottom, 8)
-                    .padding(.horizontal, 16)
                 
                 Text(alertType.message())
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                     .font(.system(size: 14))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 16)
-                    .padding(.bottom, 16)
-                    .minimumScaleFactor(0.5)
                 
                 TextField("", text: $quantity, prompt: Text("quantity"))
                     .font(.system(size: 14))
@@ -53,23 +46,26 @@ struct HKAlertView: View {
                 Toggle("Product belongs to spices?", isOn: $isSpice)
                     .font(.system(size: 14))
                     .tint(alternateTertiaryColor)
+                    .padding(.bottom, 16)
                 
                 Button {
                     buttonAction()
                 } label: {
                     Text(alertType.actionButtonLabel)
                         .font(.system(size: 16, weight: .bold))
-                        .foregroundColor(.black)
                         .multilineTextAlignment(.center)
                         .padding()
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                        .frame(width: 80, height: 30)
+                        .background(alternatePrimaryColor)
+                        .cornerRadius(15)
                 }
             }
             .foregroundColor(secondTitleColor)
             .padding(.horizontal, 16)
-            .frame(width: 270, height: 270)
+            .padding(.vertical, 16)
+            .frame(width: 270, height: 230)
             .background(Color.white)
-            .cornerRadius(10)
+            .cornerRadius(25)
         }
         .zIndex(2)
     }

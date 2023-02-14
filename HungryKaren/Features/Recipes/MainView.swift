@@ -87,21 +87,8 @@ struct MainView: View {
             
             
             if !fridgeViewModel.searchText.isEmpty {
-                VStack {
-                    ScrollView(.vertical, showsIndicators: false) {
-                        if !fridgeViewModel.foundIngredientsList.isEmpty {
-                            ForEach(fridgeViewModel.foundIngredientsList) { ingredient in
-                                HKFoundIngredientListItemView(ingredient: ingredient) {
-                                    fridgeViewModel.product.name = ingredient.name
-                                    fridgeViewModel.showAddQuantityDialog.toggle()
-                                }
-                            }
-                        }
-                    }
-                }
-                .frame(width: 390, height: 500, alignment: .bottom)
-                .background(.white)
-                .cornerRadius(25)
+                HKIngredientSearchResultListView()
+                    .environmentObject(fridgeViewModel)
             }
             
             
@@ -116,6 +103,8 @@ struct MainView: View {
                     fridgeViewModel.searchText = ""
                     fridgeViewModel.product = FridgeProduct(name: "", quantity: "", isSpice: false)
                     searchFieldFocused = false
+                    fridgeViewModel.showAddQuantityDialog.toggle()
+                } onCloseAction: {
                     fridgeViewModel.showAddQuantityDialog.toggle()
                 }
             }
