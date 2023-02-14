@@ -14,10 +14,6 @@ struct FridgeView: View {
     @FocusState var searchFieldFocused: Bool
     @State var showProducts: Bool = false
     @State var showSpices: Bool = false
-    @State var showDialog: Bool = false
-    @State var ingredientName: String = ""
-    @State var quantity: String = ""
-    @State var isSpice: Bool = false
     
     var body: some View {
         ZStack {
@@ -51,41 +47,24 @@ struct FridgeView: View {
                 }
                 Spacer()
             }
-//            .alert(Text("Info"), isPresented: $showDialog) {
-//                HKAlertView(alertType: .info(message: "Provide quantity and category"), quantity: $quantity, isSpice: $isSpice) {
-//                    let product = FridgeProduct(name: ingredientName.lowercased(), quantity: quantity.lowercased(), isSpice: isSpice)
-//                    fridgeViewModel.addProduct(product: product)
-//                    fridgeViewModel.searchText = ""
-//                    searchFieldFocused = false
+            
+//            if !fridgeViewModel.searchText.isEmpty {
+//                VStack {
+//                    ScrollView(.vertical, showsIndicators: false) {
+//                        if !fridgeViewModel.foundIngredientsList.isEmpty {
+//                            ForEach(fridgeViewModel.foundIngredientsList) { ingredient in
+//                                HKFoundIngredientListItemView(ingredient: ingredient) {
+//                                    fridgeViewModel.product.name = ingredient.name
+//                                    fridgeViewModel.showAddQuantityDialog.toggle()
+//                                }
+//                            }
+//                        }
+//                    }
 //                }
+//                .frame(width: 390, height: 500, alignment: .bottom)
+//                .background(.white)
+//                .cornerRadius(25)
 //            }
-            
-            if searchFieldFocused && !fridgeViewModel.searchText.isEmpty {
-                VStack {
-                    ScrollView(.vertical, showsIndicators: false) {
-                        if !fridgeViewModel.foundIngredientsList.isEmpty {
-                            ForEach(fridgeViewModel.foundIngredientsList) { ingredient in
-                                HKFoundIngredientListItemView(ingredient: ingredient) {
-                                    ingredientName = ingredient.name
-                                    showDialog.toggle()
-                                }
-                            }
-                        }
-                    }
-                }
-                .frame(width: 390, height: 500, alignment: .bottom)
-                .background(.white)
-                .cornerRadius(25)
-            }
-            
-            if showDialog {
-                HKAlertView(alertType: .info(message: "Provide quantity and category"), quantity: $quantity, isSpice: $isSpice) {
-                    let product = FridgeProduct(name: ingredientName.lowercased(), quantity: quantity.lowercased(), isSpice: isSpice)
-                    fridgeViewModel.addProduct(product: product)
-                    fridgeViewModel.searchText = ""
-                    searchFieldFocused = false
-                }
-            }
         }
     }
 }

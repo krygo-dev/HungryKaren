@@ -13,15 +13,24 @@ final class FridgeViewModel: ObservableObject {
     
     @Published var productsList: [FridgeProduct] = []
     @Published var spicesList: [FridgeProduct] = []
-    @Published var foundIngredientsList: [Ingredient] = []
+    @Published var foundIngredientsList: [Ingredient] = [
+        Ingredient(id: 10, name: "honey", image: "jpg"),
+        Ingredient(id: 20, name: "piri-piri", image: "jpg"),
+        Ingredient(id: 30, name: "milk", image: "jpg"),
+        Ingredient(id: 40, name: "pear", image: "jpg"),
+    ]
+    
+    @Published var showAddQuantityDialog: Bool = false
+    @Published var product: FridgeProduct = FridgeProduct(name: "", quantity: "", isSpice: false)
+    
     @Published private(set) var isLoading: Bool = false
     @Published private(set) var alert: AlertType? = nil
+    
     @Published var searchText: String = "" {
         didSet {
 //            searchForIngredients()
         }
     }
-    
     private var workItem: DispatchWorkItem?
 
     
@@ -33,33 +42,10 @@ final class FridgeViewModel: ObservableObject {
     }
     
     
-    func addProduct(product: FridgeProduct) {
+    func addProduct() {
         productRepository.addProductToFridge(product: product)
     }
     
-    
-//    func searchForIngredient(query: String, completion: @escaping () -> Void) {
-//        isLoading = true
-//        alert = nil
-//
-//        productRepository.searchForIngredients(query: query) { result, error in
-//
-//            DispatchQueue.main.async {
-//                if let error = error {
-//                    self.alert = .error(message: error)
-//                    self.isLoading = false
-//                    completion()
-//                    return
-//                }
-//
-//                guard let result = result else { return }
-//                self.foundIngredientsList = result.results
-//                self.isLoading = false
-//                print(self.foundIngredientsList)
-//                completion()
-//            }
-//        }
-//    }
     
     private func searchForIngredients() {
         workItem?.cancel()

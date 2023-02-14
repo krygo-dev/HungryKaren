@@ -85,6 +85,41 @@ struct MainView: View {
                 .transition(AnyTransition.opacity.animation(.easeOut(duration: 0.5)))
             }
             
+            
+            if !fridgeViewModel.searchText.isEmpty {
+                VStack {
+                    ScrollView(.vertical, showsIndicators: false) {
+                        if !fridgeViewModel.foundIngredientsList.isEmpty {
+                            ForEach(fridgeViewModel.foundIngredientsList) { ingredient in
+                                HKFoundIngredientListItemView(ingredient: ingredient) {
+                                    fridgeViewModel.product.name = ingredient.name
+                                    fridgeViewModel.showAddQuantityDialog.toggle()
+                                }
+                            }
+                        }
+                    }
+                }
+                .frame(width: 390, height: 500, alignment: .bottom)
+                .background(.white)
+                .cornerRadius(25)
+            }
+            
+            
+            if fridgeViewModel.showAddQuantityDialog {
+                HKAlertView(alertType: .info(message: "Provide quantity and category"), quantity: $fridgeViewModel.product.quantity, isSpice: $fridgeViewModel.product.isSpice) {
+                    
+                    if fridgeViewModel.product.quantity.isEmpty {
+                        return
+                    }
+
+                    fridgeViewModel.addProduct()
+                    fridgeViewModel.searchText = ""
+                    fridgeViewModel.product = FridgeProduct(name: "", quantity: "", isSpice: false)
+                    searchFieldFocused = false
+                    fridgeViewModel.showAddQuantityDialog.toggle()
+                }
+            }
+            
 
             VStack {
                 Spacer()

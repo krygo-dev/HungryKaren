@@ -16,9 +16,9 @@ class HomeViewModel: ObservableObject {
     @Published private(set) var alert: AlertType? = nil
     
     init() {
-        getRecipesByIngredients {
-            print("Data fetched")
-        }
+//        getRecipesByIngredients {
+//            print("Data fetched")
+//        }
     }
     
     func getRecipes(completion: @escaping () -> Void) {
