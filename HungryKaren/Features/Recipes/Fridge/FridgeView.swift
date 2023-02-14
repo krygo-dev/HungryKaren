@@ -51,16 +51,16 @@ struct FridgeView: View {
                 }
                 Spacer()
             }
-            .alert(Text("Info"), isPresented: $showDialog) {
-                HKAlertView(alertType: .info(message: "Provide quantity and category"), quantity: $quantity, isSpice: $isSpice) {
-                    let product = FridgeProduct(name: ingredientName.lowercased(), quantity: quantity.lowercased(), isSpice: isSpice)
-                    fridgeViewModel.addProduct(product: product)
-                    fridgeViewModel.searchText = ""
-                    searchFieldFocused = false
-                }
-            }
+//            .alert(Text("Info"), isPresented: $showDialog) {
+//                HKAlertView(alertType: .info(message: "Provide quantity and category"), quantity: $quantity, isSpice: $isSpice) {
+//                    let product = FridgeProduct(name: ingredientName.lowercased(), quantity: quantity.lowercased(), isSpice: isSpice)
+//                    fridgeViewModel.addProduct(product: product)
+//                    fridgeViewModel.searchText = ""
+//                    searchFieldFocused = false
+//                }
+//            }
             
-            if searchFieldFocused {
+            if searchFieldFocused && !fridgeViewModel.searchText.isEmpty {
                 VStack {
                     ScrollView(.vertical, showsIndicators: false) {
                         if !fridgeViewModel.foundIngredientsList.isEmpty {
@@ -76,6 +76,15 @@ struct FridgeView: View {
                 .frame(width: 390, height: 500, alignment: .bottom)
                 .background(.white)
                 .cornerRadius(25)
+            }
+            
+            if showDialog {
+                HKAlertView(alertType: .info(message: "Provide quantity and category"), quantity: $quantity, isSpice: $isSpice) {
+                    let product = FridgeProduct(name: ingredientName.lowercased(), quantity: quantity.lowercased(), isSpice: isSpice)
+                    fridgeViewModel.addProduct(product: product)
+                    fridgeViewModel.searchText = ""
+                    searchFieldFocused = false
+                }
             }
         }
     }

@@ -18,10 +18,11 @@ final class FridgeViewModel: ObservableObject {
     @Published private(set) var alert: AlertType? = nil
     @Published var searchText: String = "" {
         didSet {
-            print(searchText)
-//            searchForIngredient(query: searchText) {}
+//            searchForIngredients()
         }
     }
+    
+    private var workItem: DispatchWorkItem?
 
     
     init() {
@@ -37,26 +38,54 @@ final class FridgeViewModel: ObservableObject {
     }
     
     
-    func searchForIngredient(query: String, completion: @escaping () -> Void) {
+//    func searchForIngredient(query: String, completion: @escaping () -> Void) {
+//        isLoading = true
+//        alert = nil
+//
+//        productRepository.searchForIngredients(query: query) { result, error in
+//
+//            DispatchQueue.main.async {
+//                if let error = error {
+//                    self.alert = .error(message: error)
+//                    self.isLoading = false
+//                    completion()
+//                    return
+//                }
+//
+//                guard let result = result else { return }
+//                self.foundIngredientsList = result.results
+//                self.isLoading = false
+//                print(self.foundIngredientsList)
+//                completion()
+//            }
+//        }
+//    }
+    
+    private func searchForIngredients() {
+        workItem?.cancel()
         isLoading = true
         alert = nil
         
-        productRepository.searchForIngredients(query: query) { result, error in
-            
-            DispatchQueue.main.async {
-                if let error = error {
-                    self.alert = .error(message: error)
+        if searchText.isEmpty { return }
+        
+        let item = DispatchWorkItem {
+            self.productRepository.searchForIngredients(query: self.searchText) { result, error in
+                DispatchQueue.main.async {
+                    if let error = error {
+                        self.alert = .error(message: error)
+                        self.isLoading = false
+                        return
+                    }
+                    
+                    guard let result = result else { return }
+                    self.foundIngredientsList = result.results
                     self.isLoading = false
-                    completion()
-                    return
                 }
-                
-                guard let result = result else { return }
-                self.foundIngredientsList = result.results
-                self.isLoading = false
-                print(self.foundIngredientsList)
-                completion()
             }
         }
+        
+        workItem = item
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: workItem!)
+        return
     }
 }
