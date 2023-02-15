@@ -10,16 +10,32 @@ import Firebase
 class UserRepository {
     private let fbFirestore = Firestore.firestore()
     
-    func saveUserData(user: User, completion: @escaping () -> Void) {
-        
-        let userData = ["email": user.email,
-                        "name": user.name,
-                        "uid": user.uid]
-        
-        fbFirestore.collection(usersPath)
-            .document(user.uid)
-            .setData(userData) { _ in
-                completion()
+    
+    func getUserData(uid: String, comletion: @escaping (User) -> Void) {
+        fbFirestore
+            .collection(usersPath)
+            .document(uid)
+            .getDocument(as: User.self) { result in
+                switch result {
+                case .success(let user):
+                    comletion(user)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
             }
+    }
+    
+    
+    func saveUserData(user: User, completion: @escaping () -> Void) {
+        do {
+            _ = try fbFirestore
+                .collection(usersPath)
+                .document(user.uid)
+                .setData(from: user) { _ in
+                    completion()
+                }
+        } catch {
+            print("DEBUG: \(error.localizedDescription)")
+        }
     }
 }

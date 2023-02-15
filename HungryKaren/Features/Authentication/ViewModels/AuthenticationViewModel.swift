@@ -14,11 +14,16 @@ class AuthenticationViewModel: ObservableObject {
     private let userRepository = UserRepository()
     
     @Published private(set) var currentUser: FirebaseAuth.User?
+    @Published private(set) var userData: User? = nil
     @Published private(set) var isLoading: Bool = false
     @Published private(set) var alert: AlertType? = nil
     
     init() {
-        self.currentUser = authenticationRepository.getCurrentUser()
+        currentUser = authenticationRepository.getCurrentUser()
+        
+        if currentUser != nil {
+            getUserData()
+        }
     }
     
     func signInWithEmailAndPassword(
@@ -86,7 +91,7 @@ class AuthenticationViewModel: ObservableObject {
             guard let user = user else { return }
             self.currentUser = user
             
-            let userData = User(uid: user.uid, email: email, name: name)
+            let userData = User(uid: user.uid, email: email, name: name, preferences: ["diet" : "vegan"])
             
             self.userRepository.saveUserData(user: userData) {
                 self.isLoading = false
@@ -129,5 +134,11 @@ class AuthenticationViewModel: ObservableObject {
     
     func removeAlert() {
         self.alert = nil
+    }
+    
+    private func getUserData() {
+        userRepository.getUserData(uid: currentUser!.uid) { user in
+            self.userData = user
+        }
     }
 }

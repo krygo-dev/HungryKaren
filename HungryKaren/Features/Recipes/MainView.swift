@@ -12,7 +12,6 @@ struct MainView: View {
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @EnvironmentObject var navigationRouter: NavigationRouter
     
-    @StateObject var searchFilters: SearchFilters = SearchFilters()
     @StateObject var homeViewModel = HomeViewModel()
     @StateObject var cartViewModel = CartViewModel()
     @StateObject var fridgeViewModel = FridgeViewModel()
@@ -24,7 +23,7 @@ struct MainView: View {
     @State var searchText: String = ""
     
     @FocusState var searchFieldFocused: Bool
-    
+
     var body: some View {
         ZStack {
 
@@ -54,16 +53,17 @@ struct MainView: View {
                 if selectedScreen == .cart { CartView().environmentObject(cartViewModel) }
                 
                 if showBars {
-                    if selectedScreen != .fridge {
+                    switch selectedScreen {
+                    case .home:
                         HKBottomBarView(
                             selectedScreen: $selectedScreen,
-                            searchText: $searchText,
+                            searchText: $homeViewModel.searchQuery.query,
                             showBottomBar: $showBars,
                             showFilters: $showFilters,
                             selectedColor: secondaryColor,
                             deselectedColor: primaryColor,
                             searchBarColor: quaternaryColor)
-                    } else {
+                    case .fridge:
                         HKBottomBarView(
                             selectedScreen: $selectedScreen,
                             searchText: $fridgeViewModel.searchText,
@@ -73,6 +73,15 @@ struct MainView: View {
                             deselectedColor: alternatePrimaryColor,
                             searchBarColor: alternatePrimaryColor,
                             searchFieldFocused: _searchFieldFocused)
+                    case .cart:
+                        HKBottomBarView(
+                            selectedScreen: $selectedScreen,
+                            searchText: $searchText,
+                            showBottomBar: $showBars,
+                            showFilters: $showFilters,
+                            selectedColor: secondaryColor,
+                            deselectedColor: primaryColor,
+                            searchBarColor: quaternaryColor)
                     }
                 }
             }
@@ -114,7 +123,7 @@ struct MainView: View {
                 Spacer()
                 SearchFiltersView(
                     showFilters: $showFilters,
-                    searchFilters: searchFilters
+                    searchFilters: homeViewModel.searchQuery.searchFilters
                 )
                 .offset(y: showFilters ? 0 : 900)
             }
@@ -133,6 +142,38 @@ struct MainView: View {
             showBars = true
             showFilters = false
             searchText = ""
+            
+            if authViewModel.userData?.preferences["cuisine"] != "" {
+                homeViewModel.searchQuery.searchFilters.cuisineFilters[
+                    homeViewModel.searchQuery.searchFilters.cuisineFilters.firstIndex(
+                        where: { $0.name == authViewModel.userData?.preferences["cuisine"]! }
+                    )!
+                ].isSelected = true
+            }
+            
+            if authViewModel.userData?.preferences["diet"] != "" {
+                homeViewModel.searchQuery.searchFilters.dietFilters[
+                    homeViewModel.searchQuery.searchFilters.dietFilters.firstIndex(
+                        where: { $0.name == authViewModel.userData?.preferences["diet"]! }
+                    )!
+                ].isSelected = true
+            }
+            
+            if authViewModel.userData?.preferences["intolerance"] != "" {
+                homeViewModel.searchQuery.searchFilters.intoleranceFilters[
+                    homeViewModel.searchQuery.searchFilters.intoleranceFilters.firstIndex(
+                        where: { $0.name == authViewModel.userData?.preferences["intolerance"]! }
+                    )!
+                ].isSelected = true
+            }
+            
+            if authViewModel.userData?.preferences["mealType"] != "" {
+                homeViewModel.searchQuery.searchFilters.mealTypeFilters[
+                    homeViewModel.searchQuery.searchFilters.mealTypeFilters.firstIndex(
+                        where: { $0.name == authViewModel.userData?.preferences["mealType"]! }
+                    )!
+                ].isSelected = true
+            }
         }
     }
 }

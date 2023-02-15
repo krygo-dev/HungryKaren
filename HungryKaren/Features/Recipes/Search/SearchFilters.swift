@@ -13,5 +13,5 @@ class SearchFilters: ObservableObject {
     @Published var intoleranceFilters: [Filter] = intoleranceList
     @Published var cuisineFilters: [Filter] = cuisineList
     @Published var mealTypeFilters: [Filter] = mealTypeList
-    
+
 }
