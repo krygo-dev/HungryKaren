@@ -13,12 +13,7 @@ final class FridgeViewModel: ObservableObject {
     
     @Published var productsList: [FridgeProduct] = []
     @Published var spicesList: [FridgeProduct] = []
-    @Published var foundIngredientsList: [Ingredient] = [
-        Ingredient(id: 10, name: "honey", image: "jpg"),
-        Ingredient(id: 20, name: "piri-piri", image: "jpg"),
-        Ingredient(id: 30, name: "milk", image: "jpg"),
-        Ingredient(id: 40, name: "pear", image: "jpg"),
-    ]
+    @Published var foundIngredientsList: [Ingredient] = []
     
     @Published var showAddQuantityDialog: Bool = false
     @Published var product: FridgeProduct = FridgeProduct(name: "", quantity: "", isSpice: false)
@@ -28,7 +23,7 @@ final class FridgeViewModel: ObservableObject {
     
     @Published var searchText: String = "" {
         didSet {
-//            searchForIngredients()
+            searchForIngredients()
         }
     }
     private var workItem: DispatchWorkItem?
