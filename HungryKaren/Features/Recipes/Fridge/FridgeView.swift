@@ -11,7 +11,6 @@ struct FridgeView: View {
     
     @EnvironmentObject var fridgeViewModel: FridgeViewModel
     
-    @FocusState var searchFieldFocused: Bool
     @State var showProducts: Bool = false
     @State var showSpices: Bool = false
     

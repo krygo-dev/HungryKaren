@@ -21,8 +21,8 @@ let dietList = [
 
 let mealTypeList = [
     Filter(name: "breakfast", isSelected: false),
-    Filter(name: "lunch", isSelected: false),
-    Filter(name: "dinner", isSelected: false),
+    Filter(name: "main course", isSelected: false),
+    Filter(name: "salad", isSelected: false),
     Filter(name: "dessert", isSelected: false),
     Filter(name: "soup", isSelected: false),
     Filter(name: "beverage", isSelected: false),

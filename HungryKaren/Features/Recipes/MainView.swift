@@ -49,7 +49,7 @@ struct MainView: View {
                 }
 
                 if selectedScreen == .home { HomeView(showTopBar: $showBars).environmentObject(homeViewModel) }
-                if selectedScreen == .fridge { FridgeView(searchFieldFocused: _searchFieldFocused).environmentObject(fridgeViewModel) }
+                if selectedScreen == .fridge { FridgeView().environmentObject(fridgeViewModel) }
                 if selectedScreen == .cart { CartView().environmentObject(cartViewModel) }
                 
                 if showBars {
@@ -57,12 +57,13 @@ struct MainView: View {
                     case .home:
                         HKBottomBarView(
                             selectedScreen: $selectedScreen,
-                            searchText: $homeViewModel.searchQuery.query,
+                            searchText: $homeViewModel.searchText,
                             showBottomBar: $showBars,
                             showFilters: $showFilters,
                             selectedColor: secondaryColor,
                             deselectedColor: primaryColor,
-                            searchBarColor: quaternaryColor)
+                            searchBarColor: quaternaryColor,
+                            searchFieldFocused: _searchFieldFocused)
                     case .fridge:
                         HKBottomBarView(
                             selectedScreen: $selectedScreen,

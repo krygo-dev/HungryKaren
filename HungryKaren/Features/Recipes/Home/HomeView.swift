@@ -19,16 +19,27 @@ struct HomeView: View {
         
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading, spacing: 3) {
-                Text("Recipes ideas")
-                    .font(.system(size: 22))
-                    .fontWeight(.medium)
-                    .foregroundColor(secondTitleColor)
-                    .padding(.leading, 17)
-                ForEach(homeViewModel.recipesList) { recipe in
-                    HKRecipeListItemView(recipe: recipe)
+                HStack {
+                    Text("Recipes ideas")
+                        .font(.system(size: 22))
+                        .fontWeight(.medium)
+                        .foregroundColor(secondTitleColor)
+                        .padding(.leading, 17)
+                    Spacer()
+                }
+                
+                if !homeViewModel.recipesList.isEmpty {
+                    ForEach(homeViewModel.recipesList) { recipe in
+                        HKRecipeListItemView(recipe: recipe)
+                    }
+                } else {
+                    ForEach(homeViewModel.randomRecipesList) { recipe in
+                        HKRandomRecipeListItemView(recipe: recipe)
+                    }
                 }
             }
             .padding(.vertical, 40)
+            .padding(.horizontal, 20)
             .overlay {
                 GeometryReader { proxy -> Color in
                     
