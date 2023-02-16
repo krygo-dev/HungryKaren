@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HKRecipeListItemView: View {
     
-    let recipe: Recipe
+    let recipe: RecipeDetails
     
     var body: some View {
         ZStack {
@@ -27,9 +27,9 @@ struct HKRecipeListItemView: View {
                 .padding(.top, 17)
                 
                 VStack(alignment: .leading) {
-                    Text("Prep time: 5 mins")
-                    Text("Cook time: 3 mins")
-                    Text("Servings: 1")
+                    Text("Cook time: \(recipe.readyInMinutes) mins")
+                    Text("Servings: \(recipe.servings)")
+                    Text("Health score: \(recipe.healthScore)")
                 }
                 .foregroundColor(mainTextColor)
                 

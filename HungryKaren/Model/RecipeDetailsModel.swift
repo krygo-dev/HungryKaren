@@ -13,6 +13,7 @@ struct RecipeDetails: Codable, Identifiable {
     let image: String
     let servings: Int
     let readyInMinutes: Int
+    let healthScore: Int
     let sourceName: String
     let sourceUrl: String
     let summary: String

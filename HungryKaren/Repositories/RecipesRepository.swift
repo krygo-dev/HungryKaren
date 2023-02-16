@@ -12,6 +12,8 @@ class RecipesRespository {
     private let searchRecipesComplexSearchUrl = "https://api.spoonacular.com/recipes/complexSearch?"
     private let searchRecipesByIngredientsUrl = "https://api.spoonacular.com/recipes/findByIngredients?ingredients="
     private let getRandomRecipesUrl = "https://api.spoonacular.com/recipes/random?"
+    private let getRecipesInformationBulkUrl = "https://api.spoonacular.com/recipes/informationBulk?"
+    
     
     func fetchRecipesByComplexSearch(searchQuery: Query, completion: @escaping (RecipesResults?, String?) -> Void) {
         
@@ -45,7 +47,7 @@ class RecipesRespository {
                     "\(cuisine.count > 0 ? "&cuisine=\(cuisine)" : "")" +
                     "\(intolerance.count > 0 ? "&intolerance=\(intolerance)" : "")" +
                     "\(mealType.count > 0 ? "&type=\(mealType)" : "")" +
-                    "&number=50&apiKey=\(spoonacularApiKey)"
+                    "&number=15&apiKey=\(spoonacularApiKey)"
         
         urlStr = urlStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
@@ -73,6 +75,7 @@ class RecipesRespository {
             }
             .resume()
     }
+    
     
     func fetchRecipesByIngredients(ingredients: [String], completion: @escaping ([Recipe]?, String?) -> Void) {
         
@@ -138,6 +141,40 @@ class RecipesRespository {
             }
             .resume()
     }
+    
+    
+    func getRecipesDetailsBulk(recipesIds: [Int], completion: @escaping ([RecipeDetails]?, String?) -> Void) {
+        
+        var recipesIdsStr = ""
+        recipesIds.forEach { id in
+            recipesIdsStr += "\(id),"
+        }
+        if recipesIdsStr.last == "," { recipesIdsStr.removeLast(1) }
+        
+        let urlStr = getRecipesInformationBulkUrl + "ids=\(recipesIdsStr)&apiKey=\(spoonacularApiKey)"
+        
+        guard let url = URL(string: urlStr) else {
+            completion(nil, unexpectedError)
+            return
+        }
+        
+        URLSession
+            .shared
+            .dataTask(with: url) { data, response, error in
+                if let error = error {
+                    completion(nil, error.localizedDescription)
+                } else if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
+                    completion(nil, badStatusCodeError)
+                } else if let data = data {
+                    let decoder = JSONDecoder()
+                    do {
+                        let result = try decoder.decode([RecipeDetails].self, from: data)
+                        completion(result, nil)
+                    } catch {
+                        completion(nil, error.localizedDescription)
+                    }
+                }
+            }
+            .resume()
+    }
 }
-
-

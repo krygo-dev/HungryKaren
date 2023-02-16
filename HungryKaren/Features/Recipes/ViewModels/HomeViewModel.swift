@@ -13,7 +13,10 @@ class HomeViewModel: ObservableObject {
     private let productRepository: ProductsRepository = ProductsRepository()
     
     @Published private(set) var recipesList: [Recipe] = []
-    @Published private(set) var randomRecipesList: [RecipeDetails] = []
+//    @Published private(set) var randomRecipesList: [RecipeDetails] = []
+//    @Published private(set) var foundRecipesList: [Recipe] = []
+    @Published private(set) var recipesDetailsList: [RecipeDetails] = []
+    
     @Published var searchQuery: Query = Query(query: "", searchFilters: SearchFilters())
     
     @Published private(set) var isLoading: Bool = false
@@ -57,7 +60,9 @@ class HomeViewModel: ObservableObject {
                     }
 
                     guard let result = result else { return }
+//                    self.foundRecipesList = result.results
                     self.recipesList = result.results
+                    self.getRecipesDetails()
                     self.isLoading = false
                 }
             }
@@ -83,6 +88,7 @@ class HomeViewModel: ObservableObject {
                 
                 guard let result = result else { return }
                 self.recipesList = result
+                self.getRecipesDetails()
                 self.isLoading = false
             }
         }
@@ -102,7 +108,32 @@ class HomeViewModel: ObservableObject {
                 }
                 
                 guard let result = result else { return }
-                self.randomRecipesList = result
+//                self.randomRecipesList = result
+                self.recipesDetailsList = result
+                self.isLoading = false
+            }
+        }
+    }
+    
+    
+    private func getRecipesDetails() {
+        isLoading = true
+        alert = nil
+        
+        let recipesIdsList = recipesList.map { recipe in
+            recipe.id
+        }
+        
+        recipesRepository.getRecipesDetailsBulk(recipesIds: recipesIdsList) { result, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    self.alert = .error(message: error)
+                    self.isLoading = false
+                    return
+                }
+                
+                guard let result = result else { return }
+                self.recipesDetailsList = result
                 self.isLoading = false
             }
         }

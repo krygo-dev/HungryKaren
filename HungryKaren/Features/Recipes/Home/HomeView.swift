@@ -28,14 +28,14 @@ struct HomeView: View {
                     Spacer()
                 }
                 
-                if !homeViewModel.recipesList.isEmpty {
-                    ForEach(homeViewModel.recipesList) { recipe in
+                if !homeViewModel.recipesDetailsList.isEmpty {
+                    ForEach(homeViewModel.recipesDetailsList) { recipe in
                         HKRecipeListItemView(recipe: recipe)
                     }
-                } else {
-                    ForEach(homeViewModel.randomRecipesList) { recipe in
-                        HKRandomRecipeListItemView(recipe: recipe)
-                    }
+                }
+                
+                if homeViewModel.isLoading {
+                    ProgressView()
                 }
             }
             .padding(.vertical, 40)
@@ -80,13 +80,6 @@ struct HomeView: View {
         }
         .onDisappear {
             UIScrollView.appearance().bounces = true
-        }
-        
-        if homeViewModel.isLoading {
-            ZStack {
-                Color.white
-                ProgressView()
-            }
         }
     }
 }
