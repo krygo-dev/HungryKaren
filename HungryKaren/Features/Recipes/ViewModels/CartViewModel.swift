@@ -12,12 +12,18 @@ final class CartViewModel: ObservableObject {
     private let productsRepository = ProductsRepository()
     
     @Published var cartItemList: [CartItem] = []
-    @Published var searchText: String = ""
+    @Published var filteredList: [CartItem] = []
+    @Published var searchText: String = "" {
+        didSet {
+            search()
+        }
+    }
     
     
     init() {
         productsRepository.getCartItems { cartItems in
             self.cartItemList = cartItems
+            self.filteredList = self.cartItemList
         }
     }
     
@@ -34,5 +40,10 @@ final class CartViewModel: ObservableObject {
     
     func updateItem(item: CartItem) {
         productsRepository.updateCartItem(item: item)
+    }
+    
+    
+    private func search() {
+        filteredList = searchText.isEmpty ? cartItemList : cartItemList.filter({ $0.name.contains(searchText.lowercased()) })
     }
 }

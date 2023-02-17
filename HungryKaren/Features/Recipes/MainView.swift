@@ -20,7 +20,6 @@ struct MainView: View {
     @State var showMenu: Bool = false
     @State var showBars: Bool = true
     @State var showFilters: Bool = false
-    @State var searchText: String = ""
     
     @FocusState var searchFieldFocused: Bool
 
@@ -79,7 +78,7 @@ struct MainView: View {
                     case .cart:
                         HKBottomBarView(
                             selectedScreen: $selectedScreen,
-                            searchText: $searchText,
+                            searchText: $cartViewModel.searchText,
                             showBottomBar: $showBars,
                             showFilters: $showFilters,
                             selectedColor: secondaryColor,
@@ -145,7 +144,6 @@ struct MainView: View {
             showMenu = false
             showBars = true
             showFilters = false
-            searchText = ""
             
             if authViewModel.userData?.preferences["cuisine"] != "" {
                 homeViewModel.searchQuery.searchFilters.cuisineFilters[
@@ -181,11 +179,3 @@ struct MainView: View {
         }
     }
 }
-
-//struct MainView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MainView()
-//            .environmentObject(AuthenticationViewModel())
-//            .environmentObject(NavigationRouter())
-//    }
-//}
