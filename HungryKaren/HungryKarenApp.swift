@@ -33,6 +33,7 @@ struct HungryKarenApp: App {
                             case .favouritesView: FavouritesView()
                             case .preferencesView: PreferencesView()
                             case .settingsView: SettingsView()
+                            case .detailsView(recipe: let recipe): RecipeDetailsView(recipe: recipe)
                         }
                     }
             }

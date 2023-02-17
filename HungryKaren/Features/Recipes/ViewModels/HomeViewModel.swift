@@ -13,8 +13,6 @@ class HomeViewModel: ObservableObject {
     private let productRepository: ProductsRepository = ProductsRepository()
     
     @Published private(set) var recipesList: [Recipe] = []
-//    @Published private(set) var randomRecipesList: [RecipeDetails] = []
-//    @Published private(set) var foundRecipesList: [Recipe] = []
     @Published private(set) var recipesDetailsList: [RecipeDetails] = []
     
     @Published var searchQuery: Query = Query(query: "", searchFilters: SearchFilters())
@@ -60,7 +58,6 @@ class HomeViewModel: ObservableObject {
                     }
 
                     guard let result = result else { return }
-//                    self.foundRecipesList = result.results
                     self.recipesList = result.results
                     self.getRecipesDetails()
                     self.isLoading = false
@@ -108,7 +105,6 @@ class HomeViewModel: ObservableObject {
                 }
                 
                 guard let result = result else { return }
-//                self.randomRecipesList = result
                 self.recipesDetailsList = result
                 self.isLoading = false
             }

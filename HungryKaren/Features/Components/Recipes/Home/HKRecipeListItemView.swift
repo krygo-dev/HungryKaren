@@ -9,7 +9,8 @@ import SwiftUI
 
 struct HKRecipeListItemView: View {
     
-    let recipe: RecipeDetails
+    var recipe: RecipeDetails
+    var onTap: () -> Void
     
     var body: some View {
         ZStack {
@@ -66,6 +67,9 @@ struct HKRecipeListItemView: View {
             }
             .frame(width: 350)
             .padding(.bottom, 60)
+        }
+        .onTapGesture {
+            onTap()
         }
     }
 }

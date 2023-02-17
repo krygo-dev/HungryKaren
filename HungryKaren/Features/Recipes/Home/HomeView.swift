@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @EnvironmentObject var homeViewModel: HomeViewModel
+    @EnvironmentObject var navigationRouter: NavigationRouter
     
     @State var offset: CGFloat = 0
     @State var previousOffset: CGFloat = 0
@@ -30,7 +31,9 @@ struct HomeView: View {
                 
                 if !homeViewModel.recipesDetailsList.isEmpty {
                     ForEach(homeViewModel.recipesDetailsList) { recipe in
-                        HKRecipeListItemView(recipe: recipe)
+                        HKRecipeListItemView(recipe: recipe) {
+                            navigationRouter.navigate(route: .detailsView(recipe: recipe))
+                        }
                     }
                 }
                 

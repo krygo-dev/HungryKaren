@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct RecipeDetailsView: View {
+    
+    var recipe: RecipeDetails
+    
     var body: some View {
-        Text("Recipe details")
+        Text(recipe.title)
+        Text(recipe.sourceName)
+        Text(recipe.summary)
     }
 }
 
 struct RecipeDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeDetailsView()
+        RecipeDetailsView(recipe: sampleRecipeDetail)
     }
 }
