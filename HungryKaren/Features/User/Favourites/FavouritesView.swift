@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct FavouritesView: View {
+    
+    @EnvironmentObject var favouritesViewModel: FavouritesViewModel
+    @EnvironmentObject var navigationRouter: NavigationRouter
+    
     var body: some View {
         Text("Favourites")
     }

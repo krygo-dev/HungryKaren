@@ -24,7 +24,11 @@ struct FridgeView: View {
                         
                         if showProducts {
                             ForEach(Array(fridgeViewModel.productsList.enumerated()), id: \.element) { index, product in
-                                HKFridgeProductRowView(product: product, bgColor: index % 2 == 0 ? alternateSecondaryColor : alternatePrimaryColor)
+                                HKFridgeProductRowView(
+                                    product: product,
+                                    bgColor: index % 2 == 0 ? alternateSecondaryColor : alternatePrimaryColor,
+                                    onLongPress: { fridgeViewModel.deleteProduct(product: product) }
+                                )
                             }
                         }
                         
@@ -32,7 +36,11 @@ struct FridgeView: View {
                         
                         if showSpices {
                             ForEach(Array(fridgeViewModel.spicesList.enumerated()), id: \.element) { index, product in
-                                HKFridgeProductRowView(product: product, bgColor: index % 2 == 0 ? alternateSecondaryColor : alternatePrimaryColor)
+                                HKFridgeProductRowView(
+                                    product: product,
+                                    bgColor: index % 2 == 0 ? alternateSecondaryColor : alternatePrimaryColor,
+                                    onLongPress: { fridgeViewModel.deleteProduct(product: product) }
+                                )
                             }
                         }
                     }

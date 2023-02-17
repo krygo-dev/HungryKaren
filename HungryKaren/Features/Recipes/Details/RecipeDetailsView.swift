@@ -9,12 +9,17 @@ import SwiftUI
 
 struct RecipeDetailsView: View {
     
+    @EnvironmentObject var navigationRouter: NavigationRouter
     var recipe: RecipeDetails
     
     var body: some View {
-        Text(recipe.title)
-        Text(recipe.sourceName)
-        Text(recipe.summary)
+        VStack {
+            Text(recipe.title)
+            Text(recipe.sourceName)
+            Text(recipe.summary)
+        }
+        .navigationBarBackButtonHidden(true)
+        .gesture(NavigateBackDragGesture(completion: { navigationRouter.navigateBack() }))
     }
 }
 

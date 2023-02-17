@@ -14,7 +14,7 @@ class HomeViewModel: ObservableObject {
     
     @Published private(set) var recipesList: [Recipe] = []
     @Published private(set) var recipesDetailsList: [RecipeDetails] = []
-    @Published var favouriteRecipesList: [RecipeDetailsFirebase] = []
+    @Published private(set) var favouriteRecipesList: [RecipeDetailsFirebase] = []
     
     @Published var searchQuery: Query = Query(query: "", searchFilters: SearchFilters())
     

@@ -42,6 +42,11 @@ final class FridgeViewModel: ObservableObject {
     }
     
     
+    func deleteProduct(product: FridgeProduct) {
+        productRepository.deleteProductFromFridge(product: product)
+    }
+    
+    
     private func searchForIngredients() {
         workItem?.cancel()
         isLoading = true

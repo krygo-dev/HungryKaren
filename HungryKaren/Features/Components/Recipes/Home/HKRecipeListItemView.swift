@@ -25,10 +25,9 @@ struct HKRecipeListItemView: View {
                         .scaledToFit()
                         .frame(width: 15, height: 15)
                         .onTapGesture {
-                            withAnimation {
-                                onHeartTap()
-                            }
+                            onHeartTap()
                         }
+                        .animation(.easeOut(duration: 0.3), value: recipeInFav)
                     Spacer()
                 }
                 .frame(minWidth: 150, maxWidth: 190)
@@ -37,7 +36,7 @@ struct HKRecipeListItemView: View {
                 VStack(alignment: .leading) {
                     Text("Cook time: \(recipe.readyInMinutes) mins")
                     Text("Servings: \(recipe.servings)")
-                    Text("Health score: \(recipe.healthScore)")
+                    Text("Health score: \(String(format: "%.2f", recipe.healthScore))")
                 }
                 .foregroundColor(mainTextColor)
                 

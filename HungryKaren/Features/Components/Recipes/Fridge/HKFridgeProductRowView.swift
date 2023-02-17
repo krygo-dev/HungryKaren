@@ -11,6 +11,7 @@ struct HKFridgeProductRowView: View {
     
     var product: FridgeProduct
     let bgColor: Color
+    var onLongPress: () -> Void
     
     var body: some View {
         HStack {
@@ -42,5 +43,8 @@ struct HKFridgeProductRowView: View {
         .foregroundColor(thirdTitleColor)
         .fontWeight(.medium)
         .padding(.bottom, 17)
+        .onLongPressGesture {
+            onLongPress()
+        }
     }
 }

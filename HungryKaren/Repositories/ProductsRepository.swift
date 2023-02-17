@@ -106,6 +106,16 @@ final class ProductsRepository {
     }
     
     
+    func deleteProductFromFridge(product: FridgeProduct) {
+        fbFirestore
+            .collection(usersPath)
+            .document(currentUser!)
+            .collection(fridgePath)
+            .document(product.id!)
+            .delete()
+    }
+    
+    
     func searchForIngredients(query: String, completion: @escaping (IngredientsResult?, String?) -> Void) {
         
         guard let url = URL(string: searchIngredientsUrl + "\(query)&number=10&apiKey=\(spoonacularApiKey)") else {
