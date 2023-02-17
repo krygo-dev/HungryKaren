@@ -16,7 +16,11 @@ struct SearchFiltersView: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 10) {
                 Group {
-                    Text("Diet")
+                    Text("DIET")
+                        .font(.system(size: 15))
+                        .fontWeight(.medium)
+                        .foregroundColor(mainTextColor)
+                        .padding(.bottom, 10)
                     HStack(spacing: 30) {
                         HKSearchFilterCheckBoxView(filter: $searchFilters.dietFilters[0])
                         HKSearchFilterCheckBoxView(filter: $searchFilters.dietFilters[1])
@@ -37,7 +41,11 @@ struct SearchFiltersView: View {
                     .padding(.vertical)
                 
                 Group {
-                    Text("Meal type")
+                    Text("MEAL TYPE")
+                        .font(.system(size: 15))
+                        .fontWeight(.medium)
+                        .foregroundColor(mainTextColor)
+                        .padding(.bottom, 10)
                     HStack(spacing: 30) {
                         HKSearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[0], bgColor: primaryColor)
                         HKSearchFilterCheckBoxView(filter: $searchFilters.mealTypeFilters[1], bgColor: primaryColor)
@@ -58,7 +66,11 @@ struct SearchFiltersView: View {
                     .padding(.vertical)
                 
                 Group {
-                    Text("Cuisine")
+                    Text("CUISINE")
+                        .font(.system(size: 15))
+                        .fontWeight(.medium)
+                        .foregroundColor(mainTextColor)
+                        .padding(.bottom, 10)
                     HStack(spacing: 30) {
                         HKSearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[0])
                         HKSearchFilterCheckBoxView(filter: $searchFilters.cuisineFilters[1])
@@ -79,7 +91,11 @@ struct SearchFiltersView: View {
                     .padding(.vertical)
                 
                 Group {
-                    Text("Intolerance")
+                    Text("INTOLERANCE")
+                        .font(.system(size: 15))
+                        .fontWeight(.medium)
+                        .foregroundColor(mainTextColor)
+                        .padding(.bottom, 10)
                     HStack(spacing: 30) {
                         HKSearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[0], bgColor: primaryColor)
                         HKSearchFilterCheckBoxView(filter: $searchFilters.intoleranceFilters[1], bgColor: primaryColor)
