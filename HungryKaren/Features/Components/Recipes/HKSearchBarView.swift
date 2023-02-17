@@ -12,6 +12,7 @@ struct HKSearchBarView: View {
     @Binding var showFilters: Bool
     @Binding var searchText: String
     let backgroundColor: Color
+    let buttonVisible: Bool
     @FocusState var searchFieldFocused: Bool
     
     var body: some View {
@@ -25,16 +26,18 @@ struct HKSearchBarView: View {
             .lineLimit(1)
             .focused($searchFieldFocused)
             
-            Button {
-                withAnimation(.easeOut.speed(0.7)) {
-                    showFilters.toggle()
+            if buttonVisible {
+                Button {
+                    withAnimation(.easeOut.speed(0.7)) {
+                        showFilters.toggle()
+                    }
+                } label: {
+                    Image(systemName: "line.horizontal.3.decrease")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 19, height: 19)
+                        .foregroundColor(mainTextColor)
                 }
-            } label: {
-                Image(systemName: "line.horizontal.3.decrease")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 19, height: 19)
-                    .foregroundColor(mainTextColor)
             }
 
         }

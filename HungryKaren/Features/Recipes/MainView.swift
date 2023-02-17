@@ -63,6 +63,7 @@ struct MainView: View {
                             selectedColor: secondaryColor,
                             deselectedColor: primaryColor,
                             searchBarColor: quaternaryColor,
+                            searchBarButtonVisible: true,
                             searchFieldFocused: _searchFieldFocused)
                     case .fridge:
                         HKBottomBarView(
@@ -73,6 +74,7 @@ struct MainView: View {
                             selectedColor: alternateSecondaryColor,
                             deselectedColor: alternatePrimaryColor,
                             searchBarColor: alternatePrimaryColor,
+                            searchBarButtonVisible: false,
                             searchFieldFocused: _searchFieldFocused)
                     case .cart:
                         HKBottomBarView(
@@ -82,7 +84,8 @@ struct MainView: View {
                             showFilters: $showFilters,
                             selectedColor: secondaryColor,
                             deselectedColor: primaryColor,
-                            searchBarColor: quaternaryColor)
+                            searchBarColor: quaternaryColor,
+                            searchBarButtonVisible: false)
                     }
                 }
             }

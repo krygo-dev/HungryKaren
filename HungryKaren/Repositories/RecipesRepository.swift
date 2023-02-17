@@ -6,8 +6,13 @@
 //
 
 import Foundation
+import Firebase
+import FirebaseFirestoreSwift
 
 class RecipesRespository {
+    
+    private let fbFirestore = Firestore.firestore()
+    private let currentUser = Auth.auth().currentUser?.uid
     
     private let searchRecipesComplexSearchUrl = "https://api.spoonacular.com/recipes/complexSearch?"
     private let searchRecipesByIngredientsUrl = "https://api.spoonacular.com/recipes/findByIngredients?ingredients="
@@ -176,5 +181,48 @@ class RecipesRespository {
                 }
             }
             .resume()
+    }
+    
+    
+    func getFavouritesRecipes(completion: @escaping ([RecipeDetailsFirebase]) -> Void) {
+        fbFirestore
+            .collection(usersPath)
+            .document(currentUser!)
+            .collection(favouritesPath)
+            .addSnapshotListener { snapshot, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+
+                completion(
+                    snapshot?.documents.compactMap {
+                        try? $0.data(as: RecipeDetailsFirebase.self)
+                    } ?? []
+                )
+            }
+    }
+    
+    
+    func addRecipeToFavourites(recipe: RecipeDetails) {
+        do {
+            _ = try fbFirestore
+                .collection(usersPath)
+                .document(currentUser!)
+                .collection(favouritesPath)
+                .addDocument(from: recipe)
+        } catch {
+            print("DEBUG: \(error.localizedDescription)")
+        }
+    }
+    
+    
+    func deleteRecipeFromFavourites(recipe: RecipeDetailsFirebase) {
+        fbFirestore
+            .collection(usersPath)
+            .document(currentUser!)
+            .collection(favouritesPath)
+            .document(recipe.docId!)
+            .delete()
     }
 }

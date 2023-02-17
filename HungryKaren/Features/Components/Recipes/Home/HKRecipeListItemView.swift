@@ -10,7 +10,9 @@ import SwiftUI
 struct HKRecipeListItemView: View {
     
     var recipe: RecipeDetails
-    var onTap: () -> Void
+    var recipeInFav: Bool
+    var onItemTap: () -> Void
+    var onHeartTap: () -> Void
     
     var body: some View {
         ZStack {
@@ -18,10 +20,15 @@ struct HKRecipeListItemView: View {
                 HStack {
                     Text(recipe.title)
                         .font(.system(size: 18))
-                    Image(systemName: "heart")
+                    Image(systemName: recipeInFav ? "heart.fill" : "heart")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 15, height: 15)
+                        .onTapGesture {
+                            withAnimation {
+                                onHeartTap()
+                            }
+                        }
                     Spacer()
                 }
                 .frame(minWidth: 150, maxWidth: 190)
@@ -69,7 +76,7 @@ struct HKRecipeListItemView: View {
             .padding(.bottom, 60)
         }
         .onTapGesture {
-            onTap()
+            onItemTap()
         }
     }
 }

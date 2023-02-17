@@ -14,6 +14,7 @@ class HomeViewModel: ObservableObject {
     
     @Published private(set) var recipesList: [Recipe] = []
     @Published private(set) var recipesDetailsList: [RecipeDetails] = []
+    @Published var favouriteRecipesList: [RecipeDetailsFirebase] = []
     
     @Published var searchQuery: Query = Query(query: "", searchFilters: SearchFilters())
     
@@ -36,6 +37,8 @@ class HomeViewModel: ObservableObject {
                 self.getRandomRecipes()
             }
         }
+        
+        getRecipesFromFavourites()
     }
     
     
@@ -74,7 +77,6 @@ class HomeViewModel: ObservableObject {
     func getRecipesByIngredients(namesList: [String]) {
         isLoading = true
         alert = nil
-        
         recipesRepository.fetchRecipesByIngredients(ingredients: namesList) { result, error in
             DispatchQueue.main.async {
                 if let error = error {
@@ -95,7 +97,6 @@ class HomeViewModel: ObservableObject {
     func getRandomRecipes() {
         isLoading = true
         alert = nil
-        
         recipesRepository.getRandomRecipes { result, error in
             DispatchQueue.main.async {
                 if let error = error {
@@ -109,6 +110,17 @@ class HomeViewModel: ObservableObject {
                 self.isLoading = false
             }
         }
+    }
+    
+    
+    func addRecipeToFavourites(recipe: RecipeDetails) {
+        recipesRepository.addRecipeToFavourites(recipe: recipe)
+    }
+    
+    
+    func deleteRecipesFromFavourites(recipe: RecipeDetails) {
+        guard let recipeToDelete = favouriteRecipesList.first(where: { $0.id == recipe.id }) else { return }
+        recipesRepository.deleteRecipeFromFavourites(recipe: recipeToDelete)
     }
     
     
@@ -132,6 +144,13 @@ class HomeViewModel: ObservableObject {
                 self.recipesDetailsList = result
                 self.isLoading = false
             }
+        }
+    }
+    
+    
+    private func getRecipesFromFavourites() {
+        recipesRepository.getFavouritesRecipes { recipesList in
+            self.favouriteRecipesList = recipesList
         }
     }
 }

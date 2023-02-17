@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
 struct RecipeDetails: Codable, Identifiable, Hashable {
     let id: Int
@@ -21,6 +22,19 @@ struct RecipeDetails: Codable, Identifiable, Hashable {
 
 struct RandomRecipesResult: Codable {
     let recipes: [RecipeDetails]
+}
+
+struct RecipeDetailsFirebase: Codable {
+    @DocumentID var docId: String?
+    let id: Int
+    let title: String
+    let image: String
+    let servings: Int
+    let readyInMinutes: Int
+    let healthScore: Float
+    let sourceName: String
+    let sourceUrl: String
+    let summary: String
 }
 
 let sampleRecipeDetail = RecipeDetails(

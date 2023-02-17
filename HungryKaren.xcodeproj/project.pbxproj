@@ -262,6 +262,7 @@
 				0C9BD7A6299E4CE200752D10 /* Fridge */,
 				0C9BD7A5299E4CDC00752D10 /* Cart */,
 				0C9BD7A8299E4D0700752D10 /* Search */,
+				0C0E35842986C15300AD7E43 /* HKSearchBarView.swift */,
 				0C0E35822986A62400AD7E43 /* HKTopBarView.swift */,
 				0C3F1E672984055D00287314 /* HKMainBackgroundCanvasView.swift */,
 				0C2578BB29816DD600F5F0CA /* HKAlertView.swift */,
@@ -302,7 +303,6 @@
 			isa = PBXGroup;
 			children = (
 				0C875B80298AB5DC00EA926B /* HKSearchFilterCheckBoxView.swift */,
-				0C0E35842986C15300AD7E43 /* HKSearchBarView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";

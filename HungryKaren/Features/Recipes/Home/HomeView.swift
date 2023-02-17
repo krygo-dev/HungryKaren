@@ -31,14 +31,19 @@ struct HomeView: View {
                 
                 if !homeViewModel.recipesDetailsList.isEmpty {
                     ForEach(homeViewModel.recipesDetailsList) { recipe in
-                        HKRecipeListItemView(recipe: recipe) {
-                            navigationRouter.navigate(route: .detailsView(recipe: recipe))
-                        }
+                        HKRecipeListItemView(
+                            recipe: recipe,
+                            recipeInFav: homeViewModel.favouriteRecipesList.contains(where: { $0.id == recipe.id }),
+                            onItemTap: { navigationRouter.navigate(route: .detailsView(recipe: recipe)) },
+                            onHeartTap: {
+                                if homeViewModel.favouriteRecipesList.contains(where: { $0.id == recipe.id }) {
+                                    homeViewModel.deleteRecipesFromFavourites(recipe: recipe)
+                                } else {
+                                    homeViewModel.addRecipeToFavourites(recipe: recipe)
+                                }
+                            }
+                        )
                     }
-                }
-                
-                if homeViewModel.isLoading {
-                    ProgressView()
                 }
             }
             .padding(.vertical, 40)
