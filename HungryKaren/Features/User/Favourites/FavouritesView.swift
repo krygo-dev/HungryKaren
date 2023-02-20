@@ -13,10 +13,11 @@ struct FavouritesView: View {
     @EnvironmentObject var navigationRouter: NavigationRouter
     
     @State var showMenu: Bool = false
-    
+    @State var showDetails: Bool = false
     @State var offset: CGFloat = 0
     @State var previousOffset: CGFloat = 0
     @State var showBars: Bool = true
+
     
     var body: some View {
         ZStack {
@@ -33,7 +34,12 @@ struct FavouritesView: View {
                                 HKRecipeListItemView(
                                     recipe: RecipeDetails(from: recipe),
                                     recipeInFav: favouritesViewModel.favouriteRecipesList.contains(where: { $0.id == recipe.id }),
-                                    onItemTap: { print("DEBUG: Show details") },
+                                    showDetails: $favouritesViewModel.showRecipeDetailsDictionary,
+                                    onItemTap: {
+                                        withAnimation {
+                                            favouritesViewModel.showDetails(recipeId: recipe.id)
+                                        }
+                                    },
                                     onHeartTap: {
                                         if favouritesViewModel.favouriteRecipesList.contains(where: { $0.id == recipe.id }) {
                                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

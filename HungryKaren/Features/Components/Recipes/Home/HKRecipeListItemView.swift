@@ -11,6 +11,7 @@ struct HKRecipeListItemView: View {
     
     var recipe: RecipeDetails
     var recipeInFav: Bool
+    @Binding var showDetails: [Int: Bool]
     var onItemTap: () -> Void
     var onHeartTap: () -> Void
     
@@ -40,39 +41,45 @@ struct HKRecipeListItemView: View {
                 }
                 .foregroundColor(mainTextColor)
                 
-                Spacer().frame(height: 25)
+                Spacer()
                 
                 HStack {
                     Rectangle()
                         .frame(width: 217, height: 1)
                         .foregroundColor(mainTextColor)
-                    Text("ENTER RECIPE")
+                    Text(showDetails[recipe.id]! ? "CLOSE RECIPE" : "ENTER RECIPE")
                 }
                 .padding(.bottom, 17)
             }
-            .frame(width: 350, height: 126)
+            .frame(width: 350, height: showDetails[recipe.id]! ? 536 : 126)
             .background(primaryColor)
             .cornerRadius(25)
             .font(.system(size: 10))
             .fontWeight(.medium)
             .foregroundColor(thirdTitleColor)
             
-            HStack(alignment: .top) {
-                Spacer()
-                AsyncImage(url: URL(string: recipe.image)) { res in
-                    if let image = res.image {
-                        image.resizable()
-                            .scaledToFill()
-                            .frame(width: 122, height: 122)
-                            .clipShape(Circle())
-                    } else {
-                        ProgressView()
-                            .frame(width: 122, height: 122)
+            VStack {
+                HStack(alignment: .top) {
+                    Spacer()
+                    AsyncImage(url: URL(string: recipe.image)) { res in
+                        if let image = res.image {
+                            image.resizable()
+                                .scaledToFill()
+                                .frame(width: 122, height: 122)
+                                .clipShape(Circle())
+                        } else {
+                            ProgressView()
+                                .frame(width: 122, height: 122)
+                        }
                     }
                 }
+                .frame(width: 350)
+                .padding(.bottom, 60)
+                .padding(.top, showDetails[recipe.id]! ? 8 : 0)
+                .padding(.trailing, showDetails[recipe.id]! ? 16 : 0)
+                
+                Spacer()
             }
-            .frame(width: 350)
-            .padding(.bottom, 60)
         }
         .onTapGesture {
             onItemTap()

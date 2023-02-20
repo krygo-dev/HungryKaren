@@ -13,6 +13,8 @@ final class FavouritesViewModel: ObservableObject {
     
     @Published private(set) var favouriteRecipesList: [RecipeDetailsFirebase] = []
     @Published private(set) var filteredRecipesList: [RecipeDetailsFirebase] = []
+    @Published var showRecipeDetailsDictionary = [Int: Bool]()
+    
     @Published var searchText: String = "" {
         didSet {
             search()
@@ -30,10 +32,24 @@ final class FavouritesViewModel: ObservableObject {
     }
     
     
+    func showDetails(recipeId: Int) {
+        showRecipeDetailsDictionary[recipeId]?.toggle()
+        
+        if showRecipeDetailsDictionary[recipeId]! {
+            filteredRecipesList = [filteredRecipesList.first(where: { $0.id == recipeId })!]
+        } else {
+            filteredRecipesList = favouriteRecipesList
+        }
+    }
+    
+    
     private func getRecipesFromFavourites() {
         recipesRepository.getFavouritesRecipes { recipesList in
             self.favouriteRecipesList = recipesList
             self.filteredRecipesList = self.favouriteRecipesList
+            self.showRecipeDetailsDictionary = self.favouriteRecipesList.reduce(into: [Int: Bool]()) { result, value in
+                result[value.id] = false
+            }
         }
     }
     
@@ -42,5 +58,8 @@ final class FavouritesViewModel: ObservableObject {
         filteredRecipesList = searchText.isEmpty ? favouriteRecipesList : favouriteRecipesList.filter({
             $0.title.lowercased().contains(searchText.lowercased())
         })
+        showRecipeDetailsDictionary = self.favouriteRecipesList.reduce(into: [Int : Bool]()) { result, value in
+            result[value.id] = false
+        }
     }
 }

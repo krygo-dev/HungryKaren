@@ -12,6 +12,7 @@ struct HomeView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
     @EnvironmentObject var navigationRouter: NavigationRouter
     
+    @State var showDetails: Bool = false
     @State var offset: CGFloat = 0
     @State var previousOffset: CGFloat = 0
     @Binding var showTopBar: Bool
@@ -34,7 +35,12 @@ struct HomeView: View {
                         HKRecipeListItemView(
                             recipe: recipe,
                             recipeInFav: homeViewModel.favouriteRecipesList.contains(where: { $0.id == recipe.id }),
-                            onItemTap: { navigationRouter.navigate(route: .detailsView(recipe: recipe)) },
+                            showDetails: $homeViewModel.showRecipeDetailsDictionary,
+                            onItemTap: {
+                                withAnimation {
+                                    homeViewModel.showDetails(recipeId: recipe.id)
+                                }
+                            },
                             onHeartTap: {
                                 if homeViewModel.favouriteRecipesList.contains(where: { $0.id == recipe.id }) {
                                     homeViewModel.deleteRecipesFromFavourites(recipe: recipe)

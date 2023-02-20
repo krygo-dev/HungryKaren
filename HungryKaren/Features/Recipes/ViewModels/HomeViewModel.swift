@@ -14,7 +14,9 @@ class HomeViewModel: ObservableObject {
     
     @Published private(set) var recipesList: [Recipe] = []
     @Published private(set) var recipesDetailsList: [RecipeDetails] = []
+    @Published private(set) var recipesDetailsListCopy: [RecipeDetails] = []
     @Published private(set) var favouriteRecipesList: [RecipeDetailsFirebase] = []
+    @Published var showRecipeDetailsDictionary = [Int: Bool]()
     
     @Published var searchQuery: Query = Query(query: "", searchFilters: SearchFilters())
     
@@ -107,6 +109,10 @@ class HomeViewModel: ObservableObject {
                 
                 guard let result = result else { return }
                 self.recipesDetailsList = result
+                self.recipesDetailsListCopy = self.recipesDetailsList
+                self.showRecipeDetailsDictionary = self.recipesDetailsList.reduce(into: [Int: Bool]()) { result, value in
+                    result[value.id] = false
+                }
                 self.isLoading = false
             }
         }
@@ -121,6 +127,17 @@ class HomeViewModel: ObservableObject {
     func deleteRecipesFromFavourites(recipe: RecipeDetails) {
         guard let recipeToDelete = favouriteRecipesList.first(where: { $0.id == recipe.id }) else { return }
         recipesRepository.deleteRecipeFromFavourites(recipe: recipeToDelete)
+    }
+    
+    
+    func showDetails(recipeId: Int) {
+        showRecipeDetailsDictionary[recipeId]?.toggle()
+        
+        if showRecipeDetailsDictionary[recipeId]! {
+            recipesDetailsList = [recipesDetailsList.first(where: { $0.id == recipeId })!]
+        } else {
+            recipesDetailsList = recipesDetailsListCopy
+        }
     }
     
     
@@ -142,6 +159,10 @@ class HomeViewModel: ObservableObject {
                 
                 guard let result = result else { return }
                 self.recipesDetailsList = result
+                self.recipesDetailsListCopy = self.recipesDetailsList
+                self.showRecipeDetailsDictionary = self.recipesDetailsList.reduce(into: [Int: Bool]()) { result, value in
+                    result[value.id] = false
+                }
                 self.isLoading = false
             }
         }
