@@ -8,6 +8,7 @@
 import Firebase
 
 class UserRepository {
+    
     private let fbFirestore = Firestore.firestore()
     
     

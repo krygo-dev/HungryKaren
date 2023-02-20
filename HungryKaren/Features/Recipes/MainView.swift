@@ -16,7 +16,6 @@ struct MainView: View {
     @StateObject var cartViewModel = CartViewModel()
     @StateObject var fridgeViewModel = FridgeViewModel()
     
-    @State var selectedScreen: Screen = .home
     @State var showMenu: Bool = false
     @State var showBars: Bool = true
     @State var showFilters: Bool = false
@@ -27,7 +26,7 @@ struct MainView: View {
         ZStack {
 
             if showBars {
-                if selectedScreen == .fridge {
+                if navigationRouter.selectedScreen == .fridge {
                     HKMainBackgroundCanvasView(color: alternateTertiaryColor)
                 } else {
                     HKMainBackgroundCanvasView(color: tertiaryColor)
@@ -36,26 +35,28 @@ struct MainView: View {
             
             VStack {
                 if showBars {
-                    if selectedScreen == .home {
+                    if navigationRouter.selectedScreen == .home {
                         HKTopBarView(title: "Home", showMenu: $showMenu, showTopBar: $showBars)
                     }
-                    if selectedScreen == .fridge {
+                    if navigationRouter.selectedScreen == .fridge {
                         HKTopBarView(title: "Fridge", showMenu: $showMenu, showTopBar: $showBars)
                     }
-                    if selectedScreen == .cart {
+                    if navigationRouter.selectedScreen == .cart {
                         HKTopBarView(title: "Cart", showMenu: $showMenu, showTopBar: $showBars)
                     }
                 }
-
-                if selectedScreen == .home { HomeView(showTopBar: $showBars).environmentObject(homeViewModel) }
-                if selectedScreen == .fridge { FridgeView().environmentObject(fridgeViewModel) }
-                if selectedScreen == .cart { CartView().environmentObject(cartViewModel) }
+                
+                switch navigationRouter.selectedScreen {
+                    case .home: HomeView(showTopBar: $showBars).environmentObject(homeViewModel)
+                    case .fridge: FridgeView().environmentObject(fridgeViewModel)
+                    case .cart: CartView().environmentObject(cartViewModel)
+                }
                 
                 if showBars {
-                    switch selectedScreen {
+                    switch navigationRouter.selectedScreen {
                     case .home:
                         HKBottomBarView(
-                            selectedScreen: $selectedScreen,
+                            selectedScreen: $navigationRouter.selectedScreen,
                             searchText: $homeViewModel.searchText,
                             showBottomBar: $showBars,
                             showFilters: $showFilters,
@@ -66,7 +67,7 @@ struct MainView: View {
                             searchFieldFocused: _searchFieldFocused)
                     case .fridge:
                         HKBottomBarView(
-                            selectedScreen: $selectedScreen,
+                            selectedScreen: $navigationRouter.selectedScreen,
                             searchText: $fridgeViewModel.searchText,
                             showBottomBar: $showBars,
                             showFilters: $showFilters,
@@ -77,7 +78,7 @@ struct MainView: View {
                             searchFieldFocused: _searchFieldFocused)
                     case .cart:
                         HKBottomBarView(
-                            selectedScreen: $selectedScreen,
+                            selectedScreen: $navigationRouter.selectedScreen,
                             searchText: $cartViewModel.searchText,
                             showBottomBar: $showBars,
                             showFilters: $showFilters,
@@ -90,11 +91,8 @@ struct MainView: View {
             }
             
             if showMenu {
-                MenuView(
-                    showMenu: $showMenu,
-                    selectedScreen: $selectedScreen
-                )
-                .transition(AnyTransition.opacity.animation(.easeOut(duration: 0.5)))
+                MenuView(showMenu: $showMenu)
+                    .transition(AnyTransition.opacity.animation(.easeOut(duration: 0.5)))
             }
             
             

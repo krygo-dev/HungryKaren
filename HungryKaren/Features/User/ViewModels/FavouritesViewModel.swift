@@ -12,6 +12,12 @@ final class FavouritesViewModel: ObservableObject {
     private let recipesRepository: RecipesRespository = RecipesRespository()
     
     @Published private(set) var favouriteRecipesList: [RecipeDetailsFirebase] = []
+    @Published private(set) var filteredRecipesList: [RecipeDetailsFirebase] = []
+    @Published var searchText: String = "" {
+        didSet {
+            search()
+        }
+    }
     
     
     init() {
@@ -27,6 +33,14 @@ final class FavouritesViewModel: ObservableObject {
     private func getRecipesFromFavourites() {
         recipesRepository.getFavouritesRecipes { recipesList in
             self.favouriteRecipesList = recipesList
+            self.filteredRecipesList = self.favouriteRecipesList
         }
+    }
+    
+    
+    private func search() {
+        filteredRecipesList = searchText.isEmpty ? favouriteRecipesList : favouriteRecipesList.filter({
+            $0.title.lowercased().contains(searchText.lowercased())
+        })
     }
 }

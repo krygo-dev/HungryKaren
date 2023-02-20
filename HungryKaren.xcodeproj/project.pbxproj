@@ -34,6 +34,7 @@
 		0C5FC8C129914B4900AC2EE7 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5FC8C029914B4900AC2EE7 /* HomeViewModel.swift */; };
 		0C61AE1829968F1D00B64684 /* FridgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C61AE1729968F1D00B64684 /* FridgeViewModel.swift */; };
 		0C733269299FB54600895AC0 /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C733268299FB54600895AC0 /* FavouritesViewModel.swift */; };
+		0C73326B299FC41300895AC0 /* PreferencesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C73326A299FC41300895AC0 /* PreferencesViewModel.swift */; };
 		0C7E87572993DAEF00F4A150 /* FridgeProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E87562993DAEF00F4A150 /* FridgeProductModel.swift */; };
 		0C7E87592993DFFC00F4A150 /* HKFridgeCategoryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E87582993DFFC00F4A150 /* HKFridgeCategoryRowView.swift */; };
 		0C7E875B2993E02900F4A150 /* HKFridgeProductRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E875A2993E02900F4A150 /* HKFridgeProductRowView.swift */; };
@@ -73,6 +74,7 @@
 		0CCAF51D297C6EBA00F74951 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCAF51C297C6EBA00F74951 /* HomeView.swift */; };
 		0CE2B51F297B276400194236 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B51E297B276400194236 /* Colors.swift */; };
 		0CE2B521297B38FD00194236 /* HKAuthBackgroundCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B520297B38FD00194236 /* HKAuthBackgroundCanvasView.swift */; };
+		0CF7BB3029A3931600C03E8A /* HKSecondaryBottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF7BB2F29A3931600C03E8A /* HKSecondaryBottomBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +105,7 @@
 		0C5FC8C029914B4900AC2EE7 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		0C61AE1729968F1D00B64684 /* FridgeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeViewModel.swift; sourceTree = "<group>"; };
 		0C733268299FB54600895AC0 /* FavouritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
+		0C73326A299FC41300895AC0 /* PreferencesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewModel.swift; sourceTree = "<group>"; };
 		0C7E87562993DAEF00F4A150 /* FridgeProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeProductModel.swift; sourceTree = "<group>"; };
 		0C7E87582993DFFC00F4A150 /* HKFridgeCategoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKFridgeCategoryRowView.swift; sourceTree = "<group>"; };
 		0C7E875A2993E02900F4A150 /* HKFridgeProductRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKFridgeProductRowView.swift; sourceTree = "<group>"; };
@@ -139,6 +142,7 @@
 		0CCAF51C297C6EBA00F74951 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0CE2B51E297B276400194236 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0CE2B520297B38FD00194236 /* HKAuthBackgroundCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKAuthBackgroundCanvasView.swift; sourceTree = "<group>"; };
+		0CF7BB2F29A3931600C03E8A /* HKSecondaryBottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKSecondaryBottomBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				0C733268299FB54600895AC0 /* FavouritesViewModel.swift */,
+				0C73326A299FC41300895AC0 /* PreferencesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 				0C9BD7A6299E4CE200752D10 /* Fridge */,
 				0C9BD7A5299E4CDC00752D10 /* Cart */,
 				0C9BD7A8299E4D0700752D10 /* Search */,
+				0CF7BB2F29A3931600C03E8A /* HKSecondaryBottomBarView.swift */,
 				0C0E35842986C15300AD7E43 /* HKSearchBarView.swift */,
 				0C0E35822986A62400AD7E43 /* HKTopBarView.swift */,
 				0C3F1E672984055D00287314 /* HKMainBackgroundCanvasView.swift */,
@@ -599,6 +605,7 @@
 				0C7E87572993DAEF00F4A150 /* FridgeProductModel.swift in Sources */,
 				0C5FC8BB29913DA700AC2EE7 /* Strings.swift in Sources */,
 				0C5FC8B72991191100AC2EE7 /* UserModel.swift in Sources */,
+				0C73326B299FC41300895AC0 /* PreferencesViewModel.swift in Sources */,
 				0C27DCDE29950F010023791D /* HKAddItemToCartRowView.swift in Sources */,
 				0C8873A5299A38F100443817 /* IngredientsResultModel.swift in Sources */,
 				0C0A76172988116B00B9CF7C /* HKRecipeListItemView.swift in Sources */,
@@ -642,6 +649,7 @@
 				0C5FC8BD29914AAF00AC2EE7 /* RecipesRepository.swift in Sources */,
 				0C5FC8B929911A7200AC2EE7 /* UserRepository.swift in Sources */,
 				0CB2601D299BE4E900DAF761 /* HKIngredientSearchResultListView.swift in Sources */,
+				0CF7BB3029A3931600C03E8A /* HKSecondaryBottomBarView.swift in Sources */,
 				0C858E27299E7F02000DAA03 /* RecipeDetailsView.swift in Sources */,
 				0C0E35852986C15300AD7E43 /* HKSearchBarView.swift in Sources */,
 			);

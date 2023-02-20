@@ -24,7 +24,7 @@ struct RandomRecipesResult: Codable {
     let recipes: [RecipeDetails]
 }
 
-struct RecipeDetailsFirebase: Codable {
+struct RecipeDetailsFirebase: Codable, Identifiable, Hashable {
     @DocumentID var docId: String?
     let id: Int
     let title: String
@@ -35,6 +35,21 @@ struct RecipeDetailsFirebase: Codable {
     let sourceName: String
     let sourceUrl: String
     let summary: String
+}
+
+extension RecipeDetails {
+    init(from recipeDetailsFirebase: RecipeDetailsFirebase) {
+        self.init(
+            id: recipeDetailsFirebase.id,
+            title: recipeDetailsFirebase.title,
+            image: recipeDetailsFirebase.image,
+            servings: recipeDetailsFirebase.servings,
+            readyInMinutes: recipeDetailsFirebase.readyInMinutes,
+            healthScore: recipeDetailsFirebase.healthScore,
+            sourceName: recipeDetailsFirebase.sourceName,
+            sourceUrl: recipeDetailsFirebase.sourceUrl,
+            summary: recipeDetailsFirebase.summary)
+    }
 }
 
 let sampleRecipeDetail = RecipeDetails(

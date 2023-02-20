@@ -9,6 +9,7 @@ import SwiftUI
 
 class NavigationRouter: ObservableObject {
     @Published var path = [Route]()
+    @Published var selectedScreen: Screen = .home
     
     func navigate(route: Route) {
         path.append(route)
@@ -20,5 +21,9 @@ class NavigationRouter: ObservableObject {
     
     func navigateBackToStart() {
         path = [.startView]
+    }
+    
+    func navigateBackToMain() {
+        path = [.mainView]
     }
 }

@@ -13,6 +13,7 @@ struct HungryKarenApp: App {
     
     @StateObject var authViewModel = AuthenticationViewModel()
     @StateObject var navigationRouter = NavigationRouter()
+    @StateObject var favouritesViewModel = FavouritesViewModel()
     
     init() {
         FirebaseApp.configure()
@@ -39,6 +40,7 @@ struct HungryKarenApp: App {
             }
             .environmentObject(authViewModel)
             .environmentObject(navigationRouter)
+            .environmentObject(favouritesViewModel)
             .navigationBarBackButtonHidden(true)
         }
     }

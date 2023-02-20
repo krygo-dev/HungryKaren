@@ -1,39 +1,39 @@
 //
-//  HKBottomBarView.swift
+//  HKSecondaryBottomBarView.swift
 //  HungryKaren
 //
-//  Created by Adam Chylaszek on 27/01/2023.
+//  Created by Adam Chylaszek on 20/02/2023.
 //
 
 import SwiftUI
 
-
-struct HKBottomBarView: View {
+struct HKSecondaryBottomBarView: View {
     
-    @Binding var selectedScreen: Screen
+    @EnvironmentObject var navigationRouter: NavigationRouter
+    
     @Binding var searchText: String
     @Binding var showBottomBar: Bool
-    @Binding var showFilters: Bool
-    let selectedColor: Color
-    let deselectedColor: Color
-    let searchBarColor: Color
+    let searchBarVisible: Bool
     let searchBarButtonVisible: Bool
     @FocusState var searchFieldFocused: Bool
     
     var body: some View {
         VStack(spacing: 14) {
-            HKSearchBarView(
-                showFilters: $showFilters,
-                searchText: $searchText,
-                backgroundColor: searchBarColor,
-                buttonVisible: searchBarButtonVisible,
-                searchFieldFocused: _searchFieldFocused
-            )
+            if searchBarVisible {
+                HKSearchBarView(
+                    showFilters: .constant(false),
+                    searchText: $searchText,
+                    backgroundColor: quaternaryColor,
+                    buttonVisible: searchBarButtonVisible,
+                    searchFieldFocused: _searchFieldFocused
+                )
+            }
             
             HStack(spacing: 19) {
                 Button {
-                    selectedScreen = .home
+                    navigationRouter.selectedScreen = .home
                     searchText = ""
+                    navigationRouter.navigateBackToMain()
                 } label: {
                     VStack {
                         Image(systemName: "house")
@@ -42,12 +42,13 @@ struct HKBottomBarView: View {
                             .frame(width: 38, height: 38)
                     }
                     .frame(width: 104, height: 53)
-                    .background(selectedScreen == .home ? selectedColor : deselectedColor)
+                    .background(primaryColor)
                     .cornerRadius(15)
                 }
                 Button {
-                    selectedScreen = .fridge
+                    navigationRouter.selectedScreen = .fridge
                     searchText = ""
+                    navigationRouter.navigateBackToMain()
                 } label: {
                     VStack {
                         Image("fridge_icon")
@@ -56,12 +57,13 @@ struct HKBottomBarView: View {
                             .frame(width: 53, height: 53)
                     }
                     .frame(width: 104, height: 53)
-                    .background(selectedScreen == .fridge ? selectedColor : deselectedColor)
+                    .background(primaryColor)
                     .cornerRadius(15)
                 }
                 Button {
-                    selectedScreen = .cart
+                    navigationRouter.selectedScreen = .cart
                     searchText = ""
+                    navigationRouter.navigateBackToMain()
                 } label: {
                     VStack {
                         Image(systemName: "cart")
@@ -70,7 +72,7 @@ struct HKBottomBarView: View {
                             .frame(width: 38, height: 38)
                     }
                     .frame(width: 104, height: 53)
-                    .background(selectedScreen == .cart ? selectedColor : deselectedColor)
+                    .background(primaryColor)
                     .cornerRadius(15)
                 }
             }

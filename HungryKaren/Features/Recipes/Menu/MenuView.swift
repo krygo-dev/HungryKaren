@@ -13,7 +13,6 @@ struct MenuView: View {
     @EnvironmentObject var navigationRouter: NavigationRouter
     
     @Binding var showMenu: Bool
-    @Binding var selectedScreen: Screen
     
     @State private var animate: Bool = false
     
@@ -43,14 +42,14 @@ struct MenuView: View {
             }
             VStack(spacing: 15) {
                 Button {
-                    if selectedScreen != .home {
-                        selectedScreen = .home
+                    if navigationRouter.selectedScreen != .home {
+                        navigationRouter.selectedScreen = .home
                         showMenu.toggle()
                     } else {
                         navigationRouter.navigate(route: .profileView)
                     }
                 } label: {
-                    if selectedScreen == .home {
+                    if navigationRouter.selectedScreen == .home {
                         Text("My profile")
                             .opacity(animate ? 1 : 0)
                             .animation(.easeOut(duration: animationDuration).delay(animationDelay), value: animate)
@@ -61,13 +60,13 @@ struct MenuView: View {
                     }
                 }
                 Button {
-                    if selectedScreen == .home {
+                    if navigationRouter.selectedScreen == .home {
                         navigationRouter.navigate(route: .favouritesView)
                     } else {
                         navigationRouter.navigate(route: .profileView)
                     }
                 } label: {
-                    if selectedScreen == .home {
+                    if navigationRouter.selectedScreen == .home {
                         Text("Favourites")
                             .opacity(animate ? 1 : 0)
                             .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.1), value: animate)
@@ -78,14 +77,14 @@ struct MenuView: View {
                     }
                 }
                 Button {
-                    if selectedScreen == .home {
-                        selectedScreen = .fridge
+                    if navigationRouter.selectedScreen == .home {
+                        navigationRouter.selectedScreen = .fridge
                         showMenu.toggle()
                     } else {
                         navigationRouter.navigate(route: .favouritesView)
                     }
                 } label: {
-                    if selectedScreen == .home {
+                    if navigationRouter.selectedScreen == .home {
                         Text("My fridge")
                             .opacity(animate ? 1 : 0)
                             .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.2), value: animate)
@@ -96,15 +95,15 @@ struct MenuView: View {
                     }
                 }
                 Button {
-                    if selectedScreen != .cart {
-                        selectedScreen = .cart
+                    if navigationRouter.selectedScreen != .cart {
+                        navigationRouter.selectedScreen = .cart
                         showMenu.toggle()
                     } else {
-                        selectedScreen = .fridge
+                        navigationRouter.selectedScreen = .fridge
                         showMenu.toggle()
                     }
                 } label: {
-                    if selectedScreen != .cart {
+                    if navigationRouter.selectedScreen != .cart {
                         Text("Shopping list")
                             .opacity(animate ? 1 : 0)
                             .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.3), value: animate)

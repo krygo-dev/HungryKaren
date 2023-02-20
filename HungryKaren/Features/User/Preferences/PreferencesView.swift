@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct PreferencesView: View {
+    
+    @StateObject var preferencesViewModel = PreferencesViewModel()
+    
     var body: some View {
         Text("Preferences")
     }

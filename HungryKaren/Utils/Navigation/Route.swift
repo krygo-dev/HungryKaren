@@ -17,3 +17,10 @@ enum Route: Hashable {
     case settingsView
     case detailsView(recipe: RecipeDetails)
 }
+
+
+enum Screen: Int {
+    case home = 0
+    case fridge = 1
+    case cart = 2
+}
