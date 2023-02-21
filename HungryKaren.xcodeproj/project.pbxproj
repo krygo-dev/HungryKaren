@@ -48,7 +48,6 @@
 		0C89628D297B1D9F0033D01D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C89628C297B1D9F0033D01D /* Preview Assets.xcassets */; };
 		0C9BD7A0299E46FF00752D10 /* RecipeDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9BD79F299E46FF00752D10 /* RecipeDetailsModel.swift */; };
 		0CADF133298BB5EA0030BE95 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CADF132298BB5EA0030BE95 /* ProfileView.swift */; };
-		0CADF135298BB6180030BE95 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CADF134298BB6180030BE95 /* SettingsView.swift */; };
 		0CADF137298BB65C0030BE95 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CADF136298BB65C0030BE95 /* PreferencesView.swift */; };
 		0CADF13A298BB6EF0030BE95 /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CADF139298BB6EF0030BE95 /* FavouritesView.swift */; };
 		0CB2601D299BE4E900DAF761 /* HKIngredientSearchResultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB2601C299BE4E900DAF761 /* HKIngredientSearchResultListView.swift */; };
@@ -119,7 +118,6 @@
 		0C89628C297B1D9F0033D01D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0C9BD79F299E46FF00752D10 /* RecipeDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsModel.swift; sourceTree = "<group>"; };
 		0CADF132298BB5EA0030BE95 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		0CADF134298BB6180030BE95 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0CADF136298BB65C0030BE95 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		0CADF139298BB6EF0030BE95 /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		0CB2601C299BE4E900DAF761 /* HKIngredientSearchResultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKIngredientSearchResultListView.swift; sourceTree = "<group>"; };
@@ -319,7 +317,6 @@
 				0CADF130298BB5220030BE95 /* Profile */,
 				0CADF12F298BB4F20030BE95 /* Preferences */,
 				0CADF138298BB6DC0030BE95 /* Favourites */,
-				0CADF131298BB5630030BE95 /* Settings */,
 				0C733267299FB51200895AC0 /* ViewModels */,
 			);
 			path = User;
@@ -339,14 +336,6 @@
 				0CADF132298BB5EA0030BE95 /* ProfileView.swift */,
 			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		0CADF131298BB5630030BE95 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				0CADF134298BB6180030BE95 /* SettingsView.swift */,
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		0CADF138298BB6DC0030BE95 /* Favourites */ = {
@@ -589,7 +578,6 @@
 				0C61AE1829968F1D00B64684 /* FridgeViewModel.swift in Sources */,
 				0CCAF51D297C6EBA00F74951 /* HomeView.swift in Sources */,
 				0CC39B1B297FD9920099F733 /* NavigationRouter.swift in Sources */,
-				0CADF135298BB6180030BE95 /* SettingsView.swift in Sources */,
 				0CE2B521297B38FD00194236 /* HKAuthBackgroundCanvasView.swift in Sources */,
 				0C7E87572993DAEF00F4A150 /* FridgeProductModel.swift in Sources */,
 				0C5FC8BB29913DA700AC2EE7 /* Strings.swift in Sources */,

@@ -77,7 +77,7 @@ struct HKSecondaryBottomBarView: View {
                 }
             }
         }
-        .frame(height: 120)
+        .frame(height: searchBarVisible ? 120 : 60)
         .tint(thirdTitleColor)
         .background(.clear)
         .padding(.horizontal, 20)

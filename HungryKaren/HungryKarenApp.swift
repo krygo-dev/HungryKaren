@@ -33,7 +33,6 @@ struct HungryKarenApp: App {
                             case .profileView: ProfileView()
                             case .favouritesView: FavouritesView()
                             case .preferencesView: PreferencesView()
-                            case .settingsView: SettingsView()
                         }
                     }
             }

@@ -13,14 +13,13 @@ struct PreferencesView: View {
     @EnvironmentObject var navigationRouter: NavigationRouter
     
     @State var showMenu: Bool = false
-    @State var showBars: Bool = true
     
     var body: some View {
         ZStack {
-            if showBars { HKMainBackgroundCanvasView(color: tertiaryColor) }
+            HKMainBackgroundCanvasView(color: tertiaryColor)
             
             VStack {
-                if showBars { HKTopBarView(title: "Preferences", showMenu: $showMenu, showTopBar: $showBars) }
+                HKTopBarView(title: "Preferences", showMenu: $showMenu, showTopBar: .constant(true))
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 10) {
@@ -167,19 +166,17 @@ struct PreferencesView: View {
                                 }
                             }
                         }
+                        .padding(.bottom, 16)
                     }
                 }
-                .padding(.vertical, 33)
-                
-                
-                if showBars {
-                    HKSecondaryBottomBarView(
-                        searchText: .constant(""),
-                        showBottomBar: $showBars,
-                        searchBarVisible: false,
-                        searchBarButtonVisible: false
-                    )
-                }
+                .padding(.vertical, 8)
+
+                HKSecondaryBottomBarView(
+                    searchText: .constant(""),
+                    showBottomBar: .constant(true),
+                    searchBarVisible: false,
+                    searchBarButtonVisible: false
+                )
             }
             
             

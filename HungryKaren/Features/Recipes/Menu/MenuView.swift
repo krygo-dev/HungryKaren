@@ -121,13 +121,6 @@ struct MenuView: View {
                         .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.4), value: animate)
                 }
                 Button {
-                    navigationRouter.navigate(route: .settingsView)
-                } label: {
-                    Text("Settings")
-                        .opacity(animate ? 1 : 0)
-                        .animation(.easeOut(duration: animationDuration).delay(animationDelay + 0.5), value: animate)
-                }
-                Button {
                     authViewModel.signOut {
                         navigationRouter.navigateBackToStart()
                     }
