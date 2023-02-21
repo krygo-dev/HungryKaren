@@ -122,9 +122,3 @@ struct SearchFiltersView: View {
         }
     }
 }
-
-struct SearchFiltersView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchFiltersView(showFilters: .constant(true), searchFilters: SearchFilters())
-    }
-}

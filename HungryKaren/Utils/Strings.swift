@@ -17,3 +17,10 @@ let usersPath = "users"
 let cartPath = "cart"
 let fridgePath = "fridge"
 let favouritesPath = "favourites"
+
+
+// Preferences names
+let cuisine = "cuisine"
+let diet = "diet"
+let intolerance = "intolerance"
+let mealType = "mealType"

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MainView: View {
     
-    @EnvironmentObject var authViewModel: AuthenticationViewModel
     @EnvironmentObject var navigationRouter: NavigationRouter
     
     @StateObject var homeViewModel = HomeViewModel()
@@ -142,38 +141,6 @@ struct MainView: View {
             showMenu = false
             showBars = true
             showFilters = false
-            
-            if authViewModel.userData?.preferences["cuisine"] != "" {
-                homeViewModel.searchQuery.searchFilters.cuisineFilters[
-                    homeViewModel.searchQuery.searchFilters.cuisineFilters.firstIndex(
-                        where: { $0.name == authViewModel.userData?.preferences["cuisine"]! }
-                    )!
-                ].isSelected = true
-            }
-            
-            if authViewModel.userData?.preferences["diet"] != "" {
-                homeViewModel.searchQuery.searchFilters.dietFilters[
-                    homeViewModel.searchQuery.searchFilters.dietFilters.firstIndex(
-                        where: { $0.name == authViewModel.userData?.preferences["diet"]! }
-                    )!
-                ].isSelected = true
-            }
-            
-            if authViewModel.userData?.preferences["intolerance"] != "" {
-                homeViewModel.searchQuery.searchFilters.intoleranceFilters[
-                    homeViewModel.searchQuery.searchFilters.intoleranceFilters.firstIndex(
-                        where: { $0.name == authViewModel.userData?.preferences["intolerance"]! }
-                    )!
-                ].isSelected = true
-            }
-            
-            if authViewModel.userData?.preferences["mealType"] != "" {
-                homeViewModel.searchQuery.searchFilters.mealTypeFilters[
-                    homeViewModel.searchQuery.searchFilters.mealTypeFilters.firstIndex(
-                        where: { $0.name == authViewModel.userData?.preferences["mealType"]! }
-                    )!
-                ].isSelected = true
-            }
         }
     }
 }

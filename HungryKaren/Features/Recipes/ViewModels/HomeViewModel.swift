@@ -11,6 +11,8 @@ class HomeViewModel: ObservableObject {
     
     private let recipesRepository: RecipesRespository = RecipesRespository()
     private let productRepository: ProductsRepository = ProductsRepository()
+    private let userRepository: UserRepository = UserRepository()
+    private let authenticationRepository: AuthenticationRepository = AuthenticationRepository()
     
     @Published private(set) var recipesList: [Recipe] = []
     @Published private(set) var recipesDetailsList: [RecipeDetails] = []
@@ -28,9 +30,17 @@ class HomeViewModel: ObservableObject {
             searchForRecipes()
         }
     }
+    
+    @Published var currentUser: User? = nil
+    
     private var workItem: DispatchWorkItem?
     
     init() {
+        userRepository.getUserData(uid: authenticationRepository.getCurrentUser()!.uid) { user in
+            self.currentUser = user
+            self.convertUserPreferences()
+        }
+        
         productRepository.getProductsInFridge { productsList in
             let productsNames = productsList.map { $0.name }
             if productsNames.count > 0 {
@@ -172,6 +182,34 @@ class HomeViewModel: ObservableObject {
     private func getRecipesFromFavourites() {
         recipesRepository.getFavouritesRecipes { recipesList in
             self.favouriteRecipesList = recipesList
+        }
+    }
+    
+    
+    private func convertUserPreferences() {
+        
+        currentUser?.preferences[cuisine]?.forEach { name in
+            if !name.isEmpty {
+                searchQuery.searchFilters.cuisineFilters[searchQuery.searchFilters.cuisineFilters.firstIndex(where: { $0.name == name })!].isSelected = true
+            }
+        }
+        
+        currentUser?.preferences[diet]?.forEach { name in
+            if !name.isEmpty {
+                searchQuery.searchFilters.dietFilters[searchQuery.searchFilters.dietFilters.firstIndex(where: { $0.name == name })!].isSelected = true
+            }
+        }
+        
+        currentUser?.preferences[intolerance]?.forEach { name in
+            if !name.isEmpty {
+                searchQuery.searchFilters.intoleranceFilters[searchQuery.searchFilters.intoleranceFilters.firstIndex(where: { $0.name == name })!].isSelected = true
+            }
+        }
+        
+        currentUser?.preferences[mealType]?.forEach { name in
+            if !name.isEmpty {
+                searchQuery.searchFilters.mealTypeFilters[searchQuery.searchFilters.mealTypeFilters.firstIndex(where: { $0.name == name })!].isSelected = true
+            }
         }
     }
 }

@@ -9,5 +9,5 @@ struct User: Codable, Hashable {
     let uid: String
     let email: String
     let name: String
-    var preferences: [String : String]
+    var preferences: [String : [String]]
 }

@@ -12,17 +12,17 @@ class UserRepository {
     private let fbFirestore = Firestore.firestore()
     
     
-    func getUserData(uid: String, comletion: @escaping (User) -> Void) {
+    func getUserData(uid: String, completion: @escaping (User) -> Void) {
         fbFirestore
             .collection(usersPath)
             .document(uid)
-            .getDocument(as: User.self) { result in
-                switch result {
-                case .success(let user):
-                    comletion(user)
-                case .failure(let error):
+            .addSnapshotListener { snapshot, error in
+                if let error = error {
                     print(error.localizedDescription)
+                    return
                 }
+
+                completion(try! (snapshot?.data(as: User.self))!)
             }
     }
     

@@ -22,50 +22,42 @@ final class PreferencesViewModel: ObservableObject {
         }
     }
     
-    private func convertUserPreferences() {
-        if currentUser?.preferences["cuisine"] != "" {
-            searchFilters.cuisineFilters[
-                searchFilters.cuisineFilters.firstIndex(
-                    where: { $0.name == currentUser?.preferences["cuisine"] }
-                )!
-            ].isSelected = true
-        }
-        
-        if currentUser?.preferences["diet"] != "" {
-            searchFilters.dietFilters[
-                searchFilters.dietFilters.firstIndex(
-                    where: { $0.name == currentUser?.preferences["diet"] }
-                )!
-            ].isSelected = true
-        }
-        
-        if currentUser?.preferences["intolerance"] != "" {
-            searchFilters.intoleranceFilters[
-                searchFilters.intoleranceFilters.firstIndex(
-                    where: { $0.name == currentUser?.preferences["intolerance"] }
-                )!
-            ].isSelected = true
-        }
-        
-        if currentUser?.preferences["mealType"] != "" {
-            searchFilters.mealTypeFilters[
-                searchFilters.mealTypeFilters.firstIndex(
-                    where: { $0.name == currentUser?.preferences["mealType"] }
-                )!
-            ].isSelected = true
-        }
-    }
-    
     
     func saveData() {
         
-        currentUser?.preferences["cuisine"] = searchFilters.cuisineFilters.first(where: { $0.isSelected == true })?.name ?? ""
-        currentUser?.preferences["diet"] = searchFilters.dietFilters.first(where: { $0.isSelected == true })?.name ?? ""
-        currentUser?.preferences["intolerance"] = searchFilters.intoleranceFilters.first(where: { $0.isSelected == true })?.name ?? ""
-        currentUser?.preferences["mealType"] = searchFilters.mealTypeFilters.first(where: { $0.isSelected == true })?.name ?? ""
+        currentUser?.preferences[cuisine] = searchFilters.cuisineFilters.map({ return $0.isSelected == true ? $0.name : "" })
+        currentUser?.preferences[diet] = searchFilters.dietFilters.map({ return $0.isSelected == true ? $0.name : "" })
+        currentUser?.preferences[intolerance] = searchFilters.intoleranceFilters.map({ return $0.isSelected == true ? $0.name : "" })
+        currentUser?.preferences[mealType] = searchFilters.mealTypeFilters.map({ return $0.isSelected == true ? $0.name : "" })
         
-        userRepository.saveUserData(user: currentUser!) {
-            print("DEBUG: Data saved")
+        userRepository.saveUserData(user: currentUser!) {}
+    }
+    
+    
+    private func convertUserPreferences() {
+        
+        currentUser?.preferences[cuisine]?.forEach { name in
+            if !name.isEmpty {
+                searchFilters.cuisineFilters[searchFilters.cuisineFilters.firstIndex(where: { $0.name == name })!].isSelected = true
+            }
+        }
+        
+        currentUser?.preferences[diet]?.forEach { name in
+            if !name.isEmpty {
+                searchFilters.dietFilters[searchFilters.dietFilters.firstIndex(where: { $0.name == name })!].isSelected = true
+            }
+        }
+        
+        currentUser?.preferences[intolerance]?.forEach { name in
+            if !name.isEmpty {
+                searchFilters.intoleranceFilters[searchFilters.intoleranceFilters.firstIndex(where: { $0.name == name })!].isSelected = true
+            }
+        }
+        
+        currentUser?.preferences[mealType]?.forEach { name in
+            if !name.isEmpty {
+                searchFilters.mealTypeFilters[searchFilters.mealTypeFilters.firstIndex(where: { $0.name == name })!].isSelected = true
+            }
         }
     }
 }

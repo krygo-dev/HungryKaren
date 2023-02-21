@@ -91,7 +91,7 @@ class AuthenticationViewModel: ObservableObject {
             guard let user = user else { return }
             self.currentUser = user
             
-            let userData = User(uid: user.uid, email: email, name: name, preferences: ["diet" : "vegan"])
+            let userData = User(uid: user.uid, email: email, name: name, preferences: [cuisine : [], diet : [], intolerance : [], mealType : []])
             
             self.userRepository.saveUserData(user: userData) {
                 self.isLoading = false
