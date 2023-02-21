@@ -12,22 +12,24 @@ struct HomeView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
     @EnvironmentObject var navigationRouter: NavigationRouter
     
-    @State var showDetails: Bool = false
     @State var offset: CGFloat = 0
     @State var previousOffset: CGFloat = 0
+    @State var disableScroll: Bool = false
     @Binding var showTopBar: Bool
     
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading, spacing: 3) {
-                HStack {
-                    Text("Recipes ideas")
-                        .font(.system(size: 22))
-                        .fontWeight(.medium)
-                        .foregroundColor(secondTitleColor)
-                        .padding(.leading, 17)
-                    Spacer()
+                if homeViewModel.recipesDetailsList.count > 1 {
+                    HStack {
+                        Text("Recipes ideas")
+                            .font(.system(size: 22))
+                            .fontWeight(.medium)
+                            .foregroundColor(secondTitleColor)
+                            .padding(.leading, 17)
+                        Spacer()
+                    }
                 }
                 
                 if !homeViewModel.recipesDetailsList.isEmpty {
@@ -38,6 +40,7 @@ struct HomeView: View {
                             showDetails: $homeViewModel.showRecipeDetailsDictionary,
                             onItemTap: {
                                 withAnimation {
+                                    disableScroll.toggle()
                                     homeViewModel.showDetails(recipeId: recipe.id)
                                 }
                             },
@@ -88,6 +91,7 @@ struct HomeView: View {
                 }
             }
         }
+        .scrollDisabled(disableScroll)
         .coordinateSpace(name: "SCROLL")
         .onAppear {
             UIScrollView.appearance().bounces = false

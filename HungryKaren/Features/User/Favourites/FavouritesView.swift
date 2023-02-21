@@ -13,10 +13,10 @@ struct FavouritesView: View {
     @EnvironmentObject var navigationRouter: NavigationRouter
     
     @State var showMenu: Bool = false
-    @State var showDetails: Bool = false
+    @State var showBars: Bool = true
+    @State var disableScroll: Bool = false
     @State var offset: CGFloat = 0
     @State var previousOffset: CGFloat = 0
-    @State var showBars: Bool = true
 
     
     var body: some View {
@@ -37,6 +37,7 @@ struct FavouritesView: View {
                                     showDetails: $favouritesViewModel.showRecipeDetailsDictionary,
                                     onItemTap: {
                                         withAnimation {
+                                            disableScroll.toggle()
                                             favouritesViewModel.showDetails(recipeId: recipe.id)
                                         }
                                     },
@@ -87,6 +88,7 @@ struct FavouritesView: View {
                         }
                     }
                 }
+                .scrollDisabled(disableScroll)
                 .animation(.easeIn(duration: 0.3), value: favouritesViewModel.filteredRecipesList)
                 .coordinateSpace(name: "SCROLL")
                 .onAppear {

@@ -15,7 +15,6 @@ enum Route: Hashable {
     case favouritesView
     case preferencesView
     case settingsView
-    case detailsView(recipe: RecipeDetails)
 }
 
 

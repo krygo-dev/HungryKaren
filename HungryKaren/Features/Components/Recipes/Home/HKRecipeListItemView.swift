@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HKRecipeListItemView: View {
     
+    @Environment(\.openURL) var openUrl
+    
     var recipe: RecipeDetails
     var recipeInFav: Bool
     @Binding var showDetails: [Int: Bool]
@@ -38,6 +40,24 @@ struct HKRecipeListItemView: View {
                     Text("Cook time: \(recipe.readyInMinutes) mins")
                     Text("Servings: \(recipe.servings)")
                     Text("Health score: \(String(format: "%.2f", recipe.healthScore))")
+                    
+                    if showDetails[recipe.id]! {
+                        Text("Author: \(recipe.sourceName)")
+                            .font(.system(size: 14))
+                            .foregroundColor(thirdTitleColor)
+                            .padding(.vertical, 4)
+                        Button {
+                            openUrl(URL(string: recipe.sourceUrl)!)
+                        } label: {
+                            Text("Link to recipe")
+                                .font(.system(size: 14))
+                                .foregroundColor(thirdTitleColor)
+                        }
+                        Spacer()
+                        Text("\(recipe.summary.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil))")
+                            .font(.system(size: 14))
+                        Spacer()
+                    }
                 }
                 .foregroundColor(mainTextColor)
                 
@@ -51,6 +71,7 @@ struct HKRecipeListItemView: View {
                 }
                 .padding(.bottom, 17)
             }
+            .padding(.horizontal, showDetails[recipe.id]! ? 17 : 0)
             .frame(width: 350, height: showDetails[recipe.id]! ? 536 : 126)
             .background(primaryColor)
             .cornerRadius(25)
@@ -76,7 +97,7 @@ struct HKRecipeListItemView: View {
                 .frame(width: 350)
                 .padding(.bottom, 60)
                 .padding(.top, showDetails[recipe.id]! ? 8 : 0)
-                .padding(.trailing, showDetails[recipe.id]! ? 16 : 0)
+                .padding(.trailing, showDetails[recipe.id]! ? 17 : 0)
                 
                 Spacer()
             }

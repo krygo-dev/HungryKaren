@@ -61,4 +61,5 @@ let sampleRecipeDetail = RecipeDetails(
     healthScore: 19.0,
     sourceName: "Full Belly Sisters",
     sourceUrl: "http://fullbellysisters.blogspot.com/2012/06/pasta-with-garlic-scallions-cauliflower.html",
-    summary: "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs might be a good recipe to expand your main course repertoire.")
+    summary: "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs might be a good recipe to expand your main course repertoire."
+)
