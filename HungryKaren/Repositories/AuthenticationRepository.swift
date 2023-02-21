@@ -41,6 +41,20 @@ class AuthenticationRepository {
         }
     }
     
+    func changeUserPassword(email: String, currentPassword: String, newPassword: String, completion: @escaping (Error?) -> Void) {
+        let credentials = EmailAuthProvider.credential(withEmail: email, password: currentPassword)
+        
+        fbAuth.currentUser?.reauthenticate(with: credentials) { result, error in
+            if let error = error{
+                completion(error)
+            } else {
+                self.fbAuth.currentUser?.updatePassword(to: newPassword) { error in
+                    completion(error)
+                }
+            }
+        }
+    }
+    
     func signOut() {
         try? fbAuth.signOut()
     }
