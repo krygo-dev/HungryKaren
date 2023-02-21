@@ -11,6 +11,7 @@ struct HKSearchFilterCheckBoxView: View {
     
     @Binding var filter: Filter
     var bgColor: Color = quaternaryColor
+    var onTap: (() -> Void)?
     
     var body: some View {
         ZStack {
@@ -29,6 +30,10 @@ struct HKSearchFilterCheckBoxView: View {
         .onTapGesture {
             withAnimation(.easeIn(duration: 0.3)) {
                 filter.isSelected.toggle()
+                
+                if onTap != nil {
+                    onTap!()
+                }
             }
         }
     }
