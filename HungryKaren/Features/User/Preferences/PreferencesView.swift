@@ -166,7 +166,8 @@ struct PreferencesView: View {
                                 }
                             }
                         }
-                        .padding(.bottom, 16)
+                        
+                        Spacer().frame(height: 16)
                     }
                 }
                 .padding(.vertical, 8)
