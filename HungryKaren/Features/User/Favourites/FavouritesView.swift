@@ -9,8 +9,8 @@ import SwiftUI
 
 struct FavouritesView: View {
     
-    @EnvironmentObject var favouritesViewModel: FavouritesViewModel
     @EnvironmentObject var navigationRouter: NavigationRouter
+    @StateObject var favouritesViewModel: FavouritesViewModel = FavouritesViewModel()
     
     @State var showMenu: Bool = false
     @State var showBars: Bool = true

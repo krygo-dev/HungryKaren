@@ -68,12 +68,7 @@ final class ProfileViewModel: ObservableObject {
             completion()
         }
     }
-    
-    func removeAlert() {
-        alert = nil
-        isLoading = false
-    }
-    
+
     
     private func getUserData() {
         isLoading = true
