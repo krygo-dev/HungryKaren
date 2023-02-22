@@ -58,8 +58,12 @@ class HomeViewModel: ObservableObject {
         workItem?.cancel()
         isLoading = true
         alert = nil
-        
-        if searchText.isEmpty { return }
+
+        if searchText.isEmpty {
+            isLoading = false
+            alert = nil
+            return
+        }
         
         searchQuery.query = searchText
 
@@ -82,6 +86,7 @@ class HomeViewModel: ObservableObject {
         
         workItem = item
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: workItem!)
+        isLoading = false
         return
     }
     
@@ -89,8 +94,10 @@ class HomeViewModel: ObservableObject {
     func getRecipesByIngredients(namesList: [String]) {
         isLoading = true
         alert = nil
+
         recipesRepository.fetchRecipesByIngredients(ingredients: namesList) { result, error in
             DispatchQueue.main.async {
+
                 if let error = error {
                     self.alert = .error(message: error)
                     self.isLoading = false
@@ -99,8 +106,8 @@ class HomeViewModel: ObservableObject {
                 
                 guard let result = result else { return }
                 self.recipesList = result
-                self.getRecipesDetails()
                 self.isLoading = false
+                self.getRecipesDetails()
             }
         }
     }
@@ -109,6 +116,7 @@ class HomeViewModel: ObservableObject {
     func getRandomRecipes() {
         isLoading = true
         alert = nil
+
         recipesRepository.getRandomRecipes { result, error in
             DispatchQueue.main.async {
                 if let error = error {
